@@ -1,14 +1,20 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#define INF 2000000000
+#define INF 1000010000
 using namespace std;
 
 int ston(string s){
     int ret=0;
     int i,j;
-    for(i=s.size()-1, j=1;i>=0;i--,j*=10){
-        ret += int(s[i]-'0')*j;
+    if(s[0] == '-'){
+        for(i=s.size()-1, j=1;i>=1;i--,j*=10){
+            ret += -int(s[i]-'0')*j;
+        }
+    }else{
+        for(i=s.size()-1, j=1;i>=0;i--,j*=10){
+            ret += int(s[i]-'0')*j;
+        }
     }
     return ret;
 }
@@ -43,22 +49,29 @@ int main(){
 
         int mmin = -INF;
         int mmax = INF;
+        bool nonef = false;
         for(int i=1;i<=n;i++){
             if(sample[i] == INF){
                 mmin = max(max(sample[i-1],sample[i+1]) + 1,mmin);
+                sample[i] = mmin;
             }
             if(sample[i] == -INF){
                 mmax = min(min(sample[i-1],sample[i+1]) - 1,mmax);
+                sample[i] = mmax;
             }
+            if(i%2 == 0) if(sample[i] <= max(sample[i-1],sample[i+1])) nonef = true;
+            if(i%2 == 1) if(sample[i] >= min(sample[i-1],sample[i+1])) nonef = true;
         }
-        cout << mmin << ' ' << mmax << '\n';
-        if(mmin == mmax){
-            cout << mmin;
-        }
-        if(mmin == -INF || mmax == INF || mmin > mmax){
+        //cout << mmin << ' ' << mmax << '\n';
+        if(mmin > mmax) nonef = true;
+        if(nonef){
             cout << "none";
-        }else if(mmin < mmax){
-            cout << "ambiguous";
+        }else{
+            if(mmin == mmax){
+                cout << mmin;
+            }else if(mmin < mmax){
+                cout << "ambiguous";
+            }
         }
         cout << '\n';
     }
