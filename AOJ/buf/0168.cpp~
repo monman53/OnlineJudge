@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int dp[33];
+int n;
+int data[30];
+
+int rec(int i){
+    if(dp[i] >= 0){
+        return dp[i];
+    }
+    int res;
+    if(i >= n){
+        res = 0;
+    }else if(i == n-1){
+        res = 1;
+    }else{
+        res = rec(i+1) + rec(i+2) + rec(i+3);
+    }
+    return dp[i] = res;
+}
+
+int main(){
+    for(int i=0;i<31;i++){
+        dp[i] = -1;
+    }
+    while(1){
+        cin >> n;
+        if(n == 0) break;
+
+        cout << rec(0) << '\n';
+    }
+    return 0;
+}
+
