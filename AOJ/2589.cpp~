@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+void madd(int* s,int* b,int nine,int n){
+    s = s*n + nine*b;
+    b = b*n;
+}
+
+int main(){
+    string s;
+    while(1){
+        cin >> s;
+        if(s == "#") break;
+        
+    }
+    return 0;
+}
