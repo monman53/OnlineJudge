@@ -1,5 +1,0 @@
-
-#include <iostream>
-#include <stack>
-#include <map>
-using namespace std;int main(){map<char,char>m;m['(']=')';m['[']=']';while(1){stack<char>k;string s;getline(cin,s);if(s[0] == '.')break;for(int i=0;i<s.size();i++){if(s[i]=='('||s[i]=='[')k.push(s[i]);if(s[i]==')'||s[i]==']'){if(!k.empty())if(s[i]==m[k.top()]){k.pop();continue;}k.push(s[i]);}}cout<<(k.empty()?"yes":"no")<<'\n';}}
