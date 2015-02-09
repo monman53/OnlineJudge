@@ -1,0 +1,32 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main(){
+    int n,s;
+    int c[10000];
+    int y[10000];
+    cin >> n >> s;
+    for(int i=0;i<n;i++) cin >> c[i] >> y[i];
+
+    int sum=0;
+    //int strage=0;
+
+    for(int i=0;i<n;i++){
+        if(y[i] > 0){
+            sum += c[i]*y[i];
+        }
+        for(int j=i+1;j<n;j++){
+            if(c[j]*y[j] > c[i]*y[j] + (j-i)*s){
+                sum += c[i]*y[j] + (j-i)*s;
+                y[j] = 0;
+            }else{
+                break;
+            }
+        }
+    }
+
+    cout << sum << '\n';
+
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int n;
+    int ln,rn;
+    int ld[100000];
+    int rd[100000];
+    cin >> n;
+    ln = n/2;
+    rn = n - ln;
+
+    for(int i=0;i<ln;i++){
+        cin >> ld[i];
+    }
+    for(int i=0;i<rn;i++){
+        cin >> rd[rn - i - 1];
+    }
+
+    for(int i=0;i<ln;i++){
+        cout << ld[i] << '\n';
+    }
+    for(int i=0;i<rn;i++){
+        cout << rd[i] << '\n';
+    }
+
+    return 0;
+}

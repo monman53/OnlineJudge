@@ -1,0 +1,45 @@
+#include <iostream>
+#define INF 9999999
+using namespace std;
+int n,x;
+bool check[101];
+int hoseki[101];
+int dir[101][101];
+int dirc[101];
+
+int dfs(int x,int cost){
+    int retsum=0;
+    check[x] = true;
+    if(hoseki[x] == 1){
+        retsum+=2*cost;
+    }
+    for(int i=0;i<dirc[x];i++){
+        if(!check[dir[x][i]]){
+            if(hoseki[x] == 1){
+                retsum += dfs(dir[x][i], 0);
+            }else{
+                retsum += dfs(dir[x][i], cost+1);
+            }
+        }
+    }
+    return retsum;
+}
+
+int main(){
+    cin >> n >> x;
+    for(int i=1;i<=n;i++){
+        check[i] = false;
+        dirc[i] = 0;
+        cin >> hoseki[i];
+    }
+    for(int i=0;i<n-1;i++){
+        int a,b;
+        cin >> a >> b;
+        dir[a][dirc[a]] = b;
+        dir[b][dirc[b]] = a;
+        dirc[a]++;
+        dirc[b]++;
+    }
+    cout << dfs(x,0) << '\n';
+    return 0;
+}

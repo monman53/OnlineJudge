@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    int n,r,l;
+    int data[100001];
+    int tvdata[100001];
+    int tlog[100001];
+    for(int i=0;i<100001;i++){
+        data[i] = 0;
+        tvdata[i] = 0;
+    }
+    cin >> n >> r >> l;
+    int top_score=0;
+    int top_team=1;
+    int tv_top_score=0;
+    int tv_top_team=1;
+    tlog[top_team] = 0;
+
+    for(int i=0;i<r;i++){
+        int d,t,x;
+        cin >> d >> t >> x;
+        data[d] += x;
+        cout << "top_team=" << top_team << " top_score=" << top_score << " tv_top_team" << tv_top_team << '\n';
+        if((data[d] > top_score) || (data[d] == top_score && d <= top_team)){
+            tvdata[top_team] += t - tlog[top_team];
+            if((tvdata[top_team] > tv_top_score) || (tvdata[top_team] == tv_top_score && top_team <= tv_top_team)){
+                tv_top_score = tvdata[top_team];
+                tv_top_team = top_team;
+            }
+            tlog[d] = t;
+            top_score = data[d];
+            top_team = d;
+        }
+        //cout << "top_team=" << top_team << " top_score=" << top_score << " tv_top_team" << tv_top_team << '\n';
+    }
+
+    tvdata[top_team] += l-tlog[top_team];
+    if((tvdata[top_team] > tv_top_score) || (tvdata[top_team] == tv_top_score && top_team <= tv_top_team)){
+        tv_top_score = tvdata[top_team];
+        tv_top_team = top_team;
+    }
+
+    cout << tv_top_team << '\n';
+
+    return 0;
+}
