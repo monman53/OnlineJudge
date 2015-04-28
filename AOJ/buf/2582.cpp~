@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    while(1){
+        int n;
+        cin >> n;
+        if(n == 0) break;
+        count = 0;
+        for(int i=0;i<n;i++){
+            string s;
+            bool left=false,right=false;
+            bool next=true;
+            cin >> s;
+            if(s[0] = l) left = !left;
+            else right = !right;
+            if(right == next && left == next) count++;
+        }
+        cout << count << "¥n";
+    }
+    return 0;
+}
