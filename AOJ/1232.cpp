@@ -1,17 +1,16 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
 using namespace std;
 
 int main(){
-  bool furui[1000];
+  bool furui[10000];
   vector<int> list;
-  for(int i=0;i<1000;i++){
+  for(int i=0;i<10000;i++){
     furui[i] = true;
   }
-  for(int i=2;i<1000;i++){
+  for(int i=2;i<10000;i++){
     if(furui[i]){
-      for(int j=2;i*j<1000;j++){
+      for(int j=2;i*j<10000;j++){
         furui[i*j] = false;
       }
       list.push_back(i);
