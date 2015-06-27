@@ -1,58 +1,40 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
-int n;
-int data[16][16];
-int cost[16];
-bool clear[16];
-int mmin;
-
-void ans(int sum, int count){
-  int nowcost;
-  int buf[16];
-
-  if(sum > mmin) return;
-
-  if(count == n){
-    mmin = min(mmin, sum);
-  }
-
-  for(int i=0;i<n;i++){
-    if(!clear[i]){
-      clear[i] = true;
-      nowcost = cost[i];
-      for(int j=0;j<n;j++){
-        buf[j] = cost[j];
-        cost[j] = min(cost[j], data[i][j]);
-      }
-      ans(sum + nowcost, count+1);
-      for(int j=0;j<n;j++){
-        cost[j] = buf[j];
-      }
-      clear[i] = false;
-    }
-  }
-}
+int MAX = 1<<30;
 
 int main(){
+  int n;
   while(1){
     cin >> n;
-    if(n == 0) break;
-    mmin = 99999999;
-    
-    for(int i=0;i<n;i++){
-      clear[i] = false;
-    }
+    if(n == 0) return 0;
+
+    int data[16][17];
+    int nbit = 1 << n;
+    vector<int> dp(nbit, MAX);
 
     for(int i=0;i<n;i++){
-      cin >> cost[i];
-      for(int j=0;j<n;j++){
-        cin >> data[j][i];
+      for(int j=0;j<n+1;j++){
+        cin >> data[i][j];
       }
     }
-    ans(0, 0);
-    cout << mmin << '\n';
+    dp[0] = 0;
+    for(int i=0;i<nbit;i++){
+      for(int j=0;j<n;j++){
+        if(!(i&(1<<j))){
+          int mmin = dp[i] + data[j][0];
+          for(int k=0;k<n;k++){
+            if(i&(1<<k)){
+              mmin = min(mmin, dp[i] + data[j][k+1]);
+            }
+          }
+          dp[i|(1<<j)] = min(mmin, dp[i|(1<<j)]);
+        }
+      }
+    }
+    cout << dp[nbit-1] << '\n';
   }
   return 0;
 }
