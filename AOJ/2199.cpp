@@ -1,72 +1,40 @@
 #include <iostream>
 #include <vector>
-#include <map>
-#include <stack>
+#include <algorithm>
 using namespace std;
+
+int INF = 1 << 30;
 
 int main(){
   int n, m;
-  string s;
-  
-  cin >> n;
+  while(1){
+    cin >> n >> m;
+    if(n == 0 && m == 0) break;
 
-  map<string, vector<bool> > data;
+    vector<vector<int> > dp(n+1, vector<int>(256, INF));
+    dp[0][128] = 0;
+    vector<int> codebook(m);
+    vector<int> data(n);
 
-  for(int i=0;i<n;i++){
-    vector<bool> buf(256, false);
-    int from, to;
-    cin >> s;
-    cin >> from >> to;
-    for(int j=from;j<=to;j++){
-      buf[j] = true;
-    }
-    data[s] = buf;
-  }
-  
-  cin >> m;
+    for(int i=0;i<m;i++) cin >> codebook[i];
+    for(int i=0;i<n;i++) cin >> data[i];
 
-  stack<vector<bool> > rpn;
-
-  for(int i=0;i<m;i++){
-    cin >> s;
-    if(s == "+" || s == "-" || s == "*" || s == "/"){
-      vector<bool> b = rpn.top();
-      rpn.pop();
-      vector<bool> a = rpn.top();
-      rpn.pop();
-      
-      vector<bool> buf(256, false);
-
+    for(int i=0;i<n;i++){
       for(int j=0;j<256;j++){
-        for(int k=0;k<256;k++){
-          if(a[j] && b[k]){
-            if(s == "+") buf[(j+k)%256] = true;
-            if(s == "-") buf[(j-k+256)%256] = true;
-            if(s == "*") buf[(j*k)%256] = true;
-            if(s == "/"){
-              if(k == 0){
-                cout << "error\n";
-                return 0;
-              }else{
-                buf[(j/k)%256] = true;
-              }
-            }
-          }
+        if(dp[i][j] == INF) continue;
+        for(int k=0;k<m;k++){
+          int next = j+codebook[k];
+          if(next < 0) next = 0;
+          if(next > 255) next = 255;
+
+          dp[i+1][next] = min(dp[i+1][next], dp[i][j]+(next-data[i])*(next-data[i]));
         }
       }
-      rpn.push(buf);
-    }else if(data.find(s) != data.end()){
-      rpn.push(data[s]);
-    }else{
-      int n=0;
-      for(int i=s.size()-1,j=1;i>=0;i--,j*=10){
-        n += (s[i] - '0')*j;
-      }
-      vector<bool> buf(256, false);
-      buf[n] = true;
-      rpn.push(buf);
     }
+    int mmin=INF;
+    for(int i=0;i<256;i++){
+      mmin = min(mmin, dp[n][i]);
+    }
+    cout << mmin << '\n';
   }
-  cout << "correct\n";
-  return 0;
 }

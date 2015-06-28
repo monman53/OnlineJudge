@@ -1,104 +1,89 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
+typedef long long int ll;
 
+struct Range{
+  ll l, r;
+  Range(ll x, ll y){
+    l = x;
+    r = y;
+  }
+};
+
+struct Data{
+  int x, y, w;
+  Data(ll i, ll j, ll k){
+    x = i;
+    y = j;
+    w = k;
+  }
+};
+
+bool comp(Data d1, Data d2){
+  if(d1.w > d2.w){
+    return true;
+  }else if(d1.w == d2.w){
+    return d1.x+d1.y < d2.x+d2.y;
+  }
+  return false;
+}
 
 int main(){
-  bool hmax[200001];
-  bool wmax[200001];
-  int n, w, h;
-  int x, y, r;
-  int hcount = 0;
-  int wcount = 0;
-  
-  cin >> n >> w >> h;
+  ll N, W, H;
+  cin >> N >> W >> H;
 
-  for(int i=0;i<=h*2;i++){
-    hmax[i] = -1;
-  }
-  for(int i=0;i<=w*2;i++){
-    wmax[i] = -1;
-  }
-  cout << n << " " << w << " " << h << endl;;  
-  for(int i=0;i<n;i++){
-    cout << i << endl;
-    cin >> x >> y >> r;
-    if(r*2 > wmax[2*x] && wcount != w*2+1){
-      for(int j=0;j<=2*r;j++){
-        if(x*2+j <= 2*w){
-          if(2*r-j > wmax[2*x+j]){
-            if(wmax[2*x+j] == -1) wcount++;
-            wmax[2*x+j] = 2*r-j;
-          }else{
-            break;
-          }
-        }else{
-          break;
-        }
-      }
-      for(int j=0;j<=2*r;j++){
-        if(x*2-j >= 0){
-          if(2*r-j > wmax[2*x-j]){
-            if(wmax[2*x-j] == -1) wcount++;
-            wmax[2*x-j] = 2*r-j;
-          }else{
-            break;
-          }
-        }else{
-          break;
-        }
-      }
-    }
-    
-    if(r*2 > hmax[2*y] && hcount != 2*h+1){
-      for(int j=0;j<=2*r;j++){
-        if(y*2+j <= 2*h){
-          if(2*r-j > hmax[2*y+j]){
-            if(wmax[2*y+j] == -1) hcount++;
-            hmax[2*y+j] = 2*r-j;
-          }else{
-            break;
-          }
-        }else{
-          break;
-        }
-      }
-      for(int j=0;j<=2*r;j++){
-        if(y*2-j >= 0){
-          if(2*r-j > hmax[2*y-j]){
-            hmax[2*y-j] = 2*r-j;
-          }else{
-            break;
-          }
-        }else{
-          break;
-        }
-      }
-    }
-  }
-/*
-  bool wflag=true;
-  bool hflag=true;
- 
-  for(int i=0;i<=h*2;i++){
-    if(hmax[i] == -1){
-      hflag = false;
-      break;
-    }
-  }
-  for(int i=0;i<=w*2;i++){
-    if(wmax[i] == -1){
-      wflag = false;
-      break;
-    }
-  }
-*/
+  vector<Range> tate, yoko;
+  ll x, y, w;
+  ll l, r;
 
-  if(hcount == h*2+1 || wcount == w*2+1){
-    cout << "Yes\n";
-  }else{
-    cout << "No\n";
+  vector<Data> data;
+  for(ll i=0;i<N;i++){
+    cin >> x >> y >> w;
+    data.push_back(Data(x, y, w));
   }
+  sort(data.begin(), data.end(), comp);
 
-  return 0;
+  for(ll i=0;i<N;i++){
+    x = data[i].x;
+    y = data[i].y;
+    w = data[i].w;
+    // tate
+    vector<Range> new_tate;
+    l = max(0LL, y-w);
+    r = min(H, y+w);
+    for(int j=0;j<(int)tate.size();j++){
+      if((l - tate[j].r)*(r - tate[j].l) <= 0){
+        r = max(tate[j].r, r);
+        l = min(tate[j].l, l);
+      }else{
+        new_tate.push_back(tate[j]);
+      }
+    }
+    new_tate.push_back(Range(l, r));
+    tate = new_tate;
+
+    // yoko
+    vector<Range> new_yoko;
+    l = max(0LL, x-w);
+    r = min(W, x+w);
+    for(int j=0;j<(int)yoko.size();j++){
+      if((l - yoko[j].r)*(r - yoko[j].l) <= 0){
+        r = max(yoko[j].r, r);
+        l = min(yoko[j].l, l);
+      }else{
+        new_yoko.push_back(yoko[j]);
+      }
+    }
+    new_yoko.push_back(Range(l, r));
+    yoko = new_yoko;
+
+    if(yoko[0].l == 0 && yoko[0].r == W || tate[0].l == 0 && tate[0].r == H){
+      cout << "Yes\n";
+      return 0;
+    }
+  }
+  cout << "No\n";
 }
