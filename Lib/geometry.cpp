@@ -1,9 +1,32 @@
 #include <iostream>
 #include <cmath>
 #include <algorithm>
+#include <vector>
 #define EPS (1e-10)
 #define equals(a, b) (fabs((a)-(b)) < EPS)
 using namespace std;
+
+class Point;
+typedef Point Vector;
+class Segment;
+typedef Segment Line;
+class Circle;
+typedef vector<Point> Polygon;
+double norm(Vector a);
+double abs(Vector a);
+double dot(Vector a, Vector b);
+double cross(Vector a, Vector b);
+bool isOrthogonal(Vector a, Vector b);
+bool isParallel(Vector a, Vector b);
+Point project(Segment s, Point p);
+Point reflect(Segment s, Point p);
+int ccw(Point p0, Point p1, Point p2);
+bool intersect(Point p1, Point p2, Point p3, Point p4);
+bool intersect(Segment s1, Segment s2);
+double getDistance(Point a, Point b);
+double getDistanceLP(Line l, Point p);
+double getDistanceSP(Segment s, Point p);
+double getDistance(Segment s1, Segment s2);
 
 
 class Point{
@@ -22,7 +45,6 @@ public:
   bool operator < (const Point &p) const {return (!equals(x, p.x) ? x < p.x : y < p.y);}
   bool operator == (const Point &p) const {return equals(x, p.x) && equals(y, p.y);}
 };
-typedef Point Vector;
 
 
 class Segment{
@@ -34,7 +56,6 @@ public:
   double abs(){return sqrt(norm());}
   Vector vct(){return p2-p1;}
 };
-typedef Segment Line;
 
 
 class Circle{
@@ -44,9 +65,6 @@ public:
 
   Circle(Point c = Point(), double r = 0.0): c(c), r(r){}
 };
-
-
-typedef vector<Point> Polygon;
 
 
 double norm(Vector a){
