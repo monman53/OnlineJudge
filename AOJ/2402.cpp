@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 #include <cmath>
 #include <algorithm>
 #include <vector>
@@ -10,8 +11,6 @@ class Point;
 typedef Point Vector;
 class Segment;
 typedef Segment Line;
-class Circle;
-typedef vector<Point> Polygon;
 double norm(Vector a);
 double abs(Vector a);
 double dot(Vector a, Vector b);
@@ -27,7 +26,6 @@ double getDistance(Point a, Point b);
 double getDistanceLP(Line l, Point p);
 double getDistanceSP(Segment s, Point p);
 double getDistance(Segment s1, Segment s2);
-
 
 class Point{
 public:
@@ -46,7 +44,6 @@ public:
   bool operator == (const Point &p) const {return equals(x, p.x) && equals(y, p.y);}
 };
 
-
 class Segment{
 public:
   Point p1, p2;
@@ -57,18 +54,55 @@ public:
   Vector vct(){return p2-p1;}
 };
 
+double INF = 1 << 30;
 
-class Circle{
-public:
-  Point c;
-  double r;
+int main(){
+  while(1){
+    int n, m, l;
+    cin >> n >> m >> l;
+    if(n == 0 && m == 0 && l == 0) break;
+    vector<vector<Segment>> data;
+    
+    for(int i=0;i<n;i++){
+      double x, y, a, r;
+      vector<Point> point;
+      cin >> x >> y >> a >> r;
+      for(int j=0;j<5;j++){
+        double rad = 2.0*M_PI*(j/5.0 + a/360.0);
+        point.push_back(Point(x - r*sin(rad), y + r*cos(rad)));
+      }
+      vector<Segment> segment;
+      for(int j=0;j<5;j++){
+        segment.push_back(Segment(point[j], point[(j+2)%5]));
+      }
+      data.push_back(segment);
+    }
+    vector<vector<double>> dp(n, vector<double>(n, INF));
+    for(int i=0;i<n;i++){
+      for(int j=0;j<n;j++){
+        for(int k=0;k<5;k++){
+          for(int o=0;o<5;o++){
+            dp[i][j] = min(dp[i][j], getDistance(data[i][k], data[j][o]));
+          }
+        }
+      }
+    }
+    for(int k=0;k<n;k++){
+      for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+          dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j]);
+        }
+      }
+    }
 
-  Circle(Point c = Point(), double r = 0.0): c(c), r(r){}
-};
+    printf("%f\n", dp[m-1][l-1]);
+  }
+  return 0;
+}
 
 
 double norm(Vector a){
-  return a.x*a.x+a.y*a.y;
+  return a.x*a.x + a.y*a.y;
 }
 
 double abs(Vector a){
@@ -142,8 +176,4 @@ double getDistance(Segment s1, Segment s2){
   if(intersect(s1, s2)) return 0.0;
   return min(min(getDistanceSP(s1, s2.p1), getDistanceSP(s1, s2.p2)),
              min(getDistanceSP(s2, s1.p1), getDistanceSP(s2, s1.p2)));
-}
-
-int main(){
-  return 0;
 }
