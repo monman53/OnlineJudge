@@ -1,16 +1,5 @@
-#include <iostream>
-#include <climits>
-#include <cstdio>
-#include <cmath>
-#include <algorithm>
-#include <vector>
-#include <stack>
-#include <queue>
-#include <utility>
-using namespace std;
-
 // depends on
-#define N_MAX 10001
+//#define N_MAX
 struct union_find{
     int rank[N_MAX], parent[N_MAX];
 
@@ -49,21 +38,3 @@ struct union_find{
         return find(x) == find(y);
     }
 };
-
-int main(){
-    int n,q;
-    cin >> n >> q;
-    
-    union_find uf = union_find(n+1);
-
-    for(int i=0;i<q;i++){
-        int com, x, y;
-        cin >> com >> x >> y;
-        if(com == 0){
-            uf.unite(x, y);
-        }else{
-            cout << (uf.same(x, y) ? 1 : 0) << endl;
-        }
-    }
-    return 0;
-}
