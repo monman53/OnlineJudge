@@ -13,6 +13,7 @@
 #include <cstring>
 #include <cctype>
 #include <cmath>
+#include <climits>
 #include <cassert>
 #include <functional>
 #include <numeric>
