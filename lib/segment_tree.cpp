@@ -55,20 +55,3 @@ public:
         return op(vl, vr);
     }
 };  // }}}
-
-int main(){
-    SegmentTree<int> st(11, 0, [](int a, int b){return min(a, b);});
-    int a[] = {1, 5, 8, 3, 2, 0, 6, 4, 4, 3, 5};
-    rep(i, 0, 11){
-        st.update(i, a[i]);
-    }
-    while(1){
-        int a, b;
-        cin >> a >> b;
-        cout << st.quety(a, b) << endl;
-    }
-    rep(i, 0, 16*2-1){
-        print2(i, st.data[i]);
-    }
-    return 0;
-}
