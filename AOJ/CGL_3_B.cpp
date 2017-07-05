@@ -30,7 +30,7 @@ typedef unsigned long long ull;
 // 2d geometry {{{
 
 typedef complex<double> P;
-typedef vector<P> L;
+typedef vector<P> PL;
 
 // 長さ
 // double length = abs(a);
@@ -52,40 +52,6 @@ double cross(P a, P b) {
     return a.real()*b.imag() - a.imag()*b.real();
 }
 
-// 直交判定
-// verified AOJ CGL_2_A
-bool orthogonalLL(P a1, P a2, P b1, P b2) {
-    return EQ(dot(a1-a2, b1-b2), 0.0);
-}
-
-// 平行判定
-// verified AOJ CGL_2_A
-bool parallelLL(P a1, P a2, P b1, P b2) {
-    return EQ(cross(a1-a2, b1-b2), 0.0);
-}
-
-// verified AOJ CGL_1_C
-int ccw(P a, P b, P c) {
-    b = b - a;
-    c = c - a;
-    if(cross(b, c) > EPS) return +1; // counter clockwise
-    if(cross(b, c) <-EPS) return -1; // clockwise
-    if(dot(b, c) < 0)     return +2; // cab (back)
-    if(abs(b) < abs(c))   return -2; // abc (front)
-    return 0;                        // acb (on segment)
-}
-
-bool intersectedSS(P a1, P a2, P b1, P b2) {
-    return ccw(a1, a2, b1)*ccw(a1, a2, b2) <= 0 &&
-           ccw(b1, b2, a1)*ccw(b1, b2, a2) <= 0;
-}
-
-P intersectionLL(P a1, P a2, P b1, P b2) {
-    P a = a2 - a1;
-    P b = b2 - b1;
-    return a1 + a*cross(b, b1-a1)/cross(b, a);
-}
-
 // 点の直線への射影
 // verified AOJ CGL_1_A
 P projectionLP(P a, P b, P p) {
@@ -99,16 +65,58 @@ P reflectionLP(P a, P b, P p) {
     return 2.0*projectionLP(a, b, p) - p;
 }
 
+// verified AOJ CGL_1_C
+int ccw(P a, P b, P c) {
+    b = b - a;
+    c = c - a;
+    if(cross(b, c) > EPS) return +1; // counter clockwise
+    if(cross(b, c) <-EPS) return -1; // clockwise
+    if(dot(b, c) < 0)     return +2; // cab (back)
+    if(abs(b) < abs(c))   return -2; // abc (front)
+    return 0;                        // acb (on segment)
+}
+
+// 直交判定
+// verified AOJ CGL_2_A
+bool orthogonalLL(P a1, P a2, P b1, P b2) {
+    return EQ(dot(a1-a2, b1-b2), 0.0);
+}
+
+// 平行判定
+// verified AOJ CGL_2_A
+bool parallelLL(P a1, P a2, P b1, P b2) {
+    return EQ(cross(a1-a2, b1-b2), 0.0);
+}
+
+// 線分と線分の交差判定
+// verified AOJ CGL_2_B
+bool intersectedSS(P a1, P a2, P b1, P b2) {
+    return ccw(a1, a2, b1)*ccw(a1, a2, b2) <= 0 &&
+           ccw(b1, b2, a1)*ccw(b1, b2, a2) <= 0;
+}
+
+// 直線と直線の交点
+// verified AOJ CGL_2_C
+P intersectionLL(P a1, P a2, P b1, P b2) {
+    P a = a2 - a1;
+    P b = b2 - b1;
+    return a1 + a*cross(b, b1-a1)/cross(b, a);
+}
+
+// 直線と点の距離
 double distLP(P a, P b, P p) {
     return abs(cross(b-a, p-a)) / abs(b-a);
 }
 
+// 線分と点の距離
 double distSP(P a, P b, P p) {
     if(dot(b-a, p-a) < EPS) return abs(p-a);
     if(dot(a-b, p-b) < EPS) return abs(p-b);
     return distLP(a, b, p);
 }
 
+// 線分と線分の距離
+// verified AOJ CGL_2_D
 double distSS(P a1, P a2, P b1, P b2) {
     if(intersectedSS(a1, a2, b1, b2)){
         return 0;
@@ -121,49 +129,46 @@ double distSS(P a1, P a2, P b1, P b2) {
             });
 }
 
-// // verified AOJ CGL_3_A
-// double area(Polygon pl) {
-//     double ret = 0;
-//     int n = pl.size();
-//     for(int i=0;i<n;i++){
-//         ret += cross(pl[i], pl[(i+1)%n]);
-//     }
-//     return ret / 2.0;
-// }
-//
-// // verified AOJ CGL_3_B
-// bool is_convex(Polygon pl) {
-//     int n = pl.size();
-//     for(int i=0;i<n;i++){
-//         int c = ccw(pl[i], pl[(i+1)%n], pl[(i+2)%n]);
-//         if(c == -1){
-//             return false;
-//         }
-//     }
-//     return true;
-// }
+// ポリゴンの面積 (点は半時計回り)
+// verified AOJ CGL_3_A
+double area(PL pl) {
+    double ret = 0;
+    int n = pl.size();
+    for(int i=0;i<n;i++){
+        ret += cross(pl[i], pl[(i+1)%n]);
+    }
+    return ret / 2.0;
+}
+
+// 凸多角形判定 (点は半時計回り)
+// verified AOJ CGL_3_B
+bool convex(PL pl) {
+    int n = pl.size();
+    for(int i=0;i<n;i++){
+        if(ccw(pl[i], pl[(i+1)%n], pl[(i+2)%n]) == -1){
+            return false;
+        }
+    }
+    return true;
+}
 
 // }}}
 
 
 int main() {
     double x, y;
+    PL pl;
 
-    int q;
-    cin >> q;
-    for(int i=0;i<q;i++){
-        cin >> x >> y;  P p0(x, y);
-        cin >> x >> y;  P p1(x, y);
-        cin >> x >> y;  P p2(x, y);
-        cin >> x >> y;  P p3(x, y);
-
-        if(parallelLL(p0, p1, p2, p3)){
-            cout << 2 << endl;
-        }else if(orthogonalLL(p0, p1, p2, p3)){
-            cout << 1 << endl;
-        }else{
-            cout << 0 << endl;
-        }
+    int n;
+    cin >> n;
+    for(int i=0;i<n;i++){
+        cin >> x >> y;  P p(x, y);
+        pl.push_back(p);
+    }
+    if(convex(pl)){
+        cout << 1 << endl;
+    }else{
+        cout << 0 << endl;
     }
     return 0;
 }

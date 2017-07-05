@@ -27,9 +27,10 @@ typedef long long ll;
 typedef unsigned long long ull;
 // }}}
 
-// 2d geometry
+// 2d geometry {{{
 
 typedef complex<double> P;
+typedef vector<P> L;
 
 // 長さ
 // double length = abs(a);
@@ -52,62 +53,97 @@ double cross(P a, P b) {
 }
 
 // 直交判定
-bool is_orthogonal(P a1, P a2, P b1, P b2) {
+bool orthogonalLL(P a1, P a2, P b1, P b2) {
     return EQ(dot(a1-a2, b1-b2), 0.0);
 }
 
 // 平行判定
-bool is_parallel(P a1, P a2, P b1, P b2) {
+bool parallelLL(P a1, P a2, P b1, P b2) {
     return EQ(cross(a1-a2, b1-b2), 0.0);
 }
 
-bool is_point_on_line(P a, P b, P c) {
-    return abs(a-c) + abs(c-b) < abs(a-b) + EPS;
+// bool is_point_on_line(P a, P b, P c) {
+//     return abs(a-c) + abs(c-b) < abs(a-b) + EPS;
+// }
+
+int ccw(P a, P b, P c) {
+    b = b - a;
+    c = c - a;
+    if(cross(b, c) > EPS) return +1; // counter clockwise
+    if(cross(b, c) <-EPS) return -1; // clockwise
+    if(dot(b, c) < 0)     return +2; // cab
+    if(abs(b) < abs(c))   return -2; // abc
+    return 0;                        // acb
 }
 
-bool is_intersected_ls(P a1, P a2, P b1, P b2) {
-    return cross(a2-a1, b1-a1)*cross(a2-a1, b2-a1) < EPS &&
-           cross(b2-b1, a1-b1)*cross(b2-b1, a2-b1) < EPS;
+bool intersectedSS(P a1, P a2, P b1, P b2) {
+    return ccw(a1, a2, b1)*ccw(a1, a2, b2) <= 0 &&
+           ccw(b1, b2, a1)*ccw(b1, b2, a2) <= 0;
 }
 
-P intersection_l(P a1, P a2, P b1, P b2) {
+P intersectionLL(P a1, P a2, P b1, P b2) {
     P a = a2 - a1;
     P b = b2 - b1;
     return a1 + a*cross(b, b1-a1)/cross(b, a);
 }
 
-P projection_l_p(P p1, P p2, P p) {
-    P a = p2 - p1;
-    P b = p - p1;
-    P c = a*dot(a, b)/(abs(a)*abs(a));
-    return p1 + c;
+// 点の直線への射影
+// verified AOJ CGL_1_A
+P projectionLP(P a, P b, P p) {
+    double l = dot(p-a, b-a) / norm(b-a);
+    return a + l*(b-a);
 }
 
-P reflection_l_p(P p1, P p2, P p) {
-    return 2.0*projection_l_p(p1, p2, p) - p;
+// 点の直線に対する対称点
+P reflectionLP(P a, P b, P p) {
+    return 2.0*projectionLP(a, b, p) - p;
 }
 
-double dist_l_p(P a, P b, P c) {
-    return abs(cross(b-a, c-a)) / abs(b-a);
+double distLP(P a, P b, P p) {
+    return abs(cross(b-a, p-a)) / abs(b-a);
 }
 
-double dist_ls_p(P a, P b, P c) {
-    if(dot(b-a, c-a) < EPS) return abs(c-a);
-    if(dot(a-b, c-b) < EPS) return abs(c-b);
-    return dist_l_p(a, b, c);
+double distSP(P a, P b, P p) {
+    if(dot(b-a, p-a) < EPS) return abs(p-a);
+    if(dot(a-b, p-b) < EPS) return abs(p-b);
+    return distLP(a, b, p);
 }
 
-double dist_ls_ls(P a1, P a2, P b1, P b2) {
-    if(is_intersected_ls(a1, a2, b1, b2)){
+double distSS(P a1, P a2, P b1, P b2) {
+    if(intersectedSS(a1, a2, b1, b2)){
         return 0;
     }
     return min({
-            dist_ls_p(a1, a2, b1), 
-            dist_ls_p(a1, a2, b2), 
-            dist_ls_p(b1, b2, a2), 
-            dist_ls_p(b1, b2, a2), 
+            distSP(a1, a2, b1),
+            distSP(a1, a2, b2),
+            distSP(b1, b2, a1),
+            distSP(b1, b2, a2),
             });
 }
+
+// // verified AOJ CGL_3_A
+// double area(Polygon pl) {
+//     double ret = 0;
+//     int n = pl.size();
+//     for(int i=0;i<n;i++){
+//         ret += cross(pl[i], pl[(i+1)%n]);
+//     }
+//     return ret / 2.0;
+// }
+//
+// // verified AOJ CGL_3_B
+// bool is_convex(Polygon pl) {
+//     int n = pl.size();
+//     for(int i=0;i<n;i++){
+//         int c = ccw(pl[i], pl[(i+1)%n], pl[(i+2)%n]);
+//         if(c == -1){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+// }}}
 
 
 int main() {
@@ -123,7 +159,7 @@ int main() {
         cin >> x >> y;
         P p(x, y);
 
-        P ans = projection_l_p(s, t, p);
+        P ans = projectionLP(s, t, p);
 
         printf("%0.10lf %0.10lf\n", ans.real(), ans.imag());
     }

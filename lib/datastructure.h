@@ -1,13 +1,4 @@
-#include <iostream>
-#include <climits>
-#include <cstdio>
-#include <cmath>
-#include <algorithm>
-#include <vector>
-#include <stack>
-#include <queue>
-#include <utility>
-using namespace std;
+// data structure {{{
 
 // Union-Find
 // verified AOJ DSL_1_A
@@ -47,25 +38,23 @@ struct UF {
     }
 };
 
-
-int main(){
-    int n,q;
-    cin >> n >> q;
-    
-    UF uf(n);
-
-    for(int i=0;i<q;i++){
-        int com, x, y;
-        cin >> com >> x >> y;
-        if(com == 0){
-            uf.unite(x, y);
-        }else{
-            if(uf.find(x) == uf.find(y)){
-                cout << 1 << endl;
-            }else{
-                cout << 0 << endl;
+// 最小全域木 (Minimum spanning tree)
+// ARC076D
+struct MST {
+    // クラスカル法
+    static vector<E> solve(int n, vector<E> e) {
+        UF uf(n);
+        vector<E> ret;
+        sort(e.begin(), e.end(), [](E e1, E e2){
+                return e1.w < e2.w;
+                });
+        for(auto ee : e){
+            if(uf.find(ee.s) != uf.find(ee.t)){
+                uf.unite(ee.s, ee.t);
+                ret.push_back({ee.w, ee.s, ee.t});
             }
         }
+        return ret;
     }
-    return 0;
-}
+};
+}}}

@@ -52,16 +52,17 @@ double cross(P a, P b) {
     return a.real()*b.imag() - a.imag()*b.real();
 }
 
-// 直交判定
-// verified AOJ CGL_2_A
-bool orthogonalLL(P a1, P a2, P b1, P b2) {
-    return EQ(dot(a1-a2, b1-b2), 0.0);
+// 点の直線への射影
+// verified AOJ CGL_1_A
+P projectionLP(P a, P b, P p) {
+    double l = dot(p-a, b-a) / norm(b-a);
+    return a + l*(b-a);
 }
 
-// 平行判定
-// verified AOJ CGL_2_A
-bool parallelLL(P a1, P a2, P b1, P b2) {
-    return EQ(cross(a1-a2, b1-b2), 0.0);
+// 点の直線に対する対称点
+// verified AOJ CGL_1_B
+P reflectionLP(P a, P b, P p) {
+    return 2.0*projectionLP(a, b, p) - p;
 }
 
 // verified AOJ CGL_1_C
@@ -75,28 +76,31 @@ int ccw(P a, P b, P c) {
     return 0;                        // acb (on segment)
 }
 
+// 直交判定
+// verified AOJ CGL_2_A
+bool orthogonalLL(P a1, P a2, P b1, P b2) {
+    return EQ(dot(a1-a2, b1-b2), 0.0);
+}
+
+// 平行判定
+// verified AOJ CGL_2_A
+bool parallelLL(P a1, P a2, P b1, P b2) {
+    return EQ(cross(a1-a2, b1-b2), 0.0);
+}
+
+// 線分と線分の交差判定
+// verified AOJ CGL_2_B
 bool intersectedSS(P a1, P a2, P b1, P b2) {
     return ccw(a1, a2, b1)*ccw(a1, a2, b2) <= 0 &&
            ccw(b1, b2, a1)*ccw(b1, b2, a2) <= 0;
 }
 
+// 直線と直線の交点
+// verified AOJ CGL_2_C
 P intersectionLL(P a1, P a2, P b1, P b2) {
     P a = a2 - a1;
     P b = b2 - b1;
     return a1 + a*cross(b, b1-a1)/cross(b, a);
-}
-
-// 点の直線への射影
-// verified AOJ CGL_1_A
-P projectionLP(P a, P b, P p) {
-    double l = dot(p-a, b-a) / norm(b-a);
-    return a + l*(b-a);
-}
-
-// 点の直線に対する対称点
-// verified AOJ CGL_1_B
-P reflectionLP(P a, P b, P p) {
-    return 2.0*projectionLP(a, b, p) - p;
 }
 
 double distLP(P a, P b, P p) {
@@ -157,13 +161,8 @@ int main() {
         cin >> x >> y;  P p2(x, y);
         cin >> x >> y;  P p3(x, y);
 
-        if(parallelLL(p0, p1, p2, p3)){
-            cout << 2 << endl;
-        }else if(orthogonalLL(p0, p1, p2, p3)){
-            cout << 1 << endl;
-        }else{
-            cout << 0 << endl;
-        }
+        P ans = intersectionLL(p0, p1, p2, p3);
+        printf("%0.10lf %0.10lf\n", ans.real(), ans.imag());
     }
     return 0;
 }

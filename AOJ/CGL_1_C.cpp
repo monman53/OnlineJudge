@@ -53,13 +53,11 @@ double cross(P a, P b) {
 }
 
 // 直交判定
-// verified AOJ CGL_2_A
 bool orthogonalLL(P a1, P a2, P b1, P b2) {
     return EQ(dot(a1-a2, b1-b2), 0.0);
 }
 
 // 平行判定
-// verified AOJ CGL_2_A
 bool parallelLL(P a1, P a2, P b1, P b2) {
     return EQ(cross(a1-a2, b1-b2), 0.0);
 }
@@ -148,22 +146,38 @@ double distSS(P a1, P a2, P b1, P b2) {
 
 int main() {
     double x, y;
+    cin >> x >> y;
+    P s(x, y);
+    cin >> x >> y;
+    P t(x, y);
 
     int q;
     cin >> q;
     for(int i=0;i<q;i++){
-        cin >> x >> y;  P p0(x, y);
-        cin >> x >> y;  P p1(x, y);
-        cin >> x >> y;  P p2(x, y);
-        cin >> x >> y;  P p3(x, y);
+        cin >> x >> y;
+        P p(x, y);
 
-        if(parallelLL(p0, p1, p2, p3)){
-            cout << 2 << endl;
-        }else if(orthogonalLL(p0, p1, p2, p3)){
-            cout << 1 << endl;
-        }else{
-            cout << 0 << endl;
+        int ans = ccw(s, t, p);
+
+        switch(ans){
+            case 1:
+                cout << "COUNTER_CLOCKWISE" << endl;
+                break;
+            case -1:
+                cout << "CLOCKWISE" << endl;
+                break;
+            case 2:
+                cout << "ONLINE_BACK" << endl;
+                break;
+            case -2:
+                cout << "ONLINE_FRONT" << endl;
+                break;
+            case 0:
+                cout << "ON_SEGMENT" << endl;
+                break;
         }
+
+        // printf("%0.10lf %0.10lf\n", ans.real(), ans.imag());
     }
     return 0;
 }
