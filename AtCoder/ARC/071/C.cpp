@@ -24,5 +24,24 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    int n;cin >> n;
+    vector<int> mmin(ALPHABET, 100);
+    for(int i=0;i<n;i++){
+        string s;cin >> s;
+        vector<int> counter(ALPHABET, 0);
+        for(auto c : s){
+            counter[c-'a']++;
+        }
+        for(int i=0;i<ALPHABET;i++){
+            mmin[i] = min(mmin[i], counter[i]);
+        }
+    }
+    for(int i=0;i<ALPHABET;i++){
+        char c = 'a'+i;
+        for(int j=0;j<mmin[i];j++){
+            cout << c;
+        }
+    }
+    cout << endl;
     return 0;
 }

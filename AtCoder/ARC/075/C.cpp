@@ -2,6 +2,8 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <complex>
+#include <utility>
 #include <string>
 #include <sstream>
 #include <queue>
@@ -20,35 +22,34 @@ using namespace std;
 #define print_mat(mat, h, w) for(int i=0;i<(h);i++){for(int j=0;j<(w);j++){cout << mat[i][j] << " ";}cout << endl;}
 
 #define EPS (1e-10)
-#define EQ(a, b) (fabs((a)-(b)) < eps)
+#define EQ(a, b) (abs((a)-(b)) < EPS)
 
 typedef long long ll;
 typedef unsigned long long ull;
 // }}}
 
-
 int main() {
     int n;
     cin >> n;
-    vector<int> s(n);
-    int ans = 0;
-    for(auto &ss : s){
-        cin >> ss;
-        ans += ss;
-    }
-
-    sort(s.begin(), s.end());
-
-    if(ans%10 != 0){
-        for(auto ss : s){
-            if(ss%10 != 0){
-                ans -= ss;
-                break;
-            }
+    int sum = 0;
+    int mmin = 200;
+    for(int i=0;i<n;i++){
+        int s;cin >> s;
+        sum += s;
+        if(s%10 != 0){
+            mmin = min(mmin, s);
         }
     }
 
-    cout << ans << endl;
+    if(sum%10 != 0){
+        cout << sum << endl;
+    }else{
+        if(mmin != 200){
+            cout << sum - mmin << endl;
+        }else{
+            cout << 0 << endl;
+        }
+    }
 
     return 0;
 }

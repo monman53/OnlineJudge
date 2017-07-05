@@ -25,10 +25,12 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 // }}}
-
+// number {{{
 #define SIZE      100005
-#define MOD 1000000007LL
+#define MOD   1000000007
 
+// べき乗
+// verified AOJ NTL_1_B
 ll pow(ll a, ll b) {
     if(b == 0) return 1;
     ll aa = pow(a, b/2);
@@ -59,7 +61,7 @@ ll comb(int n, int r) {
 ll gcd(ll x, ll y) {
     return y ? gcd(y, x%y) : x;
 }
-
+//}}}
 
 int main() {
     fact_init();

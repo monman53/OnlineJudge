@@ -1,13 +1,17 @@
 // number {{{
-#define SIZE      100005
-#define MOD 1000000007LL
+#define SIZE 100005
+#define MOD  1000000007LL
 
+// べき乗
+// verified AOJ NTL_1_B
 ll pow(ll a, ll b) {
     if(b == 0) return 1;
     ll aa = pow(a, b/2);
     return aa*aa%MOD*(b%2 == 1 ? a : 1)%MOD;
 }
 
+// 階乗と階乗の逆元
+// ARC077D
 ll fact[SIZE] = {1, 1};
 ll finv[SIZE] = {1, 1};
 
@@ -24,12 +28,15 @@ void fact_init() {
     }
 }
 
+// 組み合わせの数
+// ARC077D
 ll comb(int n, int r) {
     if(r > n) return 0;
     return fact[n]*(finv[r]*finv[n-r]%MOD)%MOD;
 }
 
+// 最小公約数
 ll gcd(ll x, ll y) {
     return y ? gcd(y, x%y) : x;
 }
-}}}
+//}}}

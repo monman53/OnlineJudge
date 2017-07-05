@@ -27,17 +27,20 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 // }}}
-
 // number {{{
-#define SIZE      100005
-#define MOD 1000000007LL
+#define SIZE 100005
+#define MOD  1000000007LL
 
+// べき乗
+// verified AOJ NTL_1_B
 ll pow(ll a, ll b) {
     if(b == 0) return 1;
     ll aa = pow(a, b/2);
     return aa*aa%MOD*(b%2 == 1 ? a : 1)%MOD;
 }
 
+// 階乗と階乗の逆元
+// ARC077D
 ll fact[SIZE] = {1, 1};
 ll finv[SIZE] = {1, 1};
 
@@ -54,26 +57,35 @@ void fact_init() {
     }
 }
 
+// 組み合わせの数
+// ARC077D
 ll comb(int n, int r) {
     if(r > n) return 0;
     return fact[n]*(finv[r]*finv[n-r]%MOD)%MOD;
 }
 
+// 最小公約数
 ll gcd(ll x, ll y) {
     return y ? gcd(y, x%y) : x;
 }
-}}}
+//}}}
 
 int main() {
+    fact_init();
     int n, m;cin >> n >> m;
     ll ans = 1;
     for(int i=0;i<m;i++){
-        int l, r, x;cin >> l >> r >>x;
+        ll l, r, x;cin >> l >> r >> x;
+        ll p1 = pow(1LL, r-l+1LL)*comb(3, 1) % MOD;
+        ll p2 = (pow(2LL, r-l+1LL)*comb(3, 2) % MOD - p1 + MOD) % MOD;
+        ll p3 = (pow(3LL, r-l+1LL)*comb(3, 3) % MOD - p2 + MOD) % MOD;
         if(x == 1){
-            ans *= 3;
+            ans = ans*p1 % MOD;
+        }else if(x == 2){
+            ans = ans*p2 % MOD;
+        }else{
+            ans = ans*p3 % MOD;
         }
-
-        ans %= MOD;
     }
     cout << ans << endl;
     return 0;
