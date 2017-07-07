@@ -38,6 +38,11 @@ struct UF {
     }
 };
 
+struct E {
+    int s, t;
+    int w;
+};
+
 // 最小全域木 (Minimum spanning tree)
 // ARC076D
 struct MST {
@@ -57,4 +62,4 @@ struct MST {
         return ret;
     }
 };
-}}}
+//}}}

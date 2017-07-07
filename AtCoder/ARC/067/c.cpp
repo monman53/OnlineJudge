@@ -1,3 +1,28 @@
+// header {{{
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <complex>
+#include <utility>
+#include <string>
+#include <sstream>
+#include <queue>
+#include <map>
+#include <list>
+#include <stack>
+#include <tuple>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+
+#define ALPHABET    26
+#define EPS         (1e-10)
+#define EQ(a, b)    (abs((a)-(b)) < EPS)
+#define INF         1000000005
+
+typedef long long ll;
+typedef unsigned long long ull;
+// }}}
 // number {{{
 #define SIZE 100005
 #define MOD  1000000007LL
@@ -15,7 +40,7 @@ ll pow(ll a, ll b) {
 ll fact[SIZE] = {1, 1};
 ll finv[SIZE] = {1, 1};
 
-void fact_init() {
+void initFact() {
     // fact
     for(ll i=2;i<SIZE;i++){
         fact[i] = fact[i-1]*i%MOD;
@@ -79,3 +104,29 @@ vector<pair<int, int>> factor(int n) {
     return ret;
 }
 //}}}
+
+int main() {
+    initFact();
+    initIsPrime();
+
+    int n;cin >> n;
+
+    map<int, ll> m;
+
+    for(int i=1;i<=n;i++){
+        auto f = factor(i);
+        for(auto ff : f){
+            if(m.find(ff.first) == m.end()){
+                m[ff.first] = 0;
+            }
+            m[ff.first] += ff.second;
+        }
+    }
+
+    ll ans = 1;
+    for(auto mm : m){
+        ans = ans*(mm.second+1) % MOD;
+    }
+    cout << ans << endl;
+    return 0;
+}
