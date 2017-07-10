@@ -28,19 +28,40 @@ typedef long long ll;
 typedef unsigned long long ull;
 // }}}
 
-int main() {
-    int n;cin >> n;
-    map<int, int> m;
-    for(int i=0;i<n;i++){
-        int a;cin >> a;
-        m[a]++;
-    }
-    int count = 0;
-    for(auto kv : m){
-        if(kv.second%2 == 0){
-            count++;
+ll n, a, b;
+vector<ll> h;
+
+bool enagh(ll t) {
+    ll count = 0;
+    for(auto hh : h){
+        if(b*t < hh){
+            count += (hh-b*t + a-b - 1LL)/(a-b);
         }
     }
-    cout << m.size()-(count%2) << endl;
+    return count <= t;
+}
+
+int main() {
+    cin >> n >> a >> b;
+    for(int i=0;i<n;i++){
+        ll hh;cin >> hh;
+        h.push_back(hh);
+    }
+
+    // binary search
+    ll l = 0;
+    ll r = INF;
+    ll m = (l+r)/2;
+    while(l!=r){
+        if(enagh(m)){
+            r = m;
+        }else{
+            l = m+1;
+        }
+        m = (l+r)/2;
+    }
+
+    cout << m << endl;
+
     return 0;
 }

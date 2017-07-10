@@ -17,30 +17,32 @@
 #include <cmath>
 using namespace std;
 
-#define ALPHABET    (26)
+#define ALPHABET    26
 #define EPS         (1e-10)
-#define INF         (1000000005LL)
-#define MOD         (1000000007LL)
 #define EQ(a, b)    (abs((a)-(b)) < EPS)
-// ciling(x/y) = (x+y-1)/y
+#define INF         1000000005
 
 typedef long long ll;
 typedef unsigned long long ull;
 // }}}
 
 int main() {
-    int n;cin >> n;
-    map<int, int> m;
-    for(int i=0;i<n;i++){
-        int a;cin >> a;
-        m[a]++;
+    double l, x, y, s, d;
+    cin >> l >> x >> y >> s >> d;
+    vector<double> ans;
+    if(d > s){
+        ans.push_back((d-s)/(x+y));
+    }else{
+        ans.push_back((l-s+d)/(x+y));
     }
-    int count = 0;
-    for(auto kv : m){
-        if(kv.second%2 == 0){
-            count++;
+    if(y > x){
+        if(d > s){
+            ans.push_back((l-d+s)/(y-x));
+        }else{
+            ans.push_back((s-d)/(y-x));
         }
     }
-    cout << m.size()-(count%2) << endl;
+
+    printf("%.10lf\n", *min_element(ans.begin(), ans.end()));
     return 0;
 }

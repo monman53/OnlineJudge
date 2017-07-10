@@ -10,16 +10,19 @@
 #include <queue>
 #include <map>
 #include <list>
+#include <set>
 #include <stack>
 #include <tuple>
 #include <cstdio>
 #include <cmath>
 using namespace std;
 
-#define ALPHABET    26
+#define ALPHABET    (26)
 #define EPS         (1e-10)
+#define INF         (1000000005LL)
+#define MOD         (1000000007LL)
 #define EQ(a, b)    (abs((a)-(b)) < EPS)
-#define INF         1000000005
+// ciling(x/y) = (x+y-1)/y
 
 typedef long long ll;
 typedef unsigned long long ull;
