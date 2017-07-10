@@ -1,7 +1,6 @@
 // header {{{
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <vector>
 #include <complex>
 #include <utility>
@@ -26,5 +25,11 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    string s;cin >> s;
+    int p = 0;
+    for(auto c : s){
+        if(c == 'p') p++;
+    }
+    cout << s.size()/2 - p << endl;
     return 0;
 }

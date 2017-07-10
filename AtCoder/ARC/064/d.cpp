@@ -1,7 +1,6 @@
 // header {{{
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <vector>
 #include <complex>
 #include <utility>
@@ -26,5 +25,7 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    string s;cin >> s;
+    cout << ((s.size()%2 == 0) ^ (s[0] == s[s.size()-1]) ? "Second" : "First") << endl;
     return 0;
 }

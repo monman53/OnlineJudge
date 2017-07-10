@@ -1,7 +1,6 @@
 // header {{{
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <vector>
 #include <complex>
 #include <utility>
@@ -26,5 +25,18 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    ll n;cin >> n;
+    ll t, a;cin >> t >> a;
+    for(ll i=1;i<n;i++){
+        ll tt, aa;cin >> tt >> aa;
+        for(ll j=max(t/tt, a/aa);;j++){
+            if(tt*j >= t && aa*j >= a){
+                t = tt*j;
+                a = aa*j;
+                break;
+            }
+        }
+    }
+    printf("%lld\n", t+a);
     return 0;
 }

@@ -1,7 +1,6 @@
 // header {{{
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <vector>
 #include <complex>
 #include <utility>
@@ -26,5 +25,22 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    ll n, x;cin >> n >> x;
+    vector<ll> a(n);
+    ll ans = 0;
+    for(auto &aa : a){
+        cin >> aa;
+        if(aa > x){
+            ans += aa - x;
+            aa = x;
+        }
+    }
+    for(int i=0;i<n-1;i++){
+        if(a[i] + a[i+1] > x){
+            ans += a[i] + a[i+1] - x;
+            a[i+1] -= a[i] + a[i+1] - x;
+        }
+    }
+    printf("%lld\n", ans);
     return 0;
 }

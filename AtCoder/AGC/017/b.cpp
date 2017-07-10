@@ -1,7 +1,6 @@
 // header {{{
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <vector>
 #include <complex>
 #include <utility>
@@ -26,5 +25,13 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    ll n, a, b, c, d;cin >> n >> a >> b >> c >> d;
+    bool ans = false;
+    for(int m=0;m<n;m++){
+        if(c*(n-1-m)-d*m <= b-a && b-a <= -c*m+(n-1-m)*d){
+            ans = true;
+        }
+    }
+    cout << (ans ? "YES" : "NO") << endl;
     return 0;
 }

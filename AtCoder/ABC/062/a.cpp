@@ -1,7 +1,6 @@
 // header {{{
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <vector>
 #include <complex>
 #include <utility>
@@ -26,5 +25,13 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    int group[] = {0, 1, 3, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1};
+    int x, y;
+    cin >> x >> y;
+    if(group[x] == group[y]){
+        cout << "Yes" << endl;
+    }else{
+        cout << "No" << endl;
+    }
     return 0;
 }
