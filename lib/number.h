@@ -14,7 +14,7 @@ ll pow(ll a, ll b) {
 ll fact[SIZE] = {1, 1};
 ll finv[SIZE] = {1, 1};
 
-void fact_init() {
+void initFact() {
     // fact
     for(ll i=2;i<SIZE;i++){
         fact[i] = fact[i-1]*i%MOD;

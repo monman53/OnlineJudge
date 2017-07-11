@@ -110,22 +110,11 @@ vector<pair<int, int>> factor(int n) {
 
 int main() {
     ll n;cin >> n;
-    vector<int> cnt(n+5, 0);
-    for(int i=0;i<n;i++){
-        int a;cin >> a;
-        cnt[a]++;
+    ll ans = n+1LL + 1LL;
+    for(ll i=2LL, j=1LL;i<=n;i<<=1LL, j++){
+        // cout << i << endl;
+        ans = (ans+pow(2LL, (j-1LL)*2LL)) % MOD;
     }
-    for(int i=0;i<n;i++){
-        if(cnt[i] == 0) continue;
-        if(i == 0 && cnt[i] > 1){
-            cout << 0 << endl;
-            return 0;
-        }
-        if(i != 0 && cnt[i] != 2){
-            cout << 0 << endl;
-            return 0;
-        }
-    }
-    cout << pow(2LL, n/2LL) << endl;
+    cout << ans << endl;
     return 0;
 }
