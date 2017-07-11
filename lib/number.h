@@ -1,5 +1,5 @@
 // number {{{
-#define SIZE 100005
+#define SIZE 200010
 
 // べき乗
 // verified AOJ NTL_1_B
