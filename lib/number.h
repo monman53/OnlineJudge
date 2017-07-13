@@ -34,7 +34,7 @@ ll comb(int n, int r) {
     return fact[n]*(finv[r]*finv[n-r]%MOD)%MOD;
 }
 
-// 最小公約数
+// 最大公約数
 ll gcd(ll x, ll y) {
     return y ? gcd(y, x%y) : x;
 }
