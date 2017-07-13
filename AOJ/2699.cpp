@@ -14,7 +14,6 @@
 #include <stack>
 // #include <tuple>
 #include <cstdio>
-#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -30,5 +29,18 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    while(true){
+        int d, e;cin >> d >> e;
+        if(d == 0) break;
+        double ans = 100000;
+        for(int x=0;x<=d;x++){
+            for(int y=0;y<=d;y++){
+                if(x + y == d){
+                    ans = min(ans, abs(sqrt(double(x*x+y*y)) - e));
+                }
+            }
+        }
+        printf("%0.10lf\n", ans);
+    }
     return 0;
 }

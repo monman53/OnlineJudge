@@ -14,7 +14,6 @@
 #include <stack>
 // #include <tuple>
 #include <cstdio>
-#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -30,5 +29,22 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    while(true){
+        int m, nmin, nmax;cin >> m >> nmin >> nmax;
+        if(m == 0) break;
+        vector<int> p(m);
+        for(auto &pp : p) cin >> pp;
+        sort(p.begin(), p.end());
+        reverse(p.begin(), p.end());
+        int ans = 0;
+        int n;
+        for(int i=nmin-1;i<nmax;i++){
+            if(ans <= p[i]-p[i+1]){
+                n = i+1;
+                ans = p[i]-p[i+1];
+            }
+        }
+        cout << n << endl;
+    }
     return 0;
 }

@@ -14,7 +14,6 @@
 #include <stack>
 // #include <tuple>
 #include <cstdio>
-#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -30,5 +29,18 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    int n, m, t;cin >> n >> m >> t;
+    vector<bool> study(t, true);
+    for(int i=0;i<n;i++){
+        int a;cin >> a;
+        for(int j=a-m;j<min(a+m, t);j++){
+            study[j] = false;
+        }
+    }
+    int ans = 0;
+    for(int i=0;i<t;i++){
+        if(study[i]) ans++;
+    }
+    cout << ans << endl;
     return 0;
 }

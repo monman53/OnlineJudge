@@ -14,8 +14,8 @@
 #include <stack>
 // #include <tuple>
 #include <cstdio>
-#include <cstring>
 #include <cmath>
+#include <cstring>
 using namespace std;
 
 #define ALPHABET    (26)
@@ -29,6 +29,25 @@ typedef long long ll;
 typedef unsigned long long ull;
 // }}}
 
+bool y[9000000];
 int main() {
+    while(true){
+        int m, n;cin >> m >> n;
+        if(m == 0) break;
+        memset(y, false, sizeof(y));
+        int count = 0;
+        for(int i=m;i<9000000;i++){
+            if(!y[i]){
+                if(count == n){
+                    cout << i << endl;
+                    break;
+                }
+                count++;
+                for(int j=i;j<9000000;j+=i){
+                    y[j] = true;
+                }
+            }
+        }
+    }
     return 0;
 }

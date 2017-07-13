@@ -14,7 +14,6 @@
 #include <stack>
 // #include <tuple>
 #include <cstdio>
-#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -30,5 +29,14 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    while(true){
+        int r0, w, c, r;cin >> r0 >> w >> c >> r;
+        if(r0 == 0) break;
+        if(double(r0/double(w)) >= double(c)){
+            cout << 0 << endl;
+            continue;
+        }
+        cout << (c*w-r0+r-1)/r << endl;
+    }
     return 0;
 }

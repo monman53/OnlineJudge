@@ -14,7 +14,6 @@
 #include <stack>
 // #include <tuple>
 #include <cstdio>
-#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -30,5 +29,20 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    while(true){
+        int n;cin >> n;
+        if(n == 0) break;
+        vector<int> a(n);
+        for(auto &aa : a) cin >> aa;
+        int ans = 3000000;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(j != i){
+                    ans = min(ans, abs(a[i] - a[j]));
+                }
+            }
+        }
+        cout << ans << endl;
+    }
     return 0;
 }

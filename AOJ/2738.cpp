@@ -14,7 +14,6 @@
 #include <stack>
 // #include <tuple>
 #include <cstdio>
-#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -30,5 +29,25 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+    int n;cin >> n;
+    stack<string> st;
+    for(int i=0;i<n;i++){
+        string s;cin >> s;
+        if(s == "A"){
+            st.push(s);
+        }else{
+            if(st.size() > 0){
+                st.pop();
+            }else{
+                cout << "NO" << endl;
+                return 0;
+            }
+        }
+    }
+    if(st.size() > 0){
+        cout << "NO" << endl;
+    }else{
+        cout << "YES" << endl;
+    }
     return 0;
 }
