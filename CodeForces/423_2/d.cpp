@@ -12,7 +12,7 @@
 #include <list>
 #include <set>
 #include <stack>
-// #include <tuple>
+#include <tuple>
 #include <cstdio>
 #include <cmath>
 using namespace std;
@@ -29,5 +29,6 @@ typedef unsigned long long ull;
 // }}}
 
 int main() {
+
     return 0;
 }

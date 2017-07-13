@@ -12,8 +12,9 @@
 #include <list>
 #include <set>
 #include <stack>
-// #include <tuple>
+#include <tuple>
 #include <cstdio>
+#include <cstring>
 #include <cmath>
 using namespace std;
 
@@ -28,6 +29,30 @@ typedef long long ll;
 typedef unsigned long long ull;
 // }}}
 
+char ans[2000005];
+char t[2000005];
+int n, x, m, k, i, j, l;
+
 int main() {
+    scanf("%d", &n);
+    for(i=0;i<n;i++){
+        scanf("%s", t);
+        scanf("%d", &k);
+        m = strlen(t);
+        for(j=0;j<k;j++){
+            scanf("%d", &x);
+            x--;
+            for(l=0;l<m;l++){
+                ans[x+l] = t[l];
+            }
+        }
+    }
+    int len = 2000001;
+    while(ans[len] == 0) len--;
+    len++;
+    for(int i=0;i<len;i++){
+        if(ans[i] == 0) ans[i] = 'a';
+    }
+    printf("%s\n", ans);
     return 0;
 }
