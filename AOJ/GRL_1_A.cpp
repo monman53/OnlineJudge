@@ -1,69 +1,85 @@
 // header {{{
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <complex>
-#include <utility>
-#include <string>
-#include <sstream>
-#include <queue>
-#include <map>
-#include <list>
-#include <stack>
-#include <tuple>
-#include <cstdio>
-#include <cmath>
+// #define NDEBUG
+#include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
-typedef unsigned long long ull;
-
-#define ALPHABET    26
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
 #define EPS         (1e-10)
-#define EQ(a, b)    (abs((a)-(b)) < EPS)
-#define INF         1000000005
+#define MOD         (1000000007LL)
+// #define EQ(a, b)    (abs((a)-(b)) < EPS)
+inline bool EQ(double a, double b) {return abs(a-b) < EPS;}
+// ciling(x/y) = (x+y-1)/y
+
+// template<class T>
+// using P = pair<T, T>;
+template<class T>
+using PIT = pair<int, T>;
+template<class T>
+using PTI = pair<T, int>;
+using PII = pair<int, int>;
+using PDI = pair<double, int>;
+using LL  = long long;
+using ULL = unsigned long long;
 // }}}
 
-struct V {
-    int cost;
-    vector<pair<int, int>> ne;
+template<class T>
+struct E {
+    int to;
+    T w;
 };
 
-typedef pair<int, int> P;
+template<class T>
+struct G {
+    vector<vector<E<T>>> e;
+    int n;
+    G(int _n) {
+        n = _n;
+        e.resize(n);
+    }
+    void add(int i, int j, T w) {
+        assert(i >= 0 && i < n && j >= 0 && j < n);
+        e[i].push_back({j, w});
+    }
+};
+
+// dijkstra
+// verified AOJ GRL_1_A
+template<class T>
+vector<T> solveDIJ(G<T> g, int i) {
+    int inf = numeric_limits<T>::max();
+    vector<T> d(g.n, inf);
+    priority_queue<PTI<T>, vector<PTI<T>>, greater<PTI<T>>> pq;
+    d[i] = 0;
+    pq.push({0, i});
+    while(!pq.empty()){
+        auto c = pq.top();pq.pop();
+        int ci = c.second;
+        int cd = c.first;
+        if(cd > d[ci]) continue;
+        for(auto e : g.e[ci]){
+            if(cd + e.w < d[e.to]){
+                d[e.to] = cd + e.w;
+                pq.push({cd + e.w, e.to});
+            }
+        }
+    }
+    return d;
+}
 
 int main() {
-    int n, m, r;cin >> n >> m >> r;
-    vector<V> v(n, {INF, {}});
-    for(int i=0;i<m;i++){       
+    int v, e, r;cin >> v >> e >> r;
+    G<int> g(v);
+    for(int i=0;i<e;i++){
         int s, t, d;cin >> s >> t >> d;
-        v[s].ne.push_back({t, d});
+        g.add(s, t, d);
     }
-
-    priority_queue<P, vector<P>, greater<P>> pq;
-    pq.push({0, r});
-    while(!pq.empty()){
-        auto cp = pq.top(); pq.pop();
-        int ccost = cp.first;
-        int cid = cp.second;
-
-        if(v[cid].cost <= ccost){
-            continue;
-        }
-
-        v[cid].cost = ccost;
-
-        for(auto np : v[cid].ne){
-            int nid = np.first;
-            int ncost = ccost + np.second;
-            pq.push({ncost, nid});
-        }
-    }
-
-    for(auto vv : v){
-        if(vv.cost == INF){
+    auto ans = solveDIJ(g, r);
+    for(auto a : ans){
+        if(a == INT_MAX){
             cout << "INF" << endl;
         }else{
-            cout << vv.cost << endl;
+            cout << a << endl;
         }
     }
     return 0;
