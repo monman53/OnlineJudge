@@ -23,5 +23,23 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n;cin >> n;
+    string s;cin >> s;
+    int count = 1;
+    char c = s[0];
+    for(int i=1;i<n;i++){
+        if(s[i] == '1'){
+            count++;
+        }else{
+            if(c == '0'){
+                cout << '0';
+            }else{
+                cout << count;
+                count = 0;
+            }
+        }
+        c = s[i];
+    }
+    cout << count << endl;
     return 0;
 }

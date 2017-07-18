@@ -1,6 +1,27 @@
-// graph {{{
+// header {{{
+// #define NDEBUG
+#include <bits/stdc++.h>
+using namespace std;
 
-// グラフ {{{
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         LLONG_MAX/100LL
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+// #define EQ(a, b)    (abs((a)-(b)) < EPS)
+inline bool EQ(double a, double b) {return abs(a-b) < EPS;}
+// ciling(x/y) = (x+y-1)/y
+
+template<class T>
+using PIT = pair<int, T>;
+template<class T>
+using PTI = pair<T, int>;
+using PII = pair<int, int>;
+using PDI = pair<double, int>;
+using LL  = long long;
+using ULL = unsigned long long;
+// }}}
+// graph {{{
 template<class T>
 struct E {
     int to;
@@ -14,6 +35,7 @@ struct ES {
     T w;
 };
 
+// グラフ(隣接リスト)
 template<class T>
 struct G {
     vector<vector<E<T>>> e;
@@ -35,9 +57,9 @@ struct G {
         }
         return ret;
     }
-};//}}}
+};
 
-// 負辺無し単一始点最短路 (Dijkstra) {{{
+// 負辺無し単一始点最短路 (Dijkstra)
 // O(ElogV)
 // verified AOJ GRL_1_A
 template<class T>
@@ -59,33 +81,9 @@ vector<T> solveDijkstra(G<T> g, int s) {
         }
     }
     return d;
-}//}}}
+}
 
-// 重みなし単一始点最短路 (幅優先探索) {{{
-// O(V)
-// ARC078D
-template<class T>
-vector<int> solveBFS(G<T> g, int s) {
-    vector<int> d(g.n, INF);
-    queue<PII> q;
-    d[s] = 0;
-    q.push({0, s});
-    while(!q.empty()){
-        auto c = q.front();q.pop();
-        int ci = c.second;
-        int cd = c.first;
-        if(cd > d[ci]) continue;
-        for(auto e : g.e[ci]){
-            if(cd + e.w < d[e.to]){
-                d[e.to] = cd + 1;
-                q.push({cd + 1, e.to});
-            }
-        }
-    }
-    return d;
-}//}}}
-
-// 負辺有り単一始点最短路 (Bellman Ford) {{{
+// 負辺有り単一始点最短路 (Nellman Ford)
 // **sから到達できる**負閉路が存在する場合は，返り値のfirstがfalse
 // (到達できない負閉路が存在しても，その負閉路上のノードのコストはINF)
 // O(EV)
@@ -108,9 +106,9 @@ pair<bool, vector<T>> solveBF(G<T> g, int s) {
         if(++count > g.n) return {false, {}};
     }
     return {true, d};
-}//}}}
+}
 
-// 負閉路存在判定 (Bellman Ford) {{{
+// 負閉路存在判定 (Bellman Ford)
 // O(VE)
 // verified AOJ GRL_1_C
 template<class T>
@@ -130,9 +128,9 @@ bool hasNEdge(G<T> g) {
         }
     }
     return false;
-}//}}}
+}
 
-// 全点対最短路ワーシャル・フロイド法 {{{
+// 全点対最短路ワーシャル・フロイド法
 // INFのとり方に注意．大きすぎるとオーバーフローする
 // O(V^3)
 // verified AOJ GRL_1_C
@@ -153,5 +151,20 @@ vector<vector<T>> solveWF(G<T> g) {
         }
     }
     return d;
-}// }}}
-//}}}
+}
+// }}}
+
+int main() {
+    int v, e;cin >> v >> e;
+    G<int> g(v);
+    for(int i=0;i<e;i++){
+        int s, t;cin >> s >> t;
+        g.add(s, t, -1);
+    }
+    if(hasNEdge(g)){
+        cout << 1 << endl;
+    }else{
+        cout << 0 << endl;
+    }
+    return 0;
+}

@@ -23,5 +23,13 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    string s;cin >> s;
+    map<char, bool> m;
+    m['N'] = false;
+    m['W'] = false;
+    m['S'] = false;
+    m['E'] = false;
+    for(auto c : s) m[c] = true;
+    cout << ((m['N'] ^ m['S']) | (m['W'] ^ m['E']) ? "No" : "Yes") << endl;
     return 0;
 }

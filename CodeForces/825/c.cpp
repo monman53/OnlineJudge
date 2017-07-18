@@ -23,5 +23,22 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n, k;cin >> n >> k;
+    vector<int> a(n);
+    for(auto &aa : a) cin >> aa;
+    vector<int> v;
+    v.push_back(k);
+    int bb = k;
+    for(int i=0;i<n;i++){
+        if(a[i] > bb*2){
+            v.push_back(a[i]);
+            bb = a[i];
+        }
+    }
+    int ans = 0;
+    for(int i=0;i<int(v.size())-1;i++){
+        if(v[i]*2 < v[i+1]) ans = 1;
+    }
+    cout << ans << endl;
     return 0;
 }
