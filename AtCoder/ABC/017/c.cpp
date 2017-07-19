@@ -22,5 +22,22 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n, m;cin >> n >> m;
+    int ans = 0;
+    vector<int> imos(m+1, 0);
+    for(int i=0;i<n;i++){
+        int l, r, s;cin >> l >> r >> s;
+        l--;r--;
+        ans += s;
+        imos[l] += s;
+        imos[r+1] -= s;
+    }
+    int mmin = INT_MAX;
+    int now = 0;
+    for(int i=0;i<m;i++){
+        now += imos[i];
+        mmin = min(mmin, now);
+    }
+    cout << ans-mmin << endl;
     return 0;
 }

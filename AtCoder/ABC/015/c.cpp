@@ -21,6 +21,31 @@ using LL  = long long;
 using ULL = unsigned long long;
 // }}}
 
+int n, k;
+int t[5][5];
+bool ans = false;
+
+void dfs(int i, int sum){
+    if(i == n){
+        if(sum == 0){
+            ans = true;
+        }
+        return; 
+    }
+
+    for(int j=0;j<k;j++){
+        dfs(i+1, sum ^ t[i][j]);
+    }
+}
+
 int main() {
+    cin >> n >> k;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<k;j++){
+            cin >> t[i][j];
+        }
+    }
+    dfs(0, 0);
+    cout << (ans ? "Found" : "Nothing") << endl;
     return 0;
 }

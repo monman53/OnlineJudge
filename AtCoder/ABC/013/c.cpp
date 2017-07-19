@@ -21,6 +21,22 @@ using LL  = long long;
 using ULL = unsigned long long;
 // }}}
 
+
 int main() {
+    LL n, h, a, b, c, d, e;
+    cin >> n >> h >> a >> b >> c >> d >> e;
+
+    LL ans = LLONG_MAX;
+
+    for(LL i=0;i<=n;i++){
+        LL j = ((n-i)*e-h-b*i)/(d+e) + 1L;
+        if((n-i)*e-h-b*i <= 0) j = 0;
+        if(j+i <= n){
+            ans = min(ans, a*i+c*j);
+        }
+    }
+
+    printf("%lld\n", ans);
+
     return 0;
 }

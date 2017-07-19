@@ -22,5 +22,16 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n;cin >> n;
+    int count = 0;
+    int sum = 0;
+    for(int i=0;i<n;i++){
+        int a;cin >> a;
+        if(a){
+            count++;
+            sum+=a;
+        }
+    }
+    cout << CILING(sum, count) << endl;
     return 0;
 }

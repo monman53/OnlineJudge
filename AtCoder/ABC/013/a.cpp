@@ -22,5 +22,7 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    char x;cin >> x;
+    cout << int(x-'A')+1 << endl;
     return 0;
 }

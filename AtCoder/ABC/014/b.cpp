@@ -22,5 +22,16 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n, x;cin >> n >> x;
+    vector<int> a(n);
+    for(auto &aa : a) cin >> aa;
+    int ans = 0;
+    bitset<20> bit(x);
+    for(int i=0;i<n;i++){
+        if(bit[i]){
+            ans += a[i];
+        }
+    }
+    cout << ans << endl;
     return 0;
 }

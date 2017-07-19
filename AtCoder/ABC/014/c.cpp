@@ -22,5 +22,20 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int imos[1000005];
+    memset(imos, 0, sizeof(imos));
+    int n;cin >> n;
+    for(int i=0;i<n;i++){
+        int a, b;cin >> a >> b;
+        imos[a]++;
+        imos[b+1]--;
+    }
+    int now = 0;
+    int ans = 0;
+    for(int i=0;i<1000005;i++){
+        now += imos[i];
+        ans = max(ans, now);
+    }
+    cout << ans << endl;
     return 0;
 }

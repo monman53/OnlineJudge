@@ -22,5 +22,7 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int a, b, c;cin >> a >> b >> c;
+    cout << a+b+c-min({a, b, c})-max({a, b, c}) << endl;
     return 0;
 }

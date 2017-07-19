@@ -22,5 +22,11 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    string a, b;cin >> a >> b;
+    if(a.size() > b.size()){
+        cout << a << endl;
+    }else{
+        cout << b << endl;
+    }
     return 0;
 }
