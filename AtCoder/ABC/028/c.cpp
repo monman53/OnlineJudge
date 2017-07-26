@@ -22,5 +22,7 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int a, b, c, d, e;cin >> a >> b >> c >> d >> e;
+    cout << max({a+d+e, b+c+e}) << endl;
     return 0;
 }

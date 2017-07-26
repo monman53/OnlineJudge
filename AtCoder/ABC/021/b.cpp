@@ -1,0 +1,42 @@
+// header {{{
+// #define NDEBUG
+#include <bits/stdc++.h>
+using namespace std;
+
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         INT_MAX
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+#define EQ(a, b)        (abs((a)-(b)) < EPS)
+#define CILING(a, b)    (((a)+(b)-1)/(b))
+
+template<class T>
+using PIT = pair<int, T>;
+template<class T>
+using PTI = pair<T, int>;
+using PII = pair<int, int>;
+using PDI = pair<double, int>;
+using LL  = long long;
+using ULL = unsigned long long;
+// }}}
+
+int main() {
+    int n, a, b, k;
+    cin >> n >> a >> b >> k;
+    set<int> st;
+    for(int i=0;i<k;i++){
+        int p;cin >> p;
+        st.insert(p);
+        if(p == a || p == b){
+            cout << "NO" << endl;
+            return 0;
+        }
+    }
+    if((int)st.size() < k){
+        cout << "NO" << endl;
+        return 0;
+    }
+    cout << "YES" << endl;
+    return 0;
+}

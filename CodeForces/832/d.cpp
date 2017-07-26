@@ -1,3 +1,25 @@
+// header {{{
+// #define NDEBUG
+#include <bits/stdc++.h>
+using namespace std;
+
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         INT_MAX
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+#define EQ(a, b)        (abs((a)-(b)) < EPS)
+#define CILING(a, b)    (((a)+(b)-1)/(b))
+
+template<class T>
+using PIT = pair<int, T>;
+template<class T>
+using PTI = pair<T, int>;
+using PII = pair<int, int>;
+using PDI = pair<double, int>;
+using LL  = long long;
+using ULL = unsigned long long;
+// }}}
 // graph {{{
 template<class T>
 struct G {
@@ -227,3 +249,34 @@ struct LCA {
     }
 };//}}}
 //}}}
+
+G<int> g;
+LCA<int> lca;
+
+int query(int s, int t, int f) {
+    int asf = lca.query(s, f);
+    int atf = lca.query(t, f);
+    int ast = lca.query(s, t);
+    if(asf == atf){
+        return lca.d[ast] + lca.d[f] - 2*lca.d[asf] + 1;
+    }else{
+        return lca.d[f] - max(lca.d[asf], lca.d[atf]) + 1;
+    }
+}
+
+int main() {
+    int n, q;cin >> n >> q;
+    g = G<int>(n);
+    for(int i=1;i<n;i++){
+        int p;cin >> p;p--;
+        g.add(i, p, 1);
+        g.add(p, i, 1);
+    }
+    lca = LCA<int>(g, 0);
+    for(int i=0;i<q;i++){
+        int a, b, c;cin >> a >> b >> c;
+        a--;b--;c--;
+        cout << max({query(b, c, a), query(c, a, b), query(a, b, c)}) << endl;
+    }
+    return 0;
+}
