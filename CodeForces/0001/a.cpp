@@ -22,5 +22,7 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    LL n, m, a;cin >> n >> m >> a;
+    cout << CILING(n, a)*CILING(m, a) << endl;;
     return 0;
 }

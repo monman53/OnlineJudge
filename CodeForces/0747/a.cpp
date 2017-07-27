@@ -22,5 +22,20 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n;cin >> n;
+    int ansa = 1;
+    int ansb = n;
+    int ans = INT_MAX;
+    for(int a=1;a*a<=n;a++){
+        if(n%a == 0){
+            int b = n/a;
+            if(b-a < ans){
+                ans = b-a;
+                ansa = a;
+                ansb = b;
+            }
+        }
+    }
+    cout << ansa << " " << ansb << endl;
     return 0;
 }

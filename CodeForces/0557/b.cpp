@@ -22,5 +22,16 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n;double w;cin >> n >> w;
+    vector<int> a(2*n);
+    for(auto &aa : a) cin >> aa;
+    sort(a.begin(), a.end());
+    double girl = a[0];
+    double boy = a[n];
+    if(girl*2.0 > boy){
+        girl = boy/2;
+    }
+    girl = min(girl, w/(3.0*n));
+    printf("%lf\n", girl*n*3.0);
     return 0;
 }

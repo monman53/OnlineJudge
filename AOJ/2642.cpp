@@ -22,5 +22,8 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    LL n, p, q;cin >> n >> p >> q;
+    vector<LL> c(n);
+    for(auto &cc : c) cin >> cc;
     return 0;
 }

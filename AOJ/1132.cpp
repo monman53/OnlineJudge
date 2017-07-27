@@ -1,3 +1,25 @@
+// header {{{
+// #define NDEBUG
+#include <bits/stdc++.h>
+using namespace std;
+
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         INT_MAX
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+#define EQ(a, b)        (abs((a)-(b)) < EPS)
+#define CILING(a, b)    (((a)+(b)-1LL)/(b))
+
+template<class T>
+using PIT = pair<int, T>;
+template<class T>
+using PTI = pair<T, int>;
+using PII = pair<int, int>;
+using PDI = pair<double, int>;
+using LL  = long long;
+using ULL = unsigned long long;
+// }}}
 // 2d geometry {{{
 
 typedef complex<double> P;
@@ -178,3 +200,47 @@ PL convexHull(PL pl){
 }
 
 // }}}
+
+int main() {
+    while(true){
+        int n;cin >> n;
+        if(n == 0) break;
+        vector<P> p(n);
+        for(int i=0;i<n;i++){
+            double x, y;cin >> x >> y;
+            p[i] = {x, y};
+        }
+        int ans = 1;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                P v = p[j]-p[i];
+                double d = abs(v);
+                if(d <= 2){
+                    double a = acos(d/2);
+                    double b = arg(v);
+                    int count = 0;
+                    P c = p[i] + P{cos(b+a), sin(b+a)};
+                    for(int k=0;k<n;k++){
+                        if(abs(p[k]-c) <= 1){
+                            // cout << i << " " << k << endl;
+                            count++;
+                        }
+                    }
+                    ans = max(ans, count);
+
+                    count = 0;
+                    c = p[i] + P{cos(b-a), sin(b-a)};
+                    for(int k=0;k<n;k++){
+                        if(abs(p[k]-c) <= 1){
+                            // cout << i << " " << k << endl;
+                            count++;
+                        }
+                    }
+                    ans = max(ans, count);
+                }
+            }
+        }
+        cout << ans << endl;
+    }
+    return 0;
+}

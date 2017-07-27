@@ -22,5 +22,20 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n;cin >> n;
+    int x[4];
+    int y[4];
+    for(int i=0;i<n;i++){
+        cin >> x[i] >> y[i];
+    }
+    if(n == 1) cout << -1 << endl;
+    if(n > 2) cout << max(abs(x[0]-x[1]), abs(x[0]-x[2]))*max(abs(y[0]-y[1]), abs(y[0]-y[2])) << endl;
+    if(n == 2){
+        if(x[0] != x[1] && y[0] != y[1]){
+            cout << abs(x[0]-x[1])*abs(y[0]-y[1]) << endl;
+        }else{
+            cout << -1 << endl;
+        }
+    }
     return 0;
 }

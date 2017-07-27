@@ -22,5 +22,26 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n, mm;cin >> n >> mm;
+    map<int, bool> m;
+    for(int i=1;i<=n;i++){
+        m[i] = false;
+    }
+    for(int i=0;i<mm;i++){
+        int a, b;cin >> a >> b;
+        m[a] = true;
+        m[b] = true;
+    }
+    int c = 0;
+    for(int i=1;i<=n;i++){
+        if(!m[i]){
+            c = i;
+        }
+    }
+    cout << n-1 << endl;
+    for(int i=1;i<=n;i++){
+        if(i == c) continue;
+        cout << c << " " << i << endl;
+    }
     return 0;
 }

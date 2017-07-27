@@ -22,5 +22,20 @@ using ULL = unsigned long long;
 // }}}
 
 int main() {
+    int n, k;cin >> n >> k;
+    int ans = 0;
+    int hoge = 0;
+    for(int i=0;i<n;i++){
+        int a;cin >> a;
+        if(a == 0) continue;
+        if(i < k) ans++;
+        if(i == k-1){
+            hoge = a;
+        }
+        if(i >= k && a == hoge){
+            ans++;
+        }
+    }
+    cout << ans << endl;
     return 0;
 }

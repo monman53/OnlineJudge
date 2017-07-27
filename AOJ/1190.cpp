@@ -1,3 +1,25 @@
+// header {{{
+// #define NDEBUG
+#include <bits/stdc++.h>
+using namespace std;
+
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         INT_MAX
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+#define EQ(a, b)        (abs((a)-(b)) < EPS)
+#define CILING(a, b)    (((a)+(b)-1LL)/(b))
+
+template<class T>
+using PIT = pair<int, T>;
+template<class T>
+using PTI = pair<T, int>;
+using PII = pair<int, int>;
+using PDI = pair<double, int>;
+using LL  = long long;
+using ULL = unsigned long long;
+// }}}
 // 2d geometry {{{
 
 typedef complex<double> P;
@@ -12,9 +34,6 @@ namespace std {
 
 // 長さ
 // double length = abs(a);
-
-// 偏角
-// double theta = arg(a);
 
 // 単位ベクトル
 // P n = a/abs(a);
@@ -178,3 +197,66 @@ PL convexHull(PL pl){
 }
 
 // }}}
+
+struct D {
+    P p;
+    double l;
+};
+
+double solve(D a, D b, D c) {
+    double al = a.l;
+    double bl = b.l;
+    double cl = c.l;
+    double ab = abs(b.p - a.p);
+    double bc = abs(c.p - b.p);
+    double ca = abs(a.p - c.p);
+
+    // 1
+    if(al*al + ab*ab <= bl*bl && al*al + ca*ca <= cl*cl){
+        return al;
+    }
+    if(bl*bl + ab*ab <= al*al && bl*bl + bc*bc <= cl*cl){
+        return bl;
+    }
+    if(cl*cl + ca*ca <= al*al && cl*cl + bc*bc <= bl*bl){
+        return cl;
+    }
+
+    // 2
+    double abh = heron(ab, al, bl)*2.0/ab;
+    double bch = heron(bc, bl, cl)*2.0/bc;
+    double cah = heron(ca, cl, al)*2.0/ca;
+    if(al*al + ab*ab > bl*bl) ret = min(ret, abh);
+    if(al*al + ca*ca > cl*cl) ret = min(ret, cah);
+    if(bl*bl + bc*bc > cl*cl) ret = min(ret, bch);
+
+    // 3
+    //
+
+    
+    return ret;
+}
+
+int main() {
+    while(true){
+        int n;cin >> n;
+        if(n == 0) break;
+        vector<D> d(n);
+        for(int i=0;i<n;i++){
+            double x, y, l;cin >> x >> y >> l;
+            d[i] = {{x, y}, l};
+        }
+        sort(d.begin(), d.end(), [](D l, D r){return l.l < r.l;});
+        double ans = 500;
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                for(int k=j;k<n;k++){
+                    ans = min(ans, solve(d[i], d[j], d[k]));
+                }
+            }
+        }
+        printf("%lf\n", ans);
+    }
+
+    return 0;
+}
