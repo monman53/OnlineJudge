@@ -64,16 +64,17 @@ int main() {
         reverse(b.begin(), b.end());
     }
 
-    bool flag = true;
+    // bool flag = true;
     for(auto bb : b){
-        if(!flag){
-            cout << " ";
-        }
-        flag = false;
-        cout << bb;
+        // if(!flag){
+        //     cout << " ";
+        // }
+        // flag = false;
+        // cout << bb;
+        cout << bb << " ";
     }
 
-    cout << endl;
+    // cout << endl;
 
     return 0;
 }

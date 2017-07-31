@@ -1,6 +1,6 @@
 // data structure {{{
 
-// Union-Find // {{{
+// Union-Find {{{
 // verified AOJ DSL_1_A
 struct UF {
     vector<int> p;  // parent
@@ -37,8 +37,7 @@ struct UF {
         }
     }
 }; // }}}
-
-// 最小全域木 (Minimum spanning tree) // {{{
+// 最小全域木 (Minimum spanning tree) {{{
 // ARC076D
 
 struct E {
@@ -63,8 +62,7 @@ struct MST {
         return ret;
     }
 };// }}}
-
-// Segment tree // {{{
+// Segment tree {{{
 // verified AOJ DSL_2_{A,B}
 template <typename T>
 struct SGT {
