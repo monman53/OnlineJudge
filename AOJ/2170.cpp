@@ -24,14 +24,11 @@ using ULL = unsigned long long;
 // verified AOJ DSL_1_A
 struct UF {
     vector<int> p;  // parent
-    vector<int> r;  // rank
 
     UF(int n) {
         p.resize(n);
-        r.resize(n);
         for(int i=0;i<n;i++){
             p[i] = i;
-            r[i] = 1;
         }
     }
 
@@ -47,17 +44,11 @@ struct UF {
         x = find(x);
         y = find(y);
         if(x == y) return;
-        if(r[x] < r[y]){
-            p[x] = y;
-        }else{
-            p[y] = x;
-            if(r[x] == r[y]){
-                r[x]++;
-            }
-        }
+        p[y] = p[x];
     }
 }; // }}}
 
+// rankを用いる純粋なUnion-Findではだめ．
 int main() {
     while(true){
         int N, Q;cin >> N >> Q;
@@ -86,21 +77,18 @@ int main() {
         }
         for(int i=0;i<N;i++){
             if(!m[i]){
-                uf.unite(i, p[i]);
+                uf.unite(p[i], i);
             }
         }
 
         reverse(q.begin(), q.end());
 
-        int ans = 0;
-        for(int i=0;i<Q;i++){
+        LL ans = 0;
+        for(int i=0;i<int(q.size());i++){
             if(q[i].first == 'Q'){
-                ans += uf.find(q[i].second) + 1;
-                // cout << ans << endl;
+                ans += LL(uf.find(q[i].second)) + 1LL;
             }else{
-                uf.unite(q[i].second, p[q[i].second]);
-                cout << q[i].second << endl;
-                cout << uf.find(q[i].second) << endl;
+                uf.unite(p[q[i].second], q[i].second);
             }
         }
         cout << ans << endl;
