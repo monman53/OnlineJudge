@@ -39,6 +39,11 @@ LL gcd(LL x, LL y) {
     return y ? gcd(y, x%y) : x;
 }
 
+// 最小公倍数
+LL lcm(LL m, LL n) {
+    return m/gcd(m, n)*n;
+}
+
 // 素数判定 (エラトステネスのふるい)
 bool isPrime[SIZE];
 void initIsPrime() {
