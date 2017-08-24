@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TopCoder Single Round Match 720 - 1000: RainbowGraph</title>
+    
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.topcoder.com/i/favicon.ico"/>
+    
+
+    
+    <style type="text/css">
+        /* font */
+body {
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.2em;
+}
+ul.constraints > li:before, ul.notes > li:before {
+    font-family: monospace;
+    font-weight: normal;
+}
+.heading {
+    font-weight: bold;
+    font-size: 175%;
+    line-height: 1.2em;
+}
+.section .section-title {
+    font-weight: bold;
+    font-size: 125%;
+}
+ol.testcases > li:before {
+    font-family: monospace;
+}
+type {
+    font-weight: bold;
+    font-family: monospace;
+}
+li.testcase .data {
+    font-family: monospace;
+    line-height: 1.5em;
+}
+
+/* layout */
+.heading {
+    margin-top: 0.1em;
+    margin-bottom:0.1em;
+    text-align: center;
+}
+.section .section-title {
+    margin-top : 1em;
+    margin-bottom: 1em;
+}
+.problem-intro, note, user-constraint {
+    padding-left: 1.25em;
+}
+
+/* Lists */
+ul.constraints, ul.notes, ul.variables, ul.problem-definition-lines {
+    list-style-type: none;
+    padding: 0px;
+}
+ul.constraints > li:before {
+    content: "-";
+    position:relative;
+    margin-left: 0px; /* optional, for multiline li element */
+    left: 0.625em;
+}
+ul.notes > li:before {
+    content: "-";
+    position:relative;
+    margin-left: 0px; /* optional, for multiline li element */
+    left: 0.625em;
+}
+
+/* Testcases */
+li.testcase {
+    line-height: 1.1em;
+    padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    overflow: auto;
+}
+li.testcase > .testcase-content > div { padding-bottom: 0.5em; padding-left: 1em; }
+
+li.testcase .testcase-comment {
+    margin: 0;
+    padding-left: 1em;
+}
+.testcase-comment p:first-child { margin-top: 0; }
+.testcase-comment p:last-child { margin-bottom: 0; }
+
+li.testcase .testcase-content {
+    margin: 0.31em;
+}
+
+/* Data and variables */
+.testcase-output {
+    padding: 0.2em 1em 0.2em 0em;
+}
+.variables, .testcase-output {
+    margin-left: 0.5em;
+    display: table;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.variable {
+    display: table-row;
+}
+.variable .name {
+    padding: 0.2em 0em 0.2em 1em;
+    font-weight: bold;
+    display: table-cell;
+    text-align: right;
+}
+.testcase-output .prefix {
+    padding: 0.2em 0em 0.2em 1em;
+    display: table-cell;
+}
+.testcase-output .prefix:after {
+    content : ":";
+    padding-right: 0.5em;
+}
+.variable .name:after {
+    font-weight: bold;
+    content : ":";
+    padding-right: 0.5em;
+}
+.variable .value, .testcase-output .value {
+    padding: 0.2em 1em 0.2em 0em;
+    display: table-cell;
+}
+ol.testcases {
+    padding: 0px;
+    counter-reset: test_number -1;
+}
+ol.testcases > li {
+    list-style:none;
+}
+ol.testcases > li:before {
+    counter-increment:test_number;
+    display: block;
+    clear: both;
+    content:counter(test_number) ")";
+    color: inherit;
+    background: inherit;
+}
+
+/* Problem Definition */
+.problem-definition, .problem-limits {
+    padding-left: 1.25em;
+}
+.problem-definition-lines, .limit-lines {
+    display: table;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
+.definition-line, .limit-line {
+    display: table-row;
+    height: 1.5em;
+    overflow: auto;
+}
+.limit-name:after {
+    content: ":";
+    margin-right: 1em;
+}
+.definition-name, .definition-value, .limit-name, .limit-value {
+    display: table-cell;
+}
+.definition-value {
+    padding-left: 0.5em;
+}
+.definition-name:after {
+    content: ":";
+}
+#contest-division:before {
+    content: "Div ";
+}
+#problem-score:before {
+    content: "- Problem ";
+}
+#problem-name {
+    display: block;
+}
+
+/* Tags, hidden default */
+.tag {
+    visibility: hidden;
+    position: absolute;
+}
+
+        body {
+    /* font color */
+    color: #333333;
+    /* background color */
+    background-color: white;
+}
+.section .section-title {
+    /* title color */
+    color: black;
+}
+li.testcase .data {
+    /* highlight color */
+    background: #eee;
+}
+
+    </style>
+    
+    
+    
+
+</head>
+
+<body>
+    <h1 class="heading">
+        <span id='contest-name'>Single Round Match 720</span>
+        
+        <span id='problem-score'>1000</span>
+        <span id='problem-name'>RainbowGraph</span>
+    </h1>
+
+    <hr />
+
+    <!-- Problem Statement -->
+    <div class="section">
+        <h2 class="section-title">Problem Statement</h2>
+        <div class="problem-intro">
+            <intro escaped="1"><p>
+Cat Noku has a simple undirected graph with n nodes, numbered 0 through n-1.
+You are given the <type>int[]</type> <b>color</b>.
+For each valid i, node i in this graph has color <b>color</b>[i].
+You are also given two equally-long <type>int[]</type>s: <b>a</b> and <b>b</b>.
+For each valid j the graph contains an edge that connects <b>a</b>[j] and <b>b</b>[j].
+</p>
+
+<p>
+A walk in the graph is a sequence of nodes in which each pair of consecutive nodes is connected by an edge.
+Cat Noku would like to visit all nodes in the graph.
+More precisely, he is looking for a walk with the following properties:
+<ul>
+<li>The walk visits each node exactly once.</li>
+<li>The walk may start and end in any node of the graph.</li>
+<li>Suppose the visited nodes are c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>n</sub>, in this order. Whenever c<sub>i</sub> and c<sub>j</sub> have the same color, all nodes visited between c<sub>i</sub> and c<sub>j</sub> must also have that color. (Formally, for each k between i and j, node c<sub>k</sub> must have the same color as c<sub>i</sub> and c<sub>j</sub>.)</li>
+</ul>
+</p>
+
+<p>
+Help Cat Noku count the number of valid walks.
+Since this number can get very large, return it modulo 10^9+7.
+</p></intro>
+        </div>
+    </div>
+    
+    <!-- Problem definition -->
+    
+    <div class="section" id="definition">
+        <h2 class="section-title">Definition</h2>
+        <div class="problem-definition">
+            <ul class="problem-definition-lines">
+                <li class="definition-line" id='class-line'>
+                    <span class='definition-name'>Class</span>
+                    <span class='definition-value'>RainbowGraph</span>
+                </li>
+                <li class="definition-line" id='method-line'>
+                    <span class='definition-name'>Method</span>
+                    <span class='definition-value'>countWays</span>
+                </li>
+                <li class="definition-line" id='parameters-line'>
+                    <span class='definition-name'>Parameters</span>
+                    <span class='definition-value'>
+                    
+                        vector&lt;int&gt;
+                    , 
+                        vector&lt;int&gt;
+                    , 
+                        vector&lt;int&gt;
+                    
+                    </span>
+                </li>
+                <li class="definition-line" id='returns-line'>
+                    <span class='definition-name'>Returns</span>
+                    <span class='definition-value'>
+                        int
+                    </span>
+                </li>
+                <li class="definition-line" id='signature-line'>
+                    <span class='definition-name'>Method signature</span>
+                    <span class='definition-value'>
+                        int countWays(vector&lt;int&gt; color, vector&lt;int&gt; a, vector&lt;int&gt; b)
+                    </span>
+                </li>
+            </ul>
+            <div class="problem-definition-public-tip">(be sure your method is public)</div>
+        </div>        
+    </div>
+    
+
+    <!-- Limits -->
+    <div class="section">
+        <h2 class="section-title">Limits</h2>
+        <div class='problem-limits'>
+            <ul class="limit-lines">
+                <li class='limit-line'>
+                    <span class='limit-name'>Time limit (s)</span>
+                    <span class='limit-value'>2.000</span>
+                </li>
+                <li class='limit-line'>
+                    <span class='limit-name'>Memory limit (MB)</span>
+                    <span class='limit-value'>256</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+    
+    <!-- Constraints -->
+    <div class="section">
+        <h2 class="section-title">Constraints</h2>
+        <ul class="constraints">
+        
+            <li><user-constraint escaped="1"><b>color</b> will have between 2 and 100 elements, inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1">Each element of <b>color</b> will be between 0 and 9, inclusive. </user-constraint></li>
+        
+            <li><user-constraint escaped="1">Each number from 0 to 9 will occur at most 10 times as an element of <b>color</b>.</user-constraint></li>
+        
+            <li><user-constraint escaped="1"><b>a,b</b> will contain between 1 and 2500 elements, inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1">The edges (<b>a</b>[i], <b>b</b>[i]) will describe a simple undirected graph.</user-constraint></li>
+        
+        </ul>
+    </div>
+
+    <!-- Test cases -->
+    <div class="section">
+        <h2 class="section-title">Test cases</h2>
+        <ol class="testcases" start='0'>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">color</span>
+                                <span class="value data">
+                                
+                                    { 0, 0, 0, 1, 1, 1, 2, 2, 2 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    { 0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 3, 6 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    { 1, 2, 0, 4, 5, 3, 7, 8, 6, 3, 6, 0 }
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            0
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment"><p>
+<img src="http://i1370.photobucket.com/albums/ag268/lg52931/Screenshot%202017-08-13%2004.31.17_zps2y6tzizt.png"></img>
+</p>
+
+In this case, there are no valid walks.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">color</span>
+                                <span class="value data">
+                                
+                                    { 0, 0, 0, 1, 1, 1, 2, 2, 2 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    { 0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 4, 8 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    { 1, 2, 0, 4, 5, 3, 7, 8, 6, 3, 7, 2 }
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            24
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment"><p>
+<img src="http://i1370.photobucket.com/albums/ag268/lg52931/Screenshot%202017-08-13%2004.31.34_zpsivcbiz6q.png"></img>
+</p>
+
+For example, a valid walk is 1,0,2,6,8,7,4,5,3. An example of an invalid walk would be 3,0,1,2,6,8,4,5, since even though it is a walk that visits each node exactly once, it does not satisfy the color constraint since the first and last nodes are the same color, but some middle nodes are not the same color.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">color</span>
+                                <span class="value data">
+                                
+                                    { 0, 3, 9, 8, 6, 4 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    { 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    { 1, 2, 3, 4, 5, 2, 3, 4, 5, 3, 4, 5, 4, 5, 5 }
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            720
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">In this case, any permutation of nodes forms a valid walk.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">color</span>
+                                <span class="value data">
+                                
+                                    { 0, 0, 0, 0, 3, 3, 3, 6, 6, 9 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    { 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 0, 1, 2, 4, 5, 8 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    { 0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 1, 2, 3, 5, 6, 7 }
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            64
+                        
+                        </span>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">color</span>
+                                <span class="value data">
+                                
+                                    { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    { 1 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    { 2 }
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            0
+                        
+                        </span>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">color</span>
+                                <span class="value data">
+                                
+                                    { 2, 4, 3, 0, 2, 3, 3, 3, 4, 2, 1, 2, 0, 0, 4, 1, 1, 0, 4, 4, 1, 0, 3, 2, 1 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    { 5, 7, 23, 20, 10, 9, 23, 7, 7, 17, 0, 20, 1, 24, 7, 5, 11, 13, 14, 9, 0, 13, 4, 9, 5, 24, 22, 24, 14, 12, 7, 4, 6, 19, 13, 5, 6, 10, 0, 2, 6, 20, 22, 2, 10, 19, 2, 24, 21, 20, 21, 2, 23, 24, 9, 19, 19, 21, 22, 2, 7, 14, 13, 12, 2, 11, 19, 12, 0, 8, 8, 1, 18, 20, 10, 1, 13, 21, 14, 1, 18, 21, 13, 15, 14, 15, 7, 6, 21, 10, 6, 24, 21, 4, 24, 3, 2, 18, 1, 24, 6, 20, 8, 16, 0, 12, 5, 11, 4, 13, 3, 16, 19, 15, 24, 24, 16, 20, 13, 18, 5, 4, 6, 23, 8, 6, 18, 15, 19, 3, 16, 17, 18, 10, 14, 14, 23, 6, 13, 7, 13, 18, 10, 19, 22, 18, 23, 5, 16, 17, 23, 4, 14, 24, 5, 20, 11, 3, 17, 23, 12, 6, 22, 8, 4, 17, 16, 8, 17, 17, 1, 4, 6, 7, 17, 17, 21, 23, 0, 15, 21, 16, 12, 20, 19, 23, 7, 21, 18, 5, 24, 24, 8, 6, 5, 9, 21, 15, 8, 11, 10, 19, 5, 24, 19, 10, 11, 0, 23, 12, 15, 18, 20, 10, 15, 13, 3, 18, 6, 22, 0, 4, 24, 19, 16, 0, 17, 7, 4, 0, 9, 4, 10, 0, 23, 16, 17, 8, 5, 12, 22, 11, 11, 5, 13, 5, 4, 20, 17, 20, 0, 10, 4, 18, 3, 3, 6, 21, 9, 7, 18, 1, 14, 5, 20, 10, 12, 20, 9, 15, 18, 5, 12, 11, 11, 20, 11, 15, 6, 2, 6, 19, 13, 15, 15, 21, 22, 9, 19, 16, 8, 9, 15, 8, 21, 22, 19, 18, 9, 2 }
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    { 21, 1, 11, 19, 24, 1, 7, 17, 20, 20, 8, 6, 12, 21, 13, 2, 13, 15, 22, 11, 17, 19, 0, 5, 14, 3, 7, 11, 2, 15, 18, 5, 16, 12, 3, 8, 8, 3, 2, 24, 14, 23, 6, 23, 2, 1, 4, 6, 13, 9, 17, 6, 12, 20, 23, 16, 9, 10, 21, 11, 14, 3, 1, 2, 9, 21, 21, 7, 19, 4, 13, 10, 6, 15, 19, 0, 9, 23, 10, 6, 1, 2, 2, 18, 20, 16, 19, 10, 4, 9, 19, 14, 7, 10, 9, 16, 1, 16, 8, 16, 4, 3, 9, 11, 23, 5, 19, 4, 14, 20, 2, 7, 22, 5, 4, 7, 5, 1, 23, 4, 23, 23, 21, 1, 19, 15, 8, 22, 11, 1, 14, 13, 17, 20, 1, 8, 18, 7, 22, 3, 14, 0, 12, 14, 10, 5, 3, 1, 13, 8, 15, 13, 18, 1, 13, 22, 8, 8, 1, 10, 22, 12, 1, 24, 20, 10, 17, 22, 23, 22, 16, 3, 23, 11, 3, 14, 18, 8, 14, 2, 0, 9, 3, 2, 23, 22, 9, 8, 9, 11, 0, 15, 15, 5, 24, 4, 20, 9, 12, 6, 16, 18, 22, 12, 15, 15, 18, 9, 24, 18, 4, 22, 12, 13, 1, 12, 0, 3, 9, 0, 7, 1, 17, 17, 23, 16, 12, 15, 12, 6, 22, 17, 7, 11, 14, 20, 2, 2, 17, 16, 2, 22, 1, 0, 0, 3, 19, 8, 11, 11, 12, 8, 22, 24, 22, 21, 3, 16, 12, 4, 13, 21, 12, 10, 0, 0, 21, 5, 3, 14, 10, 7, 11, 14, 10, 18, 3, 0, 17, 16, 13, 24, 24, 3, 17, 15, 16, 21, 3, 4, 16, 14, 11, 7, 14, 24, 2, 2, 17, 7 }
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            983979105
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">Don't forget about the mod.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+        </ol>
+    </div>
+    <hr />
+
+    This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</body>
+</html>
