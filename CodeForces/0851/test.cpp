@@ -22,5 +22,7 @@ using ULL = unsigned long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
+    long double x = 2/(1-1)*1.0;
+    cout << x << endl;
     return 0;
 }

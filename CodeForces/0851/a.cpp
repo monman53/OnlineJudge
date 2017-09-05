@@ -22,5 +22,9 @@ using ULL = unsigned long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
+    int n, k, t;cin >> n >> k >> t;
+    int l = min(max(0, t-k), n);
+    int r = min(t, n);
+    cout << r-l << endl;
     return 0;
 }
