@@ -8,16 +8,9 @@ using namespace std;
 #define MOD         (1000000007LL)
 #define EPS         (1e-10)
 #define EQ(a, b)        (abs((a)-(b)) < EPS)
-#define CILING(a, b)    (((a)+(b)-1LL)/(b))
 
-template<class T>
-using PIT = pair<int, T>;
-template<class T>
-using PTI = pair<T, int>;
-using PII = pair<int, int>;
-using PDI = pair<double, int>;
+using P   = pair<int, int>;
 using LL  = long long;
-using ULL = unsigned long long;
 // }}}
 
 int main() {
