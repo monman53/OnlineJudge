@@ -7,7 +7,7 @@ using namespace std;
 #define INF         INT_MAX
 #define MOD         (1000000007LL)
 #define EPS         (1e-10)
-#define EQ(a, b)    (abs((a)-(b)) < EPS)
+#define EQ(a, b)        (abs((a)-(b)) < EPS)
 
 using P   = pair<int, int>;
 using LL  = long long;
@@ -15,5 +15,7 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
+    int n, k;cin >> n >> k;
+    cout << (k==0 || k==n?0:1) << " " << min(n-k, k*2) << endl;
     return 0;
 }
