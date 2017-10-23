@@ -17,5 +17,11 @@ int dj[] = {1, 0, -1, 0};
 
 int main() {
     std::ios::sync_with_stdio(false);
+    int a, b, c;cin >> a >> b >> c;
+    int ans = a;
+    if(a == b) ans = c;
+    if(b == c) ans = a;
+    if(c == a) ans = b;
+    cout << ans << endl;
     return 0;
 }

@@ -1,4 +1,6 @@
 // 2d geometry {{{
+#define EPS         (1e-10)
+#define EQ(a, b)    (abs((a)-(b)) < EPS)
 
 typedef complex<double> P;
 typedef vector<P> PL;
@@ -52,6 +54,7 @@ P reflectionLP(P a, P b, P p) {
     return 2.0*projectionLP(a, b, p) - p;
 }
 
+// ccw
 // verified AOJ CGL_1_C
 int ccw(P a, P b, P c) {
     b = b - a;
