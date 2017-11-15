@@ -23,9 +23,9 @@ using ULL = unsigned long long;
 
 int main() {
     int n;cin >> n;
-    int i;
-    for(i=1;i<n;i*=2){
-    }
-    cout << i << endl;
+    int ans = 1;
+    for(;ans <= n;ans*=2){}
+    if(ans > n) ans/=2;
+    cout << ans << endl;
     return 0;
 }
