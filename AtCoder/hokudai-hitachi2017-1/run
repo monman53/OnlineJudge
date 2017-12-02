@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo > all
+
+function main {
+    ./graph_generator.out $1$2.in $1 $2
+    ./a.out < $1$2.in > $1$2.out
+    ./score_evaluator.out $1$2.in $1$2.out >> all
+    rm $1$2.in
+    rm $1$2.out
+}
+
+export -f main
+
+parallel -k main {} {} ::: 0 ::: `seq 1 12`
+
+cat all | awk '{s+=$1} END {print s}'
