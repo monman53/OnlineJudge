@@ -44,6 +44,17 @@ LL lcm(LL m, LL n) {
     return m/gcd(m, n)*n;
 }
 
+// 拡張ユークリッドの互除法
+// ax + by = gcd(a, b)
+LL extgcd(LL a, LL b, LL &x, LL &y) {
+    LL g = a; x = 1; y = 0;
+    if(b != 0){
+        g = extgcd(b, a%b, y, x);
+        y -= (a/b)*x;
+    }
+    return g;
+}
+
 // 素数判定 (エラトステネスのふるい)
 bool isPrime[SIZE];
 void initIsPrime() {
@@ -83,8 +94,6 @@ vector<pair<int, int>> factor(int n) {
     return ret;
 }
 //}}}
-
-
 // !!!(未検証) 連立一次方程式 (Gauss-Jordanの消去法) {{{
 // O(N^3)
 using VEC = vector<double>;
