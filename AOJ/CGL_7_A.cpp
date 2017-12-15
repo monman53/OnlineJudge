@@ -1,3 +1,19 @@
+// header {{{
+#include <bits/stdc++.h>
+using namespace std;
+
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         INT_MAX
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+#define EQ(a, b)    (abs((a)-(b)) < EPS)
+
+using LL  = long long;
+
+int di[] = {0, -1, 0, 1};
+int dj[] = {1, 0, -1, 0};
+// }}}
 // 2d geometry {{{
 #define EPS         (1e-10)
 #define EQ(a, b)    (abs((a)-(b)) < EPS)
@@ -7,8 +23,8 @@ typedef vector<P> PL;
 
 namespace std {
     bool  operator < (P a, P b) {
-        return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b);
-        //return imag(a) != imag(b) ? imag(a) < imag(b) : real(a) < real(b);
+        // return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b);
+        return imag(a) != imag(b) ? imag(a) < imag(b) : real(a) < real(b);
     }
 }
 
@@ -105,17 +121,6 @@ double distSP(P a, P b, P p) {
     return distLP(a, b, p);
 }
 
-// 直線と線分の距離
-// あやしい
-double distLS(P l1, P l2, P s1, P s2){
-    P p = intersectionLL(l1, l2, s1, s2);
-    if(ccw(s1, s2, p) == 0){
-        return 0.0;
-    }else{
-        return min(distLP(l1, l2, s1), distLP(l1, l2, s2));
-    }
-}
-
 // 線分と線分の距離
 // verified AOJ CGL_2_D
 double distSS(P a1, P a2, P b1, P b2) {
@@ -191,53 +196,6 @@ PL convexHull(PL pl){
     return ch;
 }
 
-// 凸多角形の直径(最遠頂点対間距離)
-// キャリパー法 O(n)
-// verified AOJ CGL_4_B (理解できてない)
-double diameterOfConvex(PL pl) {
-    int n = pl.size();
-    int is = 0;
-    int js = 0;
-    for(int i=1;i<n;i++){
-        if(pl[i].imag() > pl[is].imag()) is = i;
-        if(pl[i].imag() < pl[js].imag()) js = i;
-    }
-    double maxd = norm(pl[is]-pl[js]);
-
-    int i, maxi, j, maxj;
-    i = maxi = is;
-    j = maxj = js;
-    do{
-        if(cross(pl[(i+1)%n]-pl[i], pl[(j+1)%n]-pl[j]) >= 0){
-            j = (j+1)%n;
-        }else{
-            i = (i+1)%n;
-        }
-        if(norm(pl[i]-pl[j]) > maxd){
-            maxd = norm(pl[i]-pl[j]);
-            maxi = i;
-            maxj = j;
-        }
-    }while(i != is || j != js);
-    return sqrt(maxd);
-}
-
-// ConvexCut
-// 凸多角形を直線p1p2で切断し，その左側にできる凸多角形を求める．
-// verified AOJ CGL_4_B
-PL convexCut(PL pl, P p1, P p2) {
-    int n = pl.size();
-    PL ans;
-    for(int i=0;i<n;i++){
-        if(ccw(p1, p2, pl[i]) != -1) ans.push_back(pl[i]);
-        if(ccw(p1, p2, pl[i])*ccw(p1, p2, pl[(i+1)%n]) == -1){
-            ans.push_back(intersectionLL(p1, p2, pl[i], pl[(i+1)%n]));
-        }
-    }
-    return ans;
-}
-
-
 // 多角形間距離(点，線分も多角形とするのでより一般的な距離)
 // p2の頂点がp1に内包する場合は0
 // O(V1*V2)
@@ -287,73 +245,12 @@ int intersectCC(P c1, double r1, P c2, double r2) {
     return 0; // 共通接線の数が0(内包する)
 }
 
-// 円と直線の交点(必ず交点を持つ場合)
-// verified AOJ CGL_7_D
-pair<P, P> intersectionCL(P c, double r, P s, P t) {
-    double d = distLP(s, t, c);
-    P p = projectionLP(s, t, c);
-    P n = (s-t)/abs(s-t);
-    double l = sqrt(r*r-d*d);
-    return {p+l*n, p-l*n};
-}
-
-// 円と円の交点(必ず交点を持つ場合)
-// verified AOJ CGL_7_E
-pair<P, P> intersectionCC(P c1, double r1, P c2, double r2) {
-    if(r1 < r2){
-        swap(c1, c2);
-        swap(r1, r2);
-    }
-    double d = abs(c2-c1);
-    P n = (c2-c1)/abs(c2-c1);
-    double theta = acos((d*d+r1*r1-r2*r2)/(2.0*d*r1));
-    return {c1+r1*n*P{cos(theta), sin(theta)}, c1+r1*n*P{cos(-theta), sin(-theta)}};
-}
-
-// 点pを通る円cとの接線(その接点2つを返す)
-// verified AOJ CGL_7_F
-pair<P, P> tangentCP(P c, double r, P p) {
-    double d = abs(p-c);
-    double l = sqrt(d*d-r*r);
-    P n = (c-p)/abs(c-p);
-    double theta = atan2(r, l);
-    return {p+l*n*P{cos(theta), sin(theta)}, p+l*n*P{cos(-theta), sin(-theta)}};
-}
-
-// 円c1と円c2の共通接線(c1上のその接点の集合を返す)
-// verified AOJ CGL_7_G
-vector<P> commonTangentCC(P c1, double r1, P c2, double r2) {
-    vector<P> ret;
-    int type = intersectCC(c1, r1, c2, r2);
-    if(type == 0){
-        return {};
-    }
-    if(type == 1){
-        ret.push_back(intersectionCC(c1, r1, c2, r2).first);
-    }
-    if(type >= 2){
-        double a = abs(r1 - r2);
-        double b = abs(c2 - c1);
-        double c = sqrt(b*b-a*a);
-        double theta = M_PI/2.0 - atan2(a, c);
-        if(r1 < r2) theta = M_PI-theta;
-        P n = (c2-c1)/abs(c2-c1);
-        ret.push_back(c1+r1*n*P{cos(theta), sin(theta)});
-        ret.push_back(c1+r1*n*P{cos(-theta), sin(-theta)});
-    }
-    if(type == 3){
-        ret.push_back(intersectionCC(c1, r1, c2, r2).first);
-    }
-    if(type == 4){
-        double a = r1;
-        double b = abs(c2 - c1)*r1/(r1+r2);
-        double c = sqrt(b*b-a*a);
-        double theta = M_PI/2.0 - atan2(a, c);
-        P n = (c2-c1)/abs(c2-c1);
-        ret.push_back(c1+r1*n*P{cos(theta), sin(theta)});
-        ret.push_back(c1+r1*n*P{cos(-theta), sin(-theta)});
-    }
-    return ret;
-}
-
 // }}}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    double c1x, c1y, c1r;cin >> c1x >> c1y >> c1r;
+    double c2x, c2y, c2r;cin >> c2x >> c2y >> c2r;
+    cout << intersectCC(P{c1x, c1y}, c1r, P{c2x, c2y}, c2r) << endl;
+    return 0;
+}

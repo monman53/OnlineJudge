@@ -1,3 +1,19 @@
+// header {{{
+#include <bits/stdc++.h>
+using namespace std;
+
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         INT_MAX
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+#define EQ(a, b)    (abs((a)-(b)) < EPS)
+
+using LL  = long long;
+
+int di[] = {0, -1, 0, 1};
+int dj[] = {1, 0, -1, 0};
+// }}}
 // 2d geometry {{{
 #define EPS         (1e-10)
 #define EQ(a, b)    (abs((a)-(b)) < EPS)
@@ -357,3 +373,25 @@ vector<P> commonTangentCC(P c1, double r1, P c2, double r2) {
 }
 
 // }}}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    int n;cin >> n;
+    PL g(n);
+    for(int i=0;i<n;i++){
+        double x, y;cin >> x >> y;
+        g[i] = P{x, y};
+    }
+    int q;cin >> q;
+    for(int i=0;i<q;i++){
+        double p1x, p1y, p2x, p2y;
+        cin >> p1x >> p1y >> p2x >> p2y;
+        printf("%.8f\n", area(convexCut(g, P{p1x, p1y}, P{p2x, p2y})));
+        //auto ans = convexCut(g, P{p1x, p1y}, P{p2x, p2y});
+        //for(auto p : ans){
+            //cout << p << " ";
+        //}
+        //cout << endl;
+    }
+    return 0;
+}

@@ -1,3 +1,19 @@
+// header {{{
+#include <bits/stdc++.h>
+using namespace std;
+
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
+#define ALPHABET    (26)
+#define INF         INT_MAX
+#define MOD         (1000000007LL)
+#define EPS         (1e-10)
+#define EQ(a, b)    (abs((a)-(b)) < EPS)
+
+using LL  = long long;
+
+int di[] = {0, -1, 0, 1};
+int dj[] = {1, 0, -1, 0};
+// }}}
 // 2d geometry {{{
 #define EPS         (1e-10)
 #define EQ(a, b)    (abs((a)-(b)) < EPS)
@@ -105,17 +121,6 @@ double distSP(P a, P b, P p) {
     return distLP(a, b, p);
 }
 
-// 直線と線分の距離
-// あやしい
-double distLS(P l1, P l2, P s1, P s2){
-    P p = intersectionLL(l1, l2, s1, s2);
-    if(ccw(s1, s2, p) == 0){
-        return 0.0;
-    }else{
-        return min(distLP(l1, l2, s1), distLP(l1, l2, s2));
-    }
-}
-
 // 線分と線分の距離
 // verified AOJ CGL_2_D
 double distSS(P a1, P a2, P b1, P b2) {
@@ -190,53 +195,6 @@ PL convexHull(PL pl){
     ch.resize(k-1);
     return ch;
 }
-
-// 凸多角形の直径(最遠頂点対間距離)
-// キャリパー法 O(n)
-// verified AOJ CGL_4_B (理解できてない)
-double diameterOfConvex(PL pl) {
-    int n = pl.size();
-    int is = 0;
-    int js = 0;
-    for(int i=1;i<n;i++){
-        if(pl[i].imag() > pl[is].imag()) is = i;
-        if(pl[i].imag() < pl[js].imag()) js = i;
-    }
-    double maxd = norm(pl[is]-pl[js]);
-
-    int i, maxi, j, maxj;
-    i = maxi = is;
-    j = maxj = js;
-    do{
-        if(cross(pl[(i+1)%n]-pl[i], pl[(j+1)%n]-pl[j]) >= 0){
-            j = (j+1)%n;
-        }else{
-            i = (i+1)%n;
-        }
-        if(norm(pl[i]-pl[j]) > maxd){
-            maxd = norm(pl[i]-pl[j]);
-            maxi = i;
-            maxj = j;
-        }
-    }while(i != is || j != js);
-    return sqrt(maxd);
-}
-
-// ConvexCut
-// 凸多角形を直線p1p2で切断し，その左側にできる凸多角形を求める．
-// verified AOJ CGL_4_B
-PL convexCut(PL pl, P p1, P p2) {
-    int n = pl.size();
-    PL ans;
-    for(int i=0;i<n;i++){
-        if(ccw(p1, p2, pl[i]) != -1) ans.push_back(pl[i]);
-        if(ccw(p1, p2, pl[i])*ccw(p1, p2, pl[(i+1)%n]) == -1){
-            ans.push_back(intersectionLL(p1, p2, pl[i], pl[(i+1)%n]));
-        }
-    }
-    return ans;
-}
-
 
 // 多角形間距離(点，線分も多角形とするのでより一般的な距離)
 // p2の頂点がp1に内包する場合は0
@@ -316,7 +274,7 @@ pair<P, P> tangentCP(P c, double r, P p) {
     double d = abs(p-c);
     double l = sqrt(d*d-r*r);
     P n = (c-p)/abs(c-p);
-    double theta = atan2(r, l);
+    double theta = acos((d*d+l*l-r*r)/(2.0*d*l));
     return {p+l*n*P{cos(theta), sin(theta)}, p+l*n*P{cos(-theta), sin(-theta)}};
 }
 
@@ -357,3 +315,17 @@ vector<P> commonTangentCC(P c1, double r1, P c2, double r2) {
 }
 
 // }}}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    double c1x, c1y, c1r;cin >> c1x >> c1y >> c1r;
+    double c2x, c2y, c2r;cin >> c2x >> c2y >> c2r;
+
+    auto ans = commonTangentCC(P{c1x, c1y}, c1r, P{c2x, c2y}, c2r);
+    sort(ans.begin(), ans.end());
+    for(auto p : ans){
+        printf("%.8f %.8f\n", p.real(), p.imag());
+    }
+
+    return 0;
+}
