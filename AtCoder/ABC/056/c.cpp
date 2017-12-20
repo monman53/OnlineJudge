@@ -1,33 +1,23 @@
 // header {{{
-#include <iostream>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <complex>
-#include <utility>
-#include <string>
-#include <sstream>
-#include <queue>
-#include <map>
-#include <list>
-#include <set>
-#include <stack>
-#include <tuple>
-#include <cstdio>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
 #define ALPHABET    (26)
-#define EPS         (1e-10)
-#define INF         (1000000005LL)
+#define INF         INT_MAX
 #define MOD         (1000000007LL)
-#define EQ(a, b)    (abs((a)-(b)) < EPS)
-// ciling(x/y) = (x+y-1)/y
 
-typedef long long ll;
-typedef unsigned long long ull;
+using LL  = long long;
 // }}}
 
 int main() {
-    ll x;cin >> x;
+    std::ios::sync_with_stdio(false);
+    LL x;cin >> x;
+    for(LL i=1LL;;i++){
+        if(x <= i*(i+1)/2){
+            cout << i << endl;
+            break;
+        }
+    }
+    return 0;
 }

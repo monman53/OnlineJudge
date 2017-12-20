@@ -12,13 +12,15 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
+    int n, m;cin >> n >> m;
+    vector<int> count(n, 0);
+    for(int i=0;i<m;i++){
+        int a, b;cin >> a >> b;a--;b--;
+        count[a]++;
+        count[b]++;
     }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    for(int i=0;i<n;i++){
+        cout << count[i] << endl;
+    }
     return 0;
 }

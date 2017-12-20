@@ -12,13 +12,9 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
-    }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    int x, a, b;cin >> x >> a >> b;
+    char ans = 'A';
+    if(abs(x-b) < abs(x-a)) ans = 'B';
+    cout << ans << endl;
     return 0;
 }

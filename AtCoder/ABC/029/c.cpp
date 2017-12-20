@@ -10,15 +10,22 @@ using namespace std;
 using LL  = long long;
 // }}}
 
+int n;
+
+void dfs(string s){
+    if(int(s.size()) == n){
+        cout << s << endl;
+        return;
+    }
+    dfs(s+"a");
+    dfs(s+"b");
+    dfs(s+"c");
+    return;
+}
+
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
-    }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    cin >> n;
+    dfs("");
     return 0;
 }

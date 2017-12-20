@@ -12,13 +12,12 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
-    }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    char a, b;cin >> a >> b;
+    map<pair<char, char>, char> m;
+    m[{'H', 'H'}] = 'H';
+    m[{'H', 'D'}] = 'D';
+    m[{'D', 'H'}] = 'D';
+    m[{'D', 'D'}] = 'H';
+    cout << m[{a, b}] << endl;
     return 0;
 }

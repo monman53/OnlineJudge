@@ -17,14 +17,17 @@ int dj[] = {1, 0, -1, 0};
 
 int main() {
     std::ios::sync_with_stdio(false);
-    LL q, h, s, d;cin >> q >> h >> s >> d;
-    LL n;cin >> n;
-    LL ans = 0LL;
-    if(q*8LL > d && h*4LL > d && s*2LL > d){
-        ans += n/2LL*d;
-        n %= 2LL;
+    int l, h;cin >> l >> h;
+    int n;cin >> n;
+    for(int i=0;i<n;i++){
+        int a;cin >> a;
+        if(a < l){
+            cout << l-a << endl;
+        }else if(h < a){
+            cout << -1 << endl;
+        }else{
+            cout << 0 << endl;
+        }
     }
-    ans += n*min({q*4LL, h*2LL, s});
-    cout << ans << endl;
     return 0;
 }

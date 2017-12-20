@@ -13,12 +13,21 @@ using LL  = long long;
 int main() {
     std::ios::sync_with_stdio(false);
     string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
+    int n = s.size();
+    int l, r;
+    for(int i=0;i<n;i++){
+        if(s[i] == 'A'){
+            l = i;
+            break;
         }
     }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    for(int i=n-1;i>=0;i--){
+        if(s[i] == 'Z'){
+            r = i;
+            break;
+        }
+    }
+
+    cout << r-l+1 << endl;
     return 0;
 }

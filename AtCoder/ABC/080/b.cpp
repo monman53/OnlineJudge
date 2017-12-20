@@ -10,15 +10,20 @@ using namespace std;
 using LL  = long long;
 // }}}
 
+int sum(int n) {
+    int ret = 0;
+    while(n > 0){
+        ret += n%10;
+        n /= 10;
+    }
+    return ret;
+}
+
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
-    }
-    s[0] = 'A' + s[0] - 'a';
+    int n;cin >> n;
+    string s = "No";
+    if(n%sum(n) == 0) s = "Yes";
     cout << s << endl;
     return 0;
 }

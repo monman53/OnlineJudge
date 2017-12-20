@@ -1,35 +1,22 @@
 // header {{{
-#include <iostream>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <complex>
-#include <utility>
-#include <string>
-#include <sstream>
-#include <queue>
-#include <map>
-#include <list>
-#include <set>
-#include <stack>
-#include <tuple>
-#include <cstdio>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 
+// {U}{INT,LONG,LLONG}_{MAX,MIN}
 #define ALPHABET    (26)
-#define EPS         (1e-10)
-#define INF         (1000000005LL)
+#define INF         INT_MAX
 #define MOD         (1000000007LL)
-#define EQ(a, b)    (abs((a)-(b)) < EPS)
-// ciling(x/y) = (x+y-1)/y
 
-typedef long long ll;
-typedef unsigned long long ull;
+using LL  = long long;
 // }}}
 
 int main() {
-    double n, m;
-
+    std::ios::sync_with_stdio(false);
+    int n, m;cin >> n >> m;
+    n %= 12;
+    double dn = 360*n/12.0+30*m/60.0;
+    double dm = 360*m/60.0;
+    double dd = abs(dm-dn);
+    printf("%.5f\n", min(dd, 360-dd));
     return 0;
 }

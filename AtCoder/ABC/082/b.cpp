@@ -12,13 +12,10 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
-    }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    string s, t;cin >> s >> t;
+    sort(s.begin(), s.end());
+    sort(t.begin(), t.end());
+    reverse(t.begin(), t.end());
+    cout << (s < t ? "Yes" : "No") << endl;
     return 0;
 }

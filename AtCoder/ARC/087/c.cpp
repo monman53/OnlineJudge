@@ -17,14 +17,24 @@ int dj[] = {1, 0, -1, 0};
 
 int main() {
     std::ios::sync_with_stdio(false);
-    LL q, h, s, d;cin >> q >> h >> s >> d;
-    LL n;cin >> n;
-    LL ans = 0LL;
-    if(q*8LL > d && h*4LL > d && s*2LL > d){
-        ans += n/2LL*d;
-        n %= 2LL;
+    int n;cin >> n;
+    vector<int> b(n);
+    for(int i=0;i<n;i++) cin >> b[i];
+    map<int, int> m;
+    for(int i=0;i<n;i++){
+        m[b[i]]++;
     }
-    ans += n*min({q*4LL, h*2LL, s});
+    int ans = 0;
+    for(auto kv : m){
+        int x = kv.first;
+        int nx = kv.second;
+        if(x > nx){
+            ans += nx;
+        }
+        if(x < nx){
+            ans += nx-x;
+        }
+    }
     cout << ans << endl;
     return 0;
 }

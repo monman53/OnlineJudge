@@ -13,12 +13,12 @@ using LL  = long long;
 int main() {
     std::ios::sync_with_stdio(false);
     string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
+    string t = "CODEFESTIVAL2016";
+    int ans = 0;
+    int n = s.size();
+    for(int i=0;i<n;i++){
+        if(t[i] != s[i]) ans++;
     }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    cout << ans << endl;
     return 0;
 }

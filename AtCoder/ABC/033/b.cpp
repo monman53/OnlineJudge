@@ -12,13 +12,20 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
+    int n;cin >> n;
+    vector<string> s(n);
+    vector<int> p(n);
+    int sum = 0;
+    for(int i=0;i<n;i++){
+        cin >> s[i] >> p[i];
+        sum += p[i];
     }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+
+    string ans = "atcoder";
+    for(int i=0;i<n;i++){
+        if(p[i] > sum/2) ans = s[i];
+    }
+
+    cout << ans << endl;
     return 0;
 }

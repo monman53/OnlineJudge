@@ -12,13 +12,18 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
+    char c;cin >> c;
+    switch(c){
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
+            cout << "vowel" << endl;
+            break;
+        default:
+            cout << "consonant" << endl;
+            break;
     }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
     return 0;
 }

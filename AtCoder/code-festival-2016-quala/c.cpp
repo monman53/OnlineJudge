@@ -13,12 +13,17 @@ using LL  = long long;
 int main() {
     std::ios::sync_with_stdio(false);
     string s;cin >> s;
+    int n = s.size();
+    int k;cin >> k;
     for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
+        int m = 'z'-c+1;
+        if(c == 'a') continue;
+        if(m <= k){
+            c = 'a';
+            k -= m;
         }
     }
-    s[0] = 'A' + s[0] - 'a';
+    s[n-1] = 'a' + (s[n-1]-'a'+k)%26;
     cout << s << endl;
     return 0;
 }

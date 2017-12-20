@@ -12,13 +12,16 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
+    int n, k;cin >> n >> k;
+    vector<int> l(n);
+    for(int i=0;i<n;i++) cin >> l[i];
+    sort(l.begin(), l.end());
+    reverse(l.begin(), l.end());
+
+    int ans = 0;
+    for(int i=0;i<k;i++){
+        ans += l[i];
     }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    cout << ans << endl;
     return 0;
 }

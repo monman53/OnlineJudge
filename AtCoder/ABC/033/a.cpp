@@ -13,12 +13,10 @@ using LL  = long long;
 int main() {
     std::ios::sync_with_stdio(false);
     string s;cin >> s;
-    for(auto &c : s){
-        if(c < 'a' || 'z' < c){
-            c = 'a' + c - 'A';
-        }
-    }
-    s[0] = 'A' + s[0] - 'a';
-    cout << s << endl;
+    string ans = "SAME";
+    if(s[0] != s[1]) ans = "DIFFERENT";
+    if(s[1] != s[2]) ans = "DIFFERENT";
+    if(s[2] != s[3]) ans = "DIFFERENT";
+    cout << ans << endl;
     return 0;
 }
