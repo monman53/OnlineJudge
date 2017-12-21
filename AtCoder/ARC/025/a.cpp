@@ -12,13 +12,13 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int a, b, c;cin >> a >> b >> c;
-    for(int i=1;i<=b;i++){
-        if(a*i%b == c){
-            cout << "YES" << endl;
-            return 0;
-        }
+    vector<int> d(7), j(7);
+    for(int i=0;i<7;i++) cin >> d[i];
+    for(int i=0;i<7;i++) cin >> j[i];
+    int ans = 0;
+    for(int i=0;i<7;i++){
+        ans += max(d[i], j[i]);
     }
-    cout << "NO" << endl;
+    cout << ans << endl;
     return 0;
 }

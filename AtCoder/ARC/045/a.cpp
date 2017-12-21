@@ -10,15 +10,19 @@ using namespace std;
 using LL  = long long;
 // }}}
 
+string f(string s){
+    if(s == "Left") return "<";
+    if(s == "Right") return ">";
+    return "A";
+}
+
 int main() {
     std::ios::sync_with_stdio(false);
-    int a, b, c;cin >> a >> b >> c;
-    for(int i=1;i<=b;i++){
-        if(a*i%b == c){
-            cout << "YES" << endl;
-            return 0;
-        }
+    string s;cin >> s;
+    cout << f(s);
+    while(cin >> s){
+        cout << " " << f(s);
     }
-    cout << "NO" << endl;
+    cout << endl;
     return 0;
 }

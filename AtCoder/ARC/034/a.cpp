@@ -12,13 +12,13 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int a, b, c;cin >> a >> b >> c;
-    for(int i=1;i<=b;i++){
-        if(a*i%b == c){
-            cout << "YES" << endl;
-            return 0;
-        }
+    double ans = 0.0;
+    int n;cin >> n;
+    for(int i=0;i<n;i++){
+        double a, b, c, d, e;
+        cin >> a >> b >> c >> d >> e;
+        ans = max(ans, a+b+c+d+e*110/900);
     }
-    cout << "NO" << endl;
+    printf("%.5f\n", ans);
     return 0;
 }

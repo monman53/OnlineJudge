@@ -12,13 +12,12 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int a, b, c;cin >> a >> b >> c;
-    for(int i=1;i<=b;i++){
-        if(a*i%b == c){
-            cout << "YES" << endl;
-            return 0;
-        }
+    int n;cin >> n;
+    int ans = 0;
+    for(int i=0;i<n;i++){
+        int a, b;cin >> a >> b;
+        ans += a*b;
     }
-    cout << "NO" << endl;
+    cout << int(ans*1.05) << endl;
     return 0;
 }

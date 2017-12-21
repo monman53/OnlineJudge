@@ -10,15 +10,12 @@ using namespace std;
 using LL  = long long;
 // }}}
 
+int f(int n) {
+    return (n*n+4)/8;
+}
+
 int main() {
     std::ios::sync_with_stdio(false);
-    int a, b, c;cin >> a >> b >> c;
-    for(int i=1;i<=b;i++){
-        if(a*i%b == c){
-            cout << "YES" << endl;
-            return 0;
-        }
-    }
-    cout << "NO" << endl;
+    cout << f(f(f(20))) << endl;
     return 0;
 }

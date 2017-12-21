@@ -12,13 +12,21 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int a, b, c;cin >> a >> b >> c;
-    for(int i=1;i<=b;i++){
-        if(a*i%b == c){
-            cout << "YES" << endl;
-            return 0;
-        }
+    map<char, char> m;
+    m['O'] = '0';
+    m['D'] = '0';
+    m['I'] = '1';
+    m['Z'] = '2';
+    m['S'] = '5';
+    m['B'] = '8';
+    for(int i=0;i<10;i++){
+        m['0'+i] = '0'+i;
     }
-    cout << "NO" << endl;
+
+    string s;cin >> s;
+    for(auto &c : s){
+        c = m[c];
+    }
+    cout << s << endl;
     return 0;
 }

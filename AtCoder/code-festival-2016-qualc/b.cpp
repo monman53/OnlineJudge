@@ -12,13 +12,15 @@ using LL  = long long;
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int a, b, c;cin >> a >> b >> c;
-    for(int i=1;i<=b;i++){
-        if(a*i%b == c){
-            cout << "YES" << endl;
-            return 0;
-        }
+    int k, t;cin >> k >> t;
+    vector<int> a(t);
+    int ssum = 0;
+    int mmax = 0;
+    for(int i=0;i<t;i++){
+        cin >> a[i];
+        mmax = max(mmax, a[i]);
+        ssum += a[i];
     }
-    cout << "NO" << endl;
+    cout << max(0, mmax-(ssum-mmax)-1) << endl;
     return 0;
 }
