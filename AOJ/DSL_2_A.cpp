@@ -8,6 +8,7 @@ using namespace std;
 
 using LL  = long long;
 // }}}
+
 // Segment tree {{{
 // O(N) 構築
 // O(log(N)) update, query
@@ -52,19 +53,12 @@ struct SGT {
 int main() {
     std::ios::sync_with_stdio(false);
     int n, q;cin >> n >> q;
-    vector<int> a(n, 0);
-    SGT<int> sgt(a, 0, [](int a, int b){return a+b;});
+    vector<int> a(n, INT_MAX);
+    SGT<int> sgt(a, INT_MAX, [](int a, int b){return min(a, b);});
     for(int i=0;i<q;i++){
         int c, x, y;cin >> c >> x >> y;
-        if(c == 0){
-            x--;
-            int aa = sgt.query(x, x+1);
-            sgt.update(x, aa+y);
-        }else{
-            x--;
-            y--;
-            cout << sgt.query(x, y+1) << endl;
-        }
+        if(c == 0) sgt.update(x, y);
+        if(c == 1) cout << sgt.query(x, y+1) << endl;
     }
     return 0;
 }

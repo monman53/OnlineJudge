@@ -23,10 +23,12 @@ using ULL = unsigned long long;
 
 int main() {
     int n;cin >> n;
-    vector<int> a(n);
-    for(auto &aa : a) cin >> aa;
-    // for(int i=0;i<n;i++){
-    // }
-    // cout << 
+    string s;
+    for(int i=0;i<n;i++){
+        string a;cin >> a;
+        s = s+a;
+        s = to_string(stoll(s)%MOD);
+    }
+    cout << s << endl;
     return 0;
 }

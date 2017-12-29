@@ -1,4 +1,4 @@
-// number {{{
+// math {{{
 #define SIZE 200010
 
 // べき乗
@@ -92,6 +92,30 @@ vector<pair<int, int>> factor(int n) {
         ret.push_back({n, 1});
     }
     return ret;
+}
+
+// うるう年判定
+// ARC002B
+bool isUruu(int y) {
+    return (y%4 == 0 && y%100 != 0) || y%400 == 0;
+}
+
+// 西暦y年のm月は何日あるか
+// ARC002B
+int month(int y, int m) {
+    if(m ==  1) return 31;
+    if(m ==  2) return 28 + (isUruu(y) ? 1 : 0);
+    if(m ==  3) return 31;
+    if(m ==  4) return 30;
+    if(m ==  5) return 31;
+    if(m ==  6) return 30;
+    if(m ==  7) return 31;
+    if(m ==  8) return 31;
+    if(m ==  9) return 30;
+    if(m == 10) return 31;
+    if(m == 11) return 30;
+    if(m == 12) return 31;
+    return 0;
 }
 //}}}
 // !!!(未検証) 連立一次方程式 (Gauss-Jordanの消去法) {{{

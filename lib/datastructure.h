@@ -1,6 +1,7 @@
 // data structure {{{
 
 // Union-Find {{{
+// O(a(n))
 // verified AOJ DSL_1_A
 struct UF {
     vector<int> p;  // parent
@@ -89,41 +90,46 @@ struct MST {
     }
 };// }}}
 // Segment tree {{{
-// verified AOJ DSL_2_{A,B}
+// O(N) 構築
+// O(log(N)) update, query
+// verified AOJ DSL_2_A
 template <typename T>
 struct SGT {
-    vector<T> dat;
+    vector<T> v;
     int n;
     T init;
-    SGT(int n, T init) {
-        this->n     = n;
-        this->init  = init;
-        dat = vector<T>(4*n, init);
+    function<T(T, T)> f;
+    SGT(vector<T> a, T init, function<T(T, T)> f){
+        int m = a.size();
+        n = 1;
+        while(n < m) n <<= 1;
+        this->init = init;
+        this->f = f;
+        v.resize(2*n-1, init);
+        for(int i=0;i<m;i++) v[n-1+i] = a[i];
+        for(int i=n-2;i>=0;i--) v[i] = min(v[i*2+1], v[i*2+2]);
     }
-    T update(int i, T x, int k, int l, int r) {
-        if(i < l || r <= i) return dat[k];
-        if(l+1 == r) return dat[k] += x;
-        T vl = update(i, x, k*2+1, l, (l+r)/2);
-        T vr = update(i, x, k*2+2, (l+r)/2, r);
-        return dat[k] = vl + vr;
+    void update(int i, T x) {
+        i += n-1;
+        v[i] = x;
+        while(i>0){
+            i = (i-1)/2;
+            v[i] = f(v[i*2+1], v[i*2+2]);
+        }
     }
-    // [a, b)の所望の値．[l, r)はノードkに対応する区間．
     T query(int a, int b, int k, int l, int r) {
         if(r <= a || b <= l) return init;
-        if(a <= l && r <= b) return dat[k];
-
+        if(a <= l && r <= b) return v[k];
         T vl = query(a, b, k*2+1, l, (l+r)/2);
         T vr = query(a, b, k*2+2, (l+r)/2, r);
-        return vl + vr;
-    }
-    // interfaces
-    T update(int i, T x) {
-        update(i, x, 0, 0, n);
+        return f(vl, vr);
     }
     T query(int a, int b) {
         return query(a, b, 0, 0, n);
     }
-};//}}}
+};
+// }}}
+
 // Segment tree (2D) {{{
 // AOJ 1068
 template<class T>
@@ -181,4 +187,41 @@ struct SGT2 {
         return query(si, sj, ti, tj, 0, 0, 0, h, w);
     }
 };//}}}
+// Binary Indexed Tree // {{{
+struct BIT {
+    vector<int> bit;
+    int n;
+    BIT(int n) {
+        bit.resize(n+1, 0);
+        this->n = n;
+    }
+    int sum(int i) {
+        int s = 0;
+        while(i > 0){
+            s += bit[i];
+            // i & -i はiの最後の1のビット
+            i -= i & -i;
+        }
+        return s;
+    }
+    void add(int i, int x) {
+        while(i <= n){
+            bit[i] += x;
+            i += i & -i;
+        }
+    }
+};
+
+// 順列の転倒数 (1-indexed)
+LL inv(vector<int> a) {
+    int n = a.size();
+    BIT bit(n);
+    LL ans = 0;
+    for(int j=0;j<n;j++){
+        ans += j - bit.sum(a[j]);
+        bit.add(a[j], 1);
+    }
+    return ans;
+}
+// }}}
 //}}}

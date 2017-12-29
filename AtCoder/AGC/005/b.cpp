@@ -8,10 +8,7 @@ using namespace std;
 
 using LL  = long long;
 // }}}
-// Segment tree {{{
-// O(N) 構築
-// O(log(N)) update, query
-// verified AOJ DSL_2_A
+
 template <typename T>
 struct SGT {
     vector<T> v;
@@ -19,22 +16,17 @@ struct SGT {
     T init;
     function<T(T, T)> f;
     SGT(vector<T> a, T init, function<T(T, T)> f){
-        int m = a.size();
-        n = 1;
-        while(n < m) n <<= 1;
+        for(n=1;n<a.size();) n *= 2;
         this->init = init;
         this->f = f;
         v.resize(2*n-1, init);
-        for(int i=0;i<m;i++) v[n-1+i] = a[i];
-        for(int i=n-2;i>=0;i--) v[i] = min(v[i*2+1], v[i*2+2]);
     }
-    void update(int i, T x) {
-        i += n-1;
-        v[i] = x;
-        while(i>0){
-            i = (i-1)/2;
-            v[i] = f(v[i*2+1], v[i*2+2]);
-        }
+    T update(int i, T x, int k, int l, int r) {
+        if(i < l || r <= i) return v[k];
+        if(l+1 == r) return v[k] = x;
+        T vl = update(i, x, k*2+1, l, (l+r)/2);
+        T vr = update(i, x, k+2+2, (l+r)/2, r);
+        return v[k] = f(vl, vr);
     }
     T query(int a, int b, int k, int l, int r) {
         if(r <= a || b <= l) return init;
@@ -43,28 +35,18 @@ struct SGT {
         T vr = query(a, b, k*2+2, (l+r)/2, r);
         return f(vl, vr);
     }
+    T update(int i, T x) {
+        return update(i, x, 0, 0, n);
+    }
     T query(int a, int b) {
         return query(a, b, 0, 0, n);
     }
 };
-// }}}
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int n, q;cin >> n >> q;
-    vector<int> a(n, 0);
-    SGT<int> sgt(a, 0, [](int a, int b){return a+b;});
-    for(int i=0;i<q;i++){
-        int c, x, y;cin >> c >> x >> y;
-        if(c == 0){
-            x--;
-            int aa = sgt.query(x, x+1);
-            sgt.update(x, aa+y);
-        }else{
-            x--;
-            y--;
-            cout << sgt.query(x, y+1) << endl;
-        }
-    }
+    int n;cin >> n;
+    vector<int> a(n);
+    for(int i=0;i<n;i++) cin >> a[i];
     return 0;
 }
