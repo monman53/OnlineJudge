@@ -129,7 +129,6 @@ struct SGT {
     }
 };
 // }}}
-
 // Segment tree (2D) {{{
 // AOJ 1068
 template<class T>
