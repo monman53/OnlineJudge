@@ -74,9 +74,10 @@ void initIsPrime() {
 
 // 素因数分解
 // verified AOJ NTL_1_A
-vector<pair<int, int>> factor(int n) {
-    vector<pair<int, int>> ret;
-    for(int i=2;i*i<=n;i++){
+// ARC026B
+vector<pair<long long, int>> factor(long long n) {
+    vector<pair<long long, int>> ret;
+    for(long long i=2;i*i<=n;i++){
         if(isPrime[i]){
             int count = 0;
             while(n%i == 0){

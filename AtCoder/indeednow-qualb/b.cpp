@@ -18,5 +18,23 @@ int dj[] = {1, 0, -1, 0};
 
 int main() {
     std::ios::sync_with_stdio(false);
+    string s, t;cin >> s >> t;
+    if(s.size() != t.size()){
+        cout << -1 << endl;
+        return 0;
+    }
+    int n = s.size();
+    string ss = s+s;
+    dec(i, 1, n+1){
+        bool flag = true;
+        inc(j, 0, n){
+            if(ss[i+j] != t[j]) flag = false;
+        }
+        if(flag){
+            cout << n-i << endl;
+            return 0;
+        }
+    }
+    cout << -1 << endl;
     return 0;
 }

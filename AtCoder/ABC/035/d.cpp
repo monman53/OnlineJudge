@@ -5,8 +5,15 @@ using namespace std;
 // {U}{INT,LONG,LLONG}_{MAX,MIN}
 #define INF         INT_MAX/3
 #define MOD         (1000000007LL)
+#define inc(i, l, r)   for(long long i=(l);i<(r);i++)
+#define dec(i, l, r)   for(long long i=(r)-1;i>=(r);i--)
+#define se          second
+#define fi          first
 
 using LL  = long long;
+
+int di[] = {0, -1, 0, 1};
+int dj[] = {1, 0, -1, 0};
 // }}}
 
 struct E {
@@ -18,7 +25,7 @@ using G = vector<vector<E>>;
 template <typename T>
 pair<vector<T>, vector<int>> dijkstra(G g, int s, T inf) {
     int n = g.size();
-    vector<T> d(n, INF);
+    vector<T> d(n, inf);
     vector<int> r(n, -1);
     d[s] = 0;
     using P = pair<T, int>;
@@ -40,21 +47,23 @@ pair<vector<T>, vector<int>> dijkstra(G g, int s, T inf) {
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int n, m;cin >> n >> m;
-    G g(n+m);
-    for(int i=0;i<n;i++){
-        int k;cin >> k;
-        for(int j=0;j<k;j++){
-            int l;cin >> l;l--;
-            g[i].push_back({n+l, 1});
-            g[n+l].push_back({i, 1});
-        }
+    int n, m, t;cin >> n >> m >> t;
+    vector<int> a(n);
+    inc(i, 0, n) cin >> a[i];
+    G g(n), r(n);
+    inc(i, 0, m){
+        int a, b, c;cin >> a >> b >> c;
+        a--;b--;
+        g[a].push_back({b, c});
+        r[b].push_back({a, c});
     }
-    auto p = dijkstra(g, 0, INF);
-    string ans = "YES";
-    for(int i=0;i<n;i++){
-        int d = p.first[i];
-        if(d == INF) ans = "NO";
+    auto dg = dijkstra<LL>(g, 0, LLONG_MAX/3).fi;
+    auto dr = dijkstra<LL>(r, 0, LLONG_MAX/3).fi;
+    LL ans = 0;
+    inc(i, 0, n){
+        LL d = t-dg[i]-dr[i];
+        if(d < 0) continue;
+        ans = max(ans, d*a[i]);
     }
     cout << ans << endl;
     return 0;
