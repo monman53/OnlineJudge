@@ -1,32 +1,48 @@
 // header {{{
-// #define NDEBUG
 #include <bits/stdc++.h>
 using namespace std;
 
 // {U}{INT,LONG,LLONG}_{MAX,MIN}
-#define ALPHABET    (26)
-#define INF         INT_MAX
+#define INF         INT_MAX/3
+#define LLINF       LLONG_MAX/3
 #define MOD         (1000000007LL)
-#define EPS         (1e-10)
-#define EQ(a, b)        (abs((a)-(b)) < EPS)
-#define CILING(a, b)    (((a)+(b)-1LL)/(b))
+#define MODA(a, b)  a=((a)+(b))%MOD
+#define MODP(a, b)  a=((a)*(b))%MOD
+#define inc(i, l, r)   for(int i=(l);i<(r);i++)
+#define dec(i, l, r)   for(int i=(r)-1;i>=(l);i--)
+#define pb          push_back
+#define se          second
+#define fi          first
+#define mset(a, b)  memset(a, b, sizeof(a))
 
-template<class T>
-using PIT = pair<int, T>;
-template<class T>
-using PTI = pair<T, int>;
-using PII = pair<int, int>;
-using PDI = pair<double, int>;
 using LL  = long long;
-using ULL = unsigned long long;
+using G   = vector<vector<int>>;
+
+int di[] = {0, -1, 0, 1};
+int dj[] = {1, 0, -1, 0};
 // }}}
 
 int main() {
-    LL n;cin >> n;
-    vector<LL> a(n);
-    for(auto &aa : a) cin >> aa;
-    sort(a.begin(), a.end());
-    reverse(a.begin(), a.end());
+    cin.tie(0);ios::sync_with_stdio(false);
+    int n;cin >> n;
+    LL a[50];
+    inc(i, 0, n) cin >> a[i];
 
+    LL ans = 0;
+    while(true){
+        bool flag = true;
+        LL s = 0;
+        inc(i, 0, n){
+            if(a[i] >= n) flag = false;
+            s += a[i]/n;
+        }
+        if(flag) break;
+
+        inc(i, 0, n){
+            ans += a[i]/n;
+            a[i] = a[i]%n + s - a[i]/n;
+        }
+    }
+    printf("%lld", ans);
     return 0;
 }

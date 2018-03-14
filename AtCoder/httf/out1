@@ -1,0 +1,1000 @@
+road 3 44 3 45
+road 3 47 3 48
+road 1 46 2 46
+road 4 46 5 46
+plant 2 44
+work
+plant 4 47
+work
+plant 4 48
+work
+plant 5 47
+work
+plant 5 47
+work
+plant 3 45
+work
+plant 1 47
+work
+plant 4 46
+work
+plant 1 46
+work
+plant 3 45
+work
+plant 4 48
+work
+plant 2 46
+work
+plant 5 47
+work
+harvest 1 44 5 48
+work
+plant 4 46
+work
+plant 4 48
+work
+plant 1 44
+work
+plant 2 47
+work
+plant 5 45
+work
+plant 4 44
+work
+plant 4 44
+work
+plant 3 44
+work
+plant 3 47
+work
+plant 3 44
+work
+plant 3 46
+work
+plant 2 48
+work
+plant 4 46
+work
+plant 2 47
+work
+harvest 1 44 5 48
+work
+plant 1 44
+work
+plant 5 45
+work
+plant 4 45
+work
+plant 2 48
+work
+plant 2 44
+work
+plant 5 44
+work
+plant 5 45
+work
+plant 2 46
+work
+plant 5 45
+work
+plant 4 46
+work
+plant 2 44
+work
+plant 3 46
+work
+plant 4 45
+work
+plant 4 46
+work
+harvest 1 44 5 48
+work
+plant 3 45
+work
+plant 4 46
+work
+plant 3 46
+work
+plant 1 46
+work
+plant 1 45
+work
+plant 2 48
+work
+plant 2 46
+work
+plant 2 46
+work
+plant 5 46
+work
+plant 5 46
+work
+plant 5 44
+work
+plant 4 45
+work
+plant 2 44
+work
+plant 4 48
+work
+harvest 1 44 5 48
+work
+plant 5 48
+work
+plant 1 48
+work
+plant 5 45
+work
+plant 1 46
+work
+plant 4 46
+work
+plant 1 44
+work
+plant 5 45
+work
+plant 4 47
+work
+plant 3 47
+work
+plant 5 48
+work
+plant 3 45
+work
+plant 5 46
+work
+plant 2 46
+work
+plant 4 47
+work
+harvest 1 44 5 48
+work
+plant 1 46
+work
+plant 1 46
+work
+plant 1 44
+work
+plant 1 44
+work
+plant 1 48
+work
+plant 5 48
+work
+plant 2 48
+work
+plant 2 44
+work
+plant 3 46
+work
+plant 1 45
+work
+plant 3 46
+work
+plant 5 47
+work
+plant 1 44
+work
+plant 4 48
+work
+harvest 1 44 5 48
+work
+plant 3 45
+work
+plant 3 44
+work
+plant 2 45
+work
+plant 3 46
+work
+plant 3 45
+work
+plant 1 45
+work
+plant 3 48
+work
+plant 5 48
+work
+plant 4 45
+work
+destroy 8 46 8 46
+warpgate 8 46
+destroy 8 44 8 45
+road 8 44 8 45
+destroy 8 47 8 48
+road 8 47 8 48
+destroy 6 46 7 46
+road 6 46 7 46
+destroy 9 46 10 46
+road 9 46 10 46
+destroy 6 44 7 45
+destroy 9 44 10 45
+destroy 6 47 7 48
+destroy 9 48 10 48
+plant 8 47
+work
+plant 2 48
+plant 8 47
+work
+plant 3 48
+plant 8 45
+work
+plant 3 44
+plant 6 46
+work
+plant 3 48
+plant 8 48
+work
+plant 5 46
+plant 9 46
+work
+plant 2 47
+plant 8 46
+work
+plant 2 45
+plant 8 46
+work
+plant 3 44
+plant 9 44
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+work
+plant 4 44
+plant 7 44
+work
+plant 5 44
+plant 7 48
+work
+plant 3 46
+plant 8 44
+work
+plant 4 48
+plant 7 46
+work
+plant 1 44
+plant 8 46
+work
+plant 4 45
+plant 6 48
+work
+plant 5 47
+plant 9 44
+work
+plant 5 44
+plant 10 47
+work
+plant 2 44
+plant 6 45
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+work
+plant 2 45
+plant 7 48
+work
+plant 2 45
+plant 10 45
+work
+plant 2 45
+plant 8 48
+work
+plant 1 48
+plant 7 47
+work
+plant 5 45
+plant 6 48
+work
+plant 1 48
+plant 9 47
+work
+plant 3 46
+plant 9 46
+work
+plant 4 46
+plant 6 45
+work
+plant 5 44
+plant 10 47
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+work
+plant 1 44
+plant 7 46
+work
+plant 3 44
+plant 10 45
+work
+plant 1 48
+plant 6 46
+work
+plant 4 48
+plant 8 45
+work
+plant 1 47
+plant 10 44
+work
+plant 2 47
+plant 10 48
+work
+plant 5 45
+plant 10 48
+work
+plant 4 46
+plant 6 48
+work
+plant 4 46
+plant 6 48
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+work
+plant 3 44
+plant 6 44
+work
+plant 4 44
+plant 9 48
+work
+plant 1 44
+plant 9 48
+work
+plant 2 45
+plant 9 46
+work
+plant 5 46
+plant 10 47
+work
+plant 5 48
+plant 10 46
+work
+plant 1 46
+plant 9 48
+work
+plant 2 45
+plant 8 44
+work
+plant 3 46
+plant 8 47
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+work
+plant 5 45
+plant 9 47
+work
+plant 3 46
+plant 9 44
+work
+plant 5 44
+plant 8 44
+work
+plant 4 48
+plant 6 48
+work
+plant 5 46
+plant 9 48
+work
+plant 2 44
+plant 8 45
+work
+plant 1 44
+plant 9 45
+work
+plant 2 48
+plant 7 44
+work
+plant 2 44
+plant 10 47
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+work
+plant 5 46
+plant 8 46
+work
+plant 3 44
+plant 9 44
+work
+plant 3 48
+destroy 13 46 13 46
+warpgate 13 46
+destroy 11 45 15 45
+road 11 45 15 45
+destroy 11 47 15 47
+road 11 47 15 47
+destroy 11 46 15 46
+destroy 11 44 15 44
+destroy 11 48 15 48
+plant 1 46
+plant 8 44
+plant 11 44
+work
+plant 2 44
+plant 7 45
+plant 13 44
+work
+plant 4 48
+plant 7 48
+plant 12 48
+work
+plant 2 45
+plant 9 45
+plant 12 48
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+work
+plant 1 48
+plant 7 47
+plant 11 47
+work
+plant 1 46
+plant 6 45
+plant 12 45
+work
+plant 3 45
+plant 9 45
+plant 13 44
+work
+plant 2 46
+plant 6 47
+plant 12 46
+work
+plant 2 46
+plant 7 48
+plant 15 48
+work
+plant 3 46
+plant 10 46
+plant 14 47
+work
+plant 1 46
+plant 7 44
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+plant 8 47
+plant 15 44
+work
+plant 1 45
+plant 8 46
+plant 14 45
+work
+plant 3 44
+plant 8 47
+plant 15 47
+work
+plant 5 44
+plant 8 47
+plant 15 48
+work
+plant 5 45
+plant 10 47
+plant 15 45
+work
+plant 1 45
+plant 7 44
+plant 14 44
+work
+plant 2 47
+plant 10 48
+plant 14 47
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+work
+plant 3 45
+plant 6 45
+plant 11 45
+work
+plant 3 47
+plant 6 45
+plant 15 46
+work
+plant 4 48
+plant 6 47
+plant 13 46
+work
+plant 4 45
+plant 6 47
+plant 15 46
+work
+plant 3 46
+plant 6 44
+plant 12 46
+work
+plant 4 45
+plant 10 44
+plant 15 47
+work
+plant 4 48
+plant 10 48
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+plant 8 48
+plant 15 47
+work
+plant 4 45
+plant 9 46
+plant 15 44
+work
+plant 2 46
+plant 7 48
+plant 13 45
+work
+plant 2 45
+plant 9 44
+plant 11 48
+work
+plant 3 48
+plant 8 44
+plant 12 47
+work
+plant 5 47
+plant 6 44
+plant 11 44
+work
+plant 1 48
+plant 9 44
+plant 13 46
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+work
+plant 4 47
+plant 10 47
+plant 14 48
+work
+plant 3 45
+plant 10 45
+plant 11 46
+work
+plant 3 45
+plant 8 44
+plant 15 48
+work
+plant 1 44
+plant 10 46
+plant 12 45
+work
+plant 5 48
+plant 8 44
+plant 11 47
+work
+plant 2 48
+plant 8 46
+plant 12 46
+work
+plant 3 44
+plant 7 44
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+plant 7 46
+plant 14 48
+work
+plant 4 44
+plant 8 48
+plant 14 48
+work
+plant 5 48
+plant 8 44
+plant 15 48
+work
+plant 2 46
+plant 10 48
+plant 12 46
+work
+plant 5 45
+plant 6 44
+plant 12 48
+work
+plant 2 45
+plant 10 45
+plant 14 48
+work
+plant 1 44
+plant 7 47
+plant 12 48
+work
+destroy 18 46 18 46
+warpgate 18 46
+destroy 16 45 20 45
+road 16 45 20 45
+destroy 16 47 20 47
+road 16 47 20 47
+destroy 16 46 20 46
+destroy 16 44 20 44
+destroy 16 48 20 48
+work
+plant 3 48
+plant 7 45
+plant 14 44
+plant 18 47
+work
+plant 2 44
+plant 6 46
+plant 12 48
+plant 18 48
+work
+plant 3 46
+plant 6 47
+plant 15 48
+plant 20 46
+work
+plant 2 46
+plant 10 47
+plant 11 46
+plant 20 45
+work
+plant 3 46
+plant 6 44
+plant 15 48
+plant 20 48
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+work
+plant 2 48
+plant 10 48
+plant 13 45
+plant 17 44
+work
+plant 5 45
+plant 7 44
+plant 13 48
+plant 19 47
+work
+plant 4 44
+plant 8 44
+plant 13 48
+plant 19 45
+work
+plant 5 44
+plant 6 44
+plant 14 48
+plant 19 46
+work
+plant 3 44
+plant 7 46
+plant 11 46
+plant 19 45
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+work
+plant 1 47
+plant 10 44
+plant 15 45
+plant 19 46
+work
+plant 2 47
+plant 9 46
+plant 11 46
+plant 17 46
+work
+plant 1 44
+plant 10 44
+plant 15 44
+plant 18 46
+work
+plant 4 46
+plant 9 45
+plant 14 44
+plant 19 48
+work
+plant 5 44
+plant 9 45
+plant 11 44
+plant 20 44
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+work
+plant 3 46
+plant 6 47
+plant 11 46
+plant 16 48
+work
+plant 1 45
+plant 6 46
+plant 14 44
+plant 19 45
+work
+plant 2 46
+plant 9 44
+plant 13 45
+plant 19 44
+work
+plant 2 46
+plant 8 44
+plant 13 44
+plant 19 47
+work
+plant 3 47
+plant 9 48
+plant 15 46
+plant 16 46
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+work
+plant 2 46
+plant 9 47
+plant 15 47
+plant 17 45
+work
+plant 1 47
+plant 6 44
+plant 14 45
+plant 17 46
+work
+plant 4 44
+plant 6 45
+plant 15 45
+plant 19 46
+work
+plant 4 45
+plant 7 48
+plant 14 45
+plant 18 48
+work
+plant 5 45
+plant 9 47
+plant 14 44
+plant 18 45
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+work
+plant 1 48
+plant 7 44
+plant 14 48
+plant 16 48
+work
+plant 5 48
+plant 9 45
+plant 12 46
+plant 20 45
+work
+plant 4 48
+plant 8 45
+plant 14 46
+plant 17 46
+work
+plant 1 46
+plant 10 48
+plant 13 48
+plant 18 45
+work
+plant 2 48
+plant 10 46
+plant 14 48
+plant 18 44
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+work
+plant 5 44
+plant 9 46
+plant 14 48
+plant 17 46
+work
+plant 4 47
+plant 10 46
+plant 11 48
+plant 19 44
+work
+plant 4 45
+plant 9 46
+plant 12 44
+plant 18 47
+work
+destroy 23 46 23 46
+warpgate 23 46
+destroy 21 45 25 45
+road 21 45 25 45
+destroy 21 47 25 47
+road 21 47 25 47
+destroy 21 46 25 46
+destroy 21 44 25 44
+destroy 21 48 25 48
+plant 1 47
+plant 7 46
+plant 14 48
+plant 16 47
+plant 21 47
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+harvest 21 44 25 48
+work
+plant 3 48
+plant 10 45
+plant 15 45
+plant 16 45
+plant 23 45
+work
+plant 5 48
+plant 10 48
+plant 11 47
+plant 19 45
+plant 21 44
+work
+plant 5 47
+plant 6 45
+plant 15 44
+plant 16 48
+plant 25 46
+work
+plant 5 48
+plant 6 44
+plant 11 47
+plant 20 44
+plant 22 46
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+harvest 21 44 25 48
+work
+plant 2 48
+plant 9 44
+plant 14 44
+plant 20 48
+plant 22 44
+work
+plant 1 45
+plant 9 44
+plant 12 48
+plant 16 47
+plant 25 44
+work
+plant 2 44
+plant 8 46
+plant 15 48
+plant 16 48
+plant 22 48
+work
+plant 5 45
+plant 7 47
+plant 11 48
+plant 19 47
+plant 22 47
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+harvest 21 44 25 48
+work
+plant 4 45
+plant 9 47
+plant 11 45
+plant 18 44
+plant 23 47
+work
+plant 1 44
+plant 7 48
+plant 14 47
+plant 16 45
+plant 21 46
+work
+plant 2 44
+plant 7 45
+plant 14 45
+plant 19 47
+plant 24 48
+work
+plant 5 45
+plant 6 45
+plant 13 47
+plant 20 48
+plant 21 48
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+harvest 21 44 25 48
+work
+plant 1 48
+plant 10 44
+plant 11 46
+plant 16 44
+plant 25 46
+work
+plant 4 44
+plant 9 47
+plant 11 44
+plant 20 44
+plant 21 48
+work
+plant 5 47
+plant 10 47
+plant 15 48
+plant 17 45
+plant 25 45
+work
+plant 5 44
+plant 10 48
+plant 14 48
+plant 18 45
+plant 24 48
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+harvest 21 44 25 48
+work
+plant 4 45
+plant 7 47
+plant 15 45
+plant 19 48
+plant 24 44
+work
+plant 3 47
+plant 6 47
+plant 12 47
+plant 17 45
+plant 24 44
+work
+plant 4 45
+plant 8 46
+plant 14 48
+plant 16 46
+plant 24 47
+work
+plant 2 45
+plant 6 46
+plant 14 45
+plant 20 48
+plant 23 48
+work
+harvest 1 44 5 48
+harvest 6 44 10 48
+harvest 11 44 15 48
+harvest 16 44 20 48
+harvest 21 44 25 48
+work
+plant 3 47
+plant 10 44
+plant 13 48
+plant 17 45
+plant 22 46
+work
+plant 4 46
+plant 7 46
+plant 15 45
+plant 17 44
+plant 21 44
+work
+plant 4 48
+plant 6 48
+plant 12 46
+plant 17 45
+plant 24 45
+work
+plant 2 45

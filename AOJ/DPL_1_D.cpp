@@ -3,34 +3,55 @@
 using namespace std;
 
 // {U}{INT,LONG,LLONG}_{MAX,MIN}
-#define ALPHABET    (26)
-#define INF         INT_MAX
+#define INF         INT_MAX/3
 #define MOD         (1000000007LL)
-#define EPS         (1e-10)
-#define EQ(a, b)    (abs((a)-(b)) < EPS)
+#define inc(i, l, r)   for(long long i=(l);i<(r);i++)
+#define dec(i, l, r)   for(long long i=(r)-1;i>=(l);i--)
+#define se          second
+#define fi          first
 
-using P   = pair<int, int>;
 using LL  = long long;
+
+int di[] = {0, -1, 0, 1};
+int dj[] = {1, 0, -1, 0};
+// }}}
+
+// 最長増加部分列 {{{
+// Longest Increasing Subsequence
+// O(|v|log|v|)
+// verified AOJ DPL_1_D
+template <typename T>
+int lis(vector<T> &v) {
+    vector<T> res;
+    res.push_back(v[0]);
+    int n = v.size();
+    for(int i=1;i<n;i++){
+        int l = res.size();
+        if(v[i] > res[l-1]){
+            res.push_back(v[i]);
+        }else{
+            int ok = l-1;
+            int ng = -1;
+            while(ok-ng>1){
+                int m = (ok+ng)/2;
+                if(v[i] <= res[m]){
+                    ok = m;
+                }else{
+                    ng = m;
+                }
+            }
+            res[ok] = v[i];
+        }
+    }
+    return res.size();
+}
 // }}}
 
 int main() {
     std::ios::sync_with_stdio(false);
     int n;cin >> n;
-    int a[100000];
-    int dp[100000];
-    for(int i=0;i<n;i++){
-        cin >> a[i];
-        dp[i] = INF;
-    }
-
-    for(int i=0;i<n;i++){
-        *lower_bound(dp, dp+n, a[i]) = a[i];
-    }
-    int ans = 0;
-    for(int i=0;i<n;i++){
-        if(dp[i] == INF) break;
-        ans++;
-    }
-    cout << ans << endl;
+    vector<int> a(n);
+    inc(i, 0, n) cin >> a[i];
+    cout << lis(a) << endl;
     return 0;
 }

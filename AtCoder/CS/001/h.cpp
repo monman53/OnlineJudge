@@ -1,38 +1,57 @@
 // header {{{
-// #define NDEBUG
 #include <bits/stdc++.h>
 using namespace std;
 
 // {U}{INT,LONG,LLONG}_{MAX,MIN}
-#define ALPHABET    (26)
-#define INF         INT_MAX
+#define INF         INT_MAX/3
 #define MOD         (1000000007LL)
-#define EPS         (1e-10)
-#define EQ(a, b)        (abs((a)-(b)) < EPS)
-#define CILING(a, b)    (((a)+(b)-1LL)/(b))
+#define inc(i, l, r)   for(long long i=(l);i<(r);i++)
+#define dec(i, l, r)   for(long long i=(r)-1;i>=(l);i--)
+#define se          second
+#define fi          first
 
-template<class T>
-using PIT = pair<int, T>;
-template<class T>
-using PTI = pair<T, int>;
-using PII = pair<int, int>;
-using PDI = pair<double, int>;
 using LL  = long long;
-using ULL = unsigned long long;
+
+int di[] = {0, -1, 0, 1};
+int dj[] = {1, 0, -1, 0};
+// }}}
+
+// 最長増加部分列 {{{
+// Longest Increasing Subsequence
+// O(|v|log|v|)
+// verified AOJ DPL_1_D
+template <typename T>
+int lis(vector<T> &v) {
+    vector<T> res;
+    res.push_back(v[0]);
+    int n = v.size();
+    for(int i=1;i<n;i++){
+        int l = res.size();
+        if(v[i] > res[l-1]){
+            res.push_back(v[i]);
+        }else{
+            int ok = l-1;
+            int ng = -1;
+            while(ok-ng>1){
+                int m = (ok+ng)/2;
+                if(v[i] <= res[m]){
+                    ok = m;
+                }else{
+                    ng = m;
+                }
+            }
+            res[ok] = v[i];
+        }
+    }
+    return res.size();
+}
 // }}}
 
 int main() {
+    std::ios::sync_with_stdio(false);
     int n;cin >> n;
     vector<int> a(n);
-    for(auto &aa : a) cin >> aa;
-    int mmax = INT_MIN;
-    int count = 0;
-    for(int i=0;i<n;i++){
-        if(mmax < a[i]){
-            count++;
-            mmax = max(mmax, a[i]);
-        }
-    }
-    cout << count << endl;
+    inc(i, 0, n) cin >> a[i];
+    cout << lis(a) << endl;
     return 0;
 }

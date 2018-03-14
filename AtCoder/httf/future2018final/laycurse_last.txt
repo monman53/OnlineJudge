@@ -1,0 +1,1000 @@
+destroy 3 47 3 47
+road 2 46 2 46
+road 4 46 4 46
+road 2 47 2 47
+road 4 47 4 47
+road 2 48 2 48
+road 4 48 4 48
+road 2 49 2 49
+road 3 49 3 49
+road 4 49 4 49
+plant 3 48
+road 5 46 5 49
+destroy 4 47 4 48
+work
+work
+work
+work
+work
+work
+harvest 2 48 17 48
+harvest 3 47 47 47
+work
+work
+work
+work
+work
+work
+work
+work
+harvest 3 48 21 48
+destroy 6 46 6 49
+road 6 46 6 49
+destroy 5 47 5 48
+harvest 1 47 36 47
+work
+work
+work
+work
+work
+harvest 2 48 5 48
+destroy 7 46 7 49
+road 7 46 7 49
+work
+harvest 2 47 45 47
+destroy 6 47 6 48
+road 8 46 8 46
+road 8 49 8 49
+road 9 46 9 49
+work
+harvest 2 48 30 48
+destroy 7 47 7 48
+work
+work
+harvest 2 47 22 47
+work
+work
+work
+work
+work
+harvest 2 48 29 48
+destroy 10 46 10 49
+road 10 46 10 49
+work
+harvest 3 47 31 47
+destroy 9 47 9 48
+work
+work
+work
+work
+harvest 2 48 50 48
+destroy 1 46 1 49
+road 1 46 1 49
+work
+destroy 2 47 2 48
+harvest 2 47 18 47
+work
+work
+work
+work
+harvest 2 48 14 48
+destroy 11 46 11 49
+road 11 46 11 49
+destroy 10 47 10 48
+work
+harvest 2 47 48 47
+destroy 12 46 12 49
+road 12 46 12 49
+work
+work
+harvest 2 48 36 48
+destroy 11 47 11 48
+destroy 13 46 13 49
+road 13 46 13 49
+work
+harvest 1 47 18 47
+destroy 12 47 12 48
+work
+work
+work
+harvest 1 48 47 48
+destroy 14 46 14 49
+road 14 46 14 49
+destroy 13 47 13 48
+harvest 3 48 41 48
+harvest 1 47 38 47
+destroy 15 46 17 49
+road 15 46 16 46
+road 15 49 16 49
+road 17 46 17 49
+harvest 2 48 38 48
+destroy 14 47 14 48
+harvest 7 48 35 48
+destroy 18 46 18 49
+road 18 46 18 49
+harvest 2 47 45 47
+destroy 17 47 17 48
+destroy 19 46 21 49
+road 19 46 20 46
+road 19 49 20 49
+road 21 46 21 49
+harvest 2 48 18 48
+destroy 18 47 18 48
+road 22 46 24 46
+road 22 49 24 49
+road 25 46 25 49
+harvest 10 48 30 48
+destroy 21 47 21 48
+harvest 1 48 24 48
+destroy 26 46 27 49
+road 26 46 26 46
+road 26 49 26 49
+road 27 46 27 49
+harvest 13 48 39 48
+destroy 25 47 25 48
+harvest 2 47 35 47
+growup 10
+destroy 28 46 29 49
+road 28 46 28 46
+road 28 49 28 49
+road 29 46 29 49
+destroy 27 47 27 48
+harvest 2 47 32 47
+growup 10
+harvest 16 47 47 47
+destroy 30 46 31 49
+road 30 46 30 46
+road 30 49 30 49
+road 31 46 31 49
+harvest 3 48 27 48
+growup 10
+destroy 29 47 29 48
+destroy 32 46 33 49
+road 32 46 32 46
+road 32 49 32 49
+road 33 46 33 49
+harvest 15 48 30 48
+growup 10
+destroy 31 47 31 48
+harvest 18 48 24 48
+harvest 2 48 48 48
+destroy 34 46 37 49
+road 34 46 36 46
+road 34 49 36 49
+road 37 46 37 49
+harvest 1 47 33 47
+growup 10
+destroy 33 47 33 48
+destroy 38 46 39 49
+road 38 46 38 46
+road 38 49 38 49
+road 39 46 39 49
+destroy 37 47 37 48
+harvest 21 47 30 47
+growup 10
+harvest 1 48 39 48
+destroy 40 46 41 49
+road 40 46 40 46
+road 40 49 40 49
+road 41 46 41 49
+destroy 39 47 39 48
+harvest 19 48 50 48
+growup 10
+destroy 42 46 42 49
+road 42 46 42 49
+harvest 24 48 39 48
+destroy 41 47 41 48
+road 43 46 44 46
+road 43 49 44 49
+road 45 46 45 49
+destroy 42 47 42 48
+harvest 2 47 33 47
+growup 10
+destroy 46 46 50 49
+road 46 46 49 46
+road 46 49 49 49
+road 50 46 50 49
+growup 13
+harvest 27 47 48 47
+growup 10
+destroy 45 47 45 48
+harvest 11 48 34 48
+harvest 1 48 35 48
+harvest 28 48 39 48
+harvest 33 48 41 48
+harvest 5 47 39 47
+harvest 21 47 40 47
+harvest 34 47 47 47
+harvest 17 48 43 48
+harvest 37 48 49 48
+harvest 40 47 50 47
+harvest 3 48 43 48
+harvest 16 48 32 48
+harvest 24 48 39 48
+harvest 39 48 46 48
+harvest 1 47 22 47
+harvest 1 48 45 48
+harvest 42 48 47 48
+harvest 27 47 34 47
+harvest 16 47 45 47
+harvest 1 47 46 47
+harvest 35 47 50 47
+harvest 2 47 46 47
+harvest 42 47 50 47
+harvest 23 47 48 47
+harvest 44 47 49 47
+harvest 4 48 50 48
+harvest 32 48 46 48
+harvest 27 48 50 48
+harvest 20 48 50 48
+harvest 9 48 48 48
+harvest 37 48 47 48
+harvest 46 48 50 48
+harvest 9 47 48 47
+harvest 1 48 50 48
+destroy 1 43 50 45
+road 1 43 1 45
+road 50 43 50 45
+road 2 43 49 43
+plant 27 44
+harvest 4 47 50 47
+growup 14
+harvest 35 47 49 47
+growup 11
+harvest 27 47 50 47
+growup 14
+harvest 1 48 50 48
+growup 15
+harvest 41 47 49 47
+growup 12
+harvest 16 47 49 47
+growup 14
+harvest 1 48 50 48
+growup 12
+harvest 44 47 50 47
+growup 12
+harvest 22 48 45 48
+growup 16
+harvest 32 48 42 48
+growup 16
+harvest 4 48 42 48
+growup 13
+harvest 36 48 45 48
+growup 13
+harvest 1 44 50 44
+growup 16
+harvest 9 48 46 48
+growup 11
+harvest 42 48 50 48
+growup 10
+harvest 2 47 49 47
+harvest 23 44 33 44
+harvest 1 45 28 45
+harvest 29 45 37 45
+harvest 31 47 44 47
+harvest 1 44 35 44
+harvest 32 44 49 44
+harvest 10 47 48 47
+harvest 39 47 48 47
+harvest 37 45 46 45
+harvest 35 44 46 44
+harvest 2 48 31 48
+harvest 3 47 48 47
+harvest 41 47 49 47
+harvest 1 44 50 44
+harvest 24 44 46 44
+harvest 37 44 50 44
+harvest 1 45 50 45
+destroy 1 40 50 42
+road 1 40 1 42
+road 50 40 50 42
+road 2 40 49 40
+growup 15
+plant 12 41
+harvest 1 45 50 45
+growup 15
+harvest 6 44 46 44
+growup 16
+harvest 1 45 50 45
+growup 12
+harvest 39 44 47 44
+growup 15
+harvest 1 48 39 48
+growup 23
+harvest 18 48 34 48
+growup 19
+harvest 34 48 48 48
+growup 22
+harvest 24 44 50 44
+growup 18
+harvest 3 44 48 44
+growup 18
+harvest 1 48 50 48
+growup 16
+harvest 43 44 50 44
+growup 10
+harvest 1 47 50 47
+harvest 6 45 50 45
+harvest 41 45 49 45
+harvest 45 48 49 48
+harvest 23 47 46 47
+harvest 15 45 48 45
+harvest 40 45 47 45
+harvest 32 47 49 47
+harvest 1 48 50 48
+harvest 4 47 50 47
+harvest 38 47 50 47
+harvest 1 44 35 44
+harvest 4 41 42 41
+destroy 1 37 50 39
+road 1 37 1 39
+road 50 37 50 39
+road 2 37 49 37
+growup 11
+plant 46 39
+harvest 2 42 36 42
+growup 31
+harvest 2 45 41 45
+growup 27
+harvest 32 44 46 44
+growup 22
+harvest 1 41 48 41
+growup 21
+harvest 8 48 45 48
+growup 25
+harvest 20 48 40 48
+growup 16
+harvest 1 41 50 41
+growup 16
+harvest 35 48 49 48
+growup 18
+harvest 4 44 45 44
+growup 12
+harvest 9 42 40 42
+harvest 29 41 45 41
+harvest 1 47 50 47
+warpgate 46 37
+harvest 20 44 47 44
+harvest 1 48 50 48
+harvest 19 44 50 44
+harvest 2 45 50 45
+harvest 11 45 49 45
+harvest 17 42 45 42
+harvest 16 41 49 41
+harvest 2 47 49 47
+destroy 1 33 50 36
+road 1 33 1 36
+road 50 33 50 36
+road 2 33 49 33
+growup 14
+plant 7 36
+harvest 10 47 50 47
+growup 18
+harvest 2 42 50 42
+growup 27
+harvest 24 42 49 42
+growup 15
+harvest 2 44 44 44
+growup 31
+harvest 8 39 50 39
+growup 34
+harvest 17 38 49 38
+growup 33
+harvest 1 41 47 41
+growup 34
+harvest 12 48 50 48
+growup 34
+harvest 2 48 38 48
+growup 10
+harvest 1 44 50 44
+harvest 1 45 46 45
+harvest 1 47 50 47
+harvest 7 45 49 45
+harvest 3 41 48 41
+harvest 7 41 50 41
+harvest 7 38 42 38
+harvest 1 36 40 36
+harvest 2 35 36 35
+harvest 2 34 36 34
+destroy 1 29 50 32
+road 1 29 1 32
+road 50 29 50 32
+road 2 29 49 29
+growup 17
+plant 22 31
+harvest 2 39 41 39
+growup 32
+harvest 2 42 47 42
+growup 39
+harvest 5 38 50 38
+growup 28
+harvest 1 48 50 48
+growup 34
+harvest 2 42 49 42
+growup 20
+harvest 2 38 49 38
+growup 19
+harvest 18 39 48 39
+growup 24
+harvest 1 39 50 39
+growup 18
+harvest 2 41 45 41
+growup 19
+harvest 2 44 48 44
+harvest 14 44 49 44
+harvest 2 45 48 45
+harvest 1 47 48 47
+destroy 1 24 50 28
+road 1 24 1 28
+road 50 24 50 28
+road 2 24 49 24
+growup 22
+plant 31 25
+harvest 2 47 49 47
+growup 20
+harvest 8 45 50 45
+growup 21
+harvest 4 41 47 41
+growup 27
+harvest 1 48 50 48
+growup 37
+harvest 6 41 49 41
+growup 17
+harvest 2 36 46 36
+growup 44
+harvest 2 35 36 35
+growup 41
+harvest 1 34 47 34
+growup 46
+harvest 3 35 47 35
+growup 25
+harvest 1 31 32 31
+harvest 2 30 30 30
+harvest 1 32 44 32
+harvest 1 47 50 47
+harvest 1 36 50 36
+harvest 1 31 50 31
+harvest 23 30 44 30
+destroy 1 19 50 23
+road 1 19 1 23
+road 50 19 50 23
+road 2 19 49 19
+growup 16
+plant 15 22
+harvest 1 48 50 48
+growup 34
+harvest 3 35 49 35
+growup 30
+harvest 1 42 39 42
+growup 45
+harvest 13 42 49 42
+growup 26
+harvest 6 34 49 34
+growup 34
+harvest 1 38 40 38
+growup 48
+harvest 1 41 50 41
+growup 41
+harvest 5 38 49 38
+growup 26
+harvest 1 39 49 39
+harvest 2 44 43 44
+harvest 1 44 50 44
+harvest 1 45 45 45
+destroy 1 14 50 18
+road 1 14 1 18
+road 50 14 50 18
+road 2 14 49 14
+growup 41
+plant 45 16
+harvest 2 30 47 30
+growup 41
+harvest 2 32 50 32
+growup 45
+harvest 1 48 50 48
+growup 38
+harvest 4 30 50 30
+growup 20
+harvest 4 31 49 31
+growup 44
+harvest 1 25 43 25
+growup 49
+harvest 5 26 49 26
+growup 22
+harvest 2 27 50 27
+harvest 9 28 50 28
+destroy 1 8 50 13
+road 1 8 1 13
+road 50 8 50 13
+road 2 8 49 8
+growup 24
+plant 27 10
+harvest 1 45 49 45
+growup 40
+harvest 1 44 50 44
+growup 39
+harvest 10 25 48 25
+growup 30
+harvest 2 35 45 35
+growup 48
+harvest 2 34 47 34
+growup 48
+harvest 9 25 49 25
+growup 19
+harvest 2 47 50 47
+growup 58
+harvest 1 36 49 36
+growup 44
+harvest 1 31 47 31
+warpgate 17 8
+harvest 4 28 46 28
+harvest 2 26 42 26
+harvest 2 22 39 22
+harvest 1 28 48 28
+harvest 3 21 45 21
+destroy 1 1 50 7
+road 1 1 1 7
+road 50 1 50 7
+road 2 1 49 1
+growup 22
+plant 17 2
+harvest 5 23 49 23
+growup 53
+harvest 13 20 41 20
+growup 44
+harvest 4 35 48 35
+growup 37
+harvest 12 35 49 35
+growup 14
+harvest 1 12 50 12
+growup 34
+harvest 1 20 31 20
+growup 32
+harvest 1 42 45 42
+growup 61
+harvest 2 42 50 42
+growup 21
+harvest 1 48 50 48
+growup 55
+harvest 4 34 48 34
+growup 27
+harvest 14 34 49 34
+harvest 2 23 49 23
+warpgate 34 1
+harvest 1 38 34 38
+harvest 2 21 45 21
+harvest 1 41 46 41
+harvest 1 47 50 47
+harvest 7 41 49 41
+harvest 1 35 50 35
+harvest 26 38 49 38
+harvest 2 39 50 39
+harvest 9 22 50 22
+harvest 1 45 50 45
+harvest 19 16 47 16
+harvest 1 15 49 15
+harvest 7 17 46 17
+harvest 2 18 45 18
+harvest 2 30 44 30
+harvest 4 16 49 16
+harvest 1 47 50 47
+harvest 3 17 50 17
+harvest 19 18 50 18
+harvest 6 20 48 20
+harvest 2 32 44 32
+harvest 1 45 50 45
+harvest 3 32 49 32
+harvest 5 21 50 21
+harvest 1 30 50 30
+harvest 8 20 49 20
+harvest 8 31 49 31
+harvest 2 25 45 25
+harvest 1 26 50 26
+harvest 2 27 44 27
+harvest 1 27 49 27
+harvest 1 28 49 28
+harvest 3 10 42 10
+harvest 1 9 41 9
+harvest 12 11 47 11
+harvest 4 13 46 13
+harvest 2 44 45 44
+harvest 8 44 49 44
+harvest 1 2 50 2
+harvest 2 34 48 34
+harvest 16 25 48 25
+harvest 1 25 50 25
+destroy 2 46 50 46
+road 50 46 50 46
+harvest 1 42 50 42
+harvest 4 9 47 9
+harvest 2 10 50 10
+harvest 1 36 47 36
+harvest 1 48 50 48
+harvest 5 36 49 36
+harvest 1 11 50 11
+growup 318
+harvest 2 31 47 31
+harvest 1 3 50 3
+harvest 1 16 48 16
+harvest 6 9 50 9
+harvest 2 17 40 17
+harvest 1 22 48 22
+harvest 1 47 50 47
+harvest 1 13 48 13
+harvest 3 13 50 13
+harvest 6 4 39 4
+harvest 3 5 43 5
+harvest 14 6 50 6
+harvest 2 7 40 7
+harvest 3 6 43 6
+harvest 1 12 50 12
+harvest 2 20 49 20
+harvest 3 4 43 4
+harvest 1 2 50 2
+harvest 1 4 44 4
+harvest 1 5 50 5
+harvest 2 6 39 6
+harvest 4 34 50 34
+harvest 2 23 50 23
+harvest 2 38 47 38
+harvest 1 21 50 21
+harvest 1 41 44 41
+harvest 9 7 50 7
+harvest 1 45 50 45
+harvest 2 41 49 41
+harvest 4 4 47 4
+harvest 1 35 44 35
+harvest 33 35 49 35
+harvest 1 48 50 48
+harvest 5 38 49 38
+harvest 2 39 47 39
+harvest 7 39 49 39
+harvest 5 4 48 4
+harvest 2 22 50 22
+harvest 8 4 49 4
+harvest 2 15 42 15
+harvest 23 15 48 15
+harvest 6 15 50 15
+harvest 2 18 42 18
+harvest 7 16 49 16
+harvest 9 17 50 17
+harvest 18 18 50 18
+harvest 1 32 50 32
+destroy 2 40 50 40
+road 50 40 50 40
+harvest 2 30 49 30
+harvest 4 31 49 31
+harvest 2 26 32 26
+harvest 24 26 48 26
+harvest 6 26 50 26
+harvest 1 27 38 27
+harvest 1 39 50 39
+harvest 27 27 49 27
+harvest 2 28 48 28
+harvest 3 28 50 28
+harvest 2 9 50 9
+growup 320
+harvest 2 44 48 44
+harvest 3 44 49 44
+harvest 1 2 50 2
+harvest 1 34 47 34
+harvest 2 25 48 25
+harvest 3 25 49 25
+harvest 1 46 43 46
+harvest 10 46 49 46
+harvest 1 42 45 42
+harvest 20 42 50 42
+harvest 2 10 41 10
+harvest 17 10 50 10
+harvest 2 36 37 36
+harvest 1 38 50 38
+harvest 17 36 50 36
+harvest 1 11 47 11
+harvest 1 48 50 48
+harvest 1 11 49 11
+harvest 2 31 48 31
+harvest 2 3 45 3
+harvest 1 46 50 46
+harvest 38 3 50 3
+harvest 1 16 38 16
+harvest 1 17 44 17
+harvest 2 47 48 47
+harvest 8 47 50 47
+harvest 2 13 48 13
+harvest 2 13 50 13
+harvest 4 6 50 6
+harvest 2 7 44 7
+harvest 1 12 37 12
+harvest 12 12 50 12
+harvest 1 20 50 20
+harvest 1 4 50 4
+harvest 1 5 46 5
+harvest 1 47 50 47
+harvest 14 5 50 5
+harvest 1 2 50 2
+harvest 1 6 50 6
+harvest 5 34 50 34
+harvest 2 23 50 23
+harvest 2 21 46 21
+harvest 1 47 50 47
+harvest 4 21 50 21
+harvest 1 45 50 45
+harvest 19 7 49 7
+harvest 1 41 50 41
+harvest 1 35 49 35
+harvest 2 22 38 22
+harvest 1 39 50 39
+growup 319
+harvest 25 22 46 22
+harvest 1 47 50 47
+harvest 9 22 50 22
+harvest 2 15 42 15
+harvest 19 15 49 15
+harvest 2 18 42 18
+harvest 2 16 47 16
+harvest 1 48 50 48
+harvest 1 16 50 16
+harvest 3 17 48 17
+harvest 11 17 49 17
+harvest 3 18 48 18
+harvest 4 18 50 18
+harvest 2 32 49 32
+harvest 2 40 43 40
+harvest 1 44 50 44
+harvest 3 40 48 40
+harvest 7 40 50 40
+harvest 1 30 45 30
+harvest 1 46 50 46
+harvest 15 30 50 30
+harvest 2 31 49 31
+harvest 1 26 39 26
+harvest 2 26 50 26
+harvest 1 27 50 27
+harvest 2 28 42 28
+harvest 3 28 49 28
+harvest 1 9 49 9
+harvest 1 34 50 34
+harvest 2 25 42 25
+harvest 6 25 50 25
+harvest 1 42 47 42
+harvest 1 48 50 48
+harvest 5 42 49 42
+harvest 2 10 50 10
+harvest 2 36 47 36
+harvest 1 38 50 38
+harvest 1 48 50 48
+harvest 3 36 49 36
+harvest 2 11 49 11
+harvest 1 3 44 3
+harvest 1 45 50 45
+harvest 22 3 50 3
+harvest 1 2 50 2
+harvest 2 17 50 17
+harvest 2 13 46 13
+harvest 1 47 50 47
+harvest 24 13 50 13
+harvest 1 7 44 7
+harvest 1 12 43 12
+harvest 1 44 50 44
+harvest 2 12 49 12
+harvest 1 20 39 20
+growup 318
+harvest 1 40 50 40
+harvest 21 20 49 20
+harvest 2 4 39 4
+harvest 31 4 48 4
+harvest 13 4 50 4
+harvest 2 5 49 5
+harvest 2 6 43 6
+harvest 1 44 50 44
+harvest 23 6 49 6
+harvest 1 23 40 23
+harvest 1 41 50 41
+harvest 12 23 46 23
+harvest 1 47 50 47
+harvest 19 23 50 23
+harvest 1 21 39 21
+harvest 3 21 48 21
+harvest 6 21 49 21
+harvest 1 45 50 45
+harvest 3 7 50 7
+harvest 2 35 50 35
+harvest 2 22 43 22
+harvest 1 39 45 39
+harvest 1 46 50 46
+harvest 30 39 50 39
+harvest 1 44 50 44
+harvest 1 22 50 22
+harvest 1 15 50 15
+harvest 2 18 42 18
+harvest 2 16 43 16
+harvest 1 16 50 16
+harvest 7 18 49 18
+harvest 2 32 40 32
+harvest 1 41 50 41
+harvest 26 32 49 32
+harvest 2 30 50 30
+harvest 2 31 46 31
+harvest 1 47 50 47
+harvest 29 31 50 31
+harvest 2 26 45 26
+harvest 1 46 50 46
+harvest 4 26 49 26
+harvest 2 27 49 27
+harvest 1 28 47 28
+harvest 1 48 50 48
+harvest 10 28 50 28
+harvest 2 9 50 9
+harvest 1 34 44 34
+harvest 1 45 50 45
+harvest 3 34 50 34
+harvest 1 25 42 25
+harvest 13 25 49 25
+harvest 2 42 45 42
+harvest 1 46 50 46
+harvest 23 42 49 42
+harvest 2 10 45 10
+harvest 2 10 49 10
+growup 316
+harvest 1 2 50 2
+harvest 1 36 49 36
+harvest 1 38 47 38
+harvest 1 48 50 48
+harvest 3 38 49 38
+harvest 1 11 47 11
+harvest 4 11 50 11
+harvest 1 3 50 3
+harvest 2 17 41 17
+harvest 1 42 50 42
+harvest 20 17 49 17
+harvest 1 13 47 13
+harvest 1 48 50 48
+harvest 7 13 49 13
+harvest 1 7 48 7
+harvest 2 12 46 12
+harvest 1 47 50 47
+harvest 12 12 49 12
+harvest 2 20 46 20
+harvest 1 40 50 40
+harvest 17 20 49 20
+harvest 2 4 36 4
+harvest 3 4 49 4
+harvest 1 5 49 5
+harvest 1 6 36 6
+harvest 23 6 48 6
+harvest 8 6 50 6
+harvest 2 23 38 23
+harvest 1 39 50 39
+harvest 17 23 49 23
+harvest 2 21 41 21
+harvest 1 42 50 42
+harvest 2 21 50 21
+harvest 3 7 49 7
+harvest 2 35 45 35
+harvest 1 46 50 46
+harvest 23 35 50 35
+harvest 2 44 43 44
+harvest 1 44 50 44
+harvest 2 22 39 22
+harvest 1 40 50 40
+harvest 19 22 49 22
+harvest 2 15 29 15
+harvest 1 30 50 30
+harvest 21 15 48 15
+harvest 1 15 49 15
+harvest 2 18 45 18
+harvest 2 16 49 16
+harvest 1 46 50 46
+harvest 4 18 50 18
+harvest 2 32 43 32
+harvest 1 41 50 41
+growup 317
+harvest 1 44 50 44
+harvest 8 32 50 32
+harvest 1 31 45 31
+harvest 1 46 50 46
+harvest 7 31 49 31
+harvest 1 26 43 26
+harvest 10 26 49 26
+harvest 1 27 47 27
+harvest 1 48 50 48
+harvest 11 27 50 27
+harvest 1 2 50 2
+harvest 1 28 48 28
+harvest 32 28 50 28
+harvest 1 9 48 9
+harvest 3 9 50 9
+harvest 1 34 46 34
+harvest 1 45 50 45
+harvest 1 47 50 47
+harvest 2 34 50 34
+harvest 2 25 41 25
+harvest 1 42 50 42
+harvest 37 25 49 25
+harvest 2 10 50 10
+harvest 1 36 49 36
+harvest 2 38 50 38
+harvest 2 11 47 11
+harvest 1 48 50 48
+harvest 18 11 50 11
+harvest 2 3 45 3
+harvest 1 46 50 46
+harvest 22 3 49 3
+harvest 2 17 45 17
+harvest 6 17 50 17
+harvest 1 13 45 13
+harvest 16 13 50 13
+harvest 2 7 45 7
+harvest 1 12 41 12
+harvest 1 42 50 42
+harvest 37 12 50 12
+harvest 2 20 47 20
+harvest 1 48 50 48
+harvest 5 20 49 20
+harvest 1 4 45 4
+harvest 1 46 50 46
+harvest 27 4 49 4
+harvest 1 5 50 5
+harvest 2 6 49 6
+harvest 1 23 38 23
+harvest 2 39 49 39
+harvest 37 23 49 23
+harvest 1 21 41 21
+growup 318
+harvest 1 42 50 42
+harvest 11 21 50 21
+harvest 4 7 48 7
+harvest 9 7 49 7
+harvest 1 35 48 35
+harvest 6 35 49 35
+harvest 2 22 49 22
+harvest 1 40 47 40
+harvest 1 48 50 48
+harvest 6 40 49 40
+harvest 2 30 49 30
+harvest 1 15 47 15
+harvest 1 48 50 48
+harvest 1 15 49 15
+harvest 2 18 49 18
+harvest 2 16 40 16
+harvest 1 41 50 41
+harvest 2 16 50 16
+harvest 1 2 50 2
+harvest 2 32 42 32
+harvest 2 44 50 44
+harvest 1 32 49 32
+harvest 1 31 50 31
+harvest 1 26 43 26
+harvest 19 26 49 26
+harvest 1 27 37 27
+harvest 1 38 50 38
+harvest 27 27 48 27
+harvest 15 27 50 27
+harvest 2 28 34 28
+harvest 1 35 50 35
+harvest 3 28 49 28
+harvest 1 9 42 9
+harvest 24 9 50 9
+harvest 2 45 46 45
+harvest 1 47 50 47
+harvest 29 45 49 45
+harvest 1 34 38 34
+harvest 1 39 50 39
+harvest 7 34 50 34
+harvest 1 25 50 25
+harvest 1 10 46 10
+harvest 1 47 50 47
+harvest 19 2 48 34
+harvest 11 3 50 21
+harvest 1 4 49 43
+growup 324
+plant 20 11
+harvest 2 18 28 41
+harvest 1 33 27 46
+harvest 28 13 44 38
+harvest 24 29 44 48
+harvest 13 35 49 50
+harvest 1 2 19 46
+harvest 1 8 49 19
+plant 35 17
+plant 45 10
