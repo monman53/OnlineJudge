@@ -22,14 +22,44 @@ int di[] = {0, -1, 0, 1};
 int dj[] = {1, 0, -1, 0};
 // }}}
 
+// 座標圧縮 {{{
+// O(N*log(N))
+template <typename T>
+vector<int> compress(vector<T> v){
+    int n = v.size();
+    vector<int> res(n);
+
+    auto u = v;
+    sort(u.begin(), u.end());
+    map<T, int> m;
+
+    T b = u[0];
+    int now = 0;
+    inc(i, 0, n){
+        if(b != u[i]) now++;
+        m[u[i]] = now;
+        b = u[i];
+    }
+
+    inc(i, 0, n){
+        res[i] = m[v[i]];
+    }
+
+    return res;
+}// }}}
+
 int main() {
     cin.tie(0);ios::sync_with_stdio(false);
-    LL n, k;cin >> n >> k;
-    LL ans = 0LL;
-    inc(i, 1, n+1){
-        ans += n/i*max(0LL, i-k) + max(0LL, n%i-k+1);
+    int n;cin >> n;
+    vector<int> a(n);
+    inc(i, 0, n) cin >> a[i];
+
+    auto b = compress(a);
+
+    int ans = 0;
+    inc(i, 0, n){
+        if(i%2 != b[i]%2) ans++;
     }
-    if(k == 0) ans -= n;
-    printf("%lld\n", ans);
+    cout << ans/2 << endl;
     return 0;
 }

@@ -24,28 +24,14 @@ int dj[] = {1, 0, -1, 0};
 
 int main() {
     cin.tie(0);ios::sync_with_stdio(false);
-    LL n, a, b;cin >> n >> a >> b;
-    if(a+b > n+1 || a*b < n){
-        cout << -1 << endl;
-        return 0;
+    int n, m, x;cin >> n >> m >> x;
+    int a = 0;
+    int b = 0;
+    inc(i, 0, m){
+        int aa;cin >> aa;
+        if(aa < x) a++;
+        if(aa > x) b++;
     }
-    vector<int> ans;
-    int cnt = 1;
-    inc(i, 0, b){
-        vector<int> v;
-        inc(j, 0, a){
-            v.pb(cnt);
-            cnt++;
-            if(b-i-2 == n-cnt) break;
-        }
-        reverse(v.begin(), v.end());
-        for(auto vv : v){
-            ans.pb(vv);
-        }
-    }
-    reverse(ans.begin(), ans.end());
-    for(auto a : ans){
-        cout << a << endl;
-    }
+    cout << min(a, b) << endl;
     return 0;
 }

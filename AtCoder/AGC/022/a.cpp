@@ -22,30 +22,37 @@ int di[] = {0, -1, 0, 1};
 int dj[] = {1, 0, -1, 0};
 // }}}
 
+int cnt[26];
+
 int main() {
     cin.tie(0);ios::sync_with_stdio(false);
-    LL n, a, b;cin >> n >> a >> b;
-    if(a+b > n+1 || a*b < n){
-        cout << -1 << endl;
-        return 0;
-    }
-    vector<int> ans;
-    int cnt = 1;
-    inc(i, 0, b){
-        vector<int> v;
-        inc(j, 0, a){
-            v.pb(cnt);
-            cnt++;
-            if(b-i-2 == n-cnt) break;
+    string s;cin >> s;
+    int n = s.size();
+    if(n != 26){
+        for(auto c : s){
+            cnt[c-'a']++;
         }
-        reverse(v.begin(), v.end());
-        for(auto vv : v){
-            ans.pb(vv);
+        cout << s;
+        inc(i, 0, 26){
+            if(!cnt[i]){
+                cout << char('a'+i) << endl;
+                return 0;
+            }
         }
-    }
-    reverse(ans.begin(), ans.end());
-    for(auto a : ans){
-        cout << a << endl;
+    }else{
+        string t = s;
+        if(next_permutation(t.begin(), t.end())){
+            inc(i, 0, n){
+                if(s[i] != t[i]){
+                    cout << t[i] << endl;
+                    return 0;
+                }else{
+                    cout << t[i];
+                }
+            }
+        }else{
+            cout << -1 << endl;
+        }
     }
     return 0;
 }

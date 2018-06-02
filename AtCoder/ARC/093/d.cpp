@@ -24,28 +24,33 @@ int dj[] = {1, 0, -1, 0};
 
 int main() {
     cin.tie(0);ios::sync_with_stdio(false);
-    LL n, a, b;cin >> n >> a >> b;
-    if(a+b > n+1 || a*b < n){
-        cout << -1 << endl;
-        return 0;
-    }
-    vector<int> ans;
-    int cnt = 1;
-    inc(i, 0, b){
-        vector<int> v;
-        inc(j, 0, a){
-            v.pb(cnt);
-            cnt++;
-            if(b-i-2 == n-cnt) break;
-        }
-        reverse(v.begin(), v.end());
-        for(auto vv : v){
-            ans.pb(vv);
+
+    string ans[100];
+    inc(i, 0, 50){
+        inc(j, 0, 100){
+            ans[i].pb('#');
+            ans[i+50].pb('.');
         }
     }
-    reverse(ans.begin(), ans.end());
-    for(auto a : ans){
-        cout << a << endl;
+
+    // in
+    int a, b;cin >> a >> b;
+
+    //cout << "hoge" << endl;
+
+    inc(i, 0, a-1){
+        ans[i*2/100*2][i*2%100] = '.';
+    }
+    inc(i, 0, b-1){
+        ans[100-i*2/100*2-1][i*2%100] = '#';
+    }
+
+    //cout << "hoge" << endl;
+
+    // out
+    cout << "100 100" << endl;
+    inc(i, 0, 100){
+        cout << ans[i] << endl;
     }
     return 0;
 }
