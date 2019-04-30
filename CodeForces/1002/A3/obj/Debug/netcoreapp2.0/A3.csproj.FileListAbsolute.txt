@@ -1,0 +1,11 @@
+/home/monman/online_judge/CodeForces/1002/A3/obj/Debug/netcoreapp2.0/A3.csprojAssemblyReference.cache
+/home/monman/online_judge/CodeForces/1002/A3/obj/Debug/netcoreapp2.0/A3.csproj.CoreCompileInputs.cache
+/home/monman/online_judge/CodeForces/1002/A3/bin/Debug/netcoreapp2.0/A3.deps.json
+/home/monman/online_judge/CodeForces/1002/A3/bin/Debug/netcoreapp2.0/A3.runtimeconfig.json
+/home/monman/online_judge/CodeForces/1002/A3/bin/Debug/netcoreapp2.0/A3.runtimeconfig.dev.json
+/home/monman/online_judge/CodeForces/1002/A3/bin/Debug/netcoreapp2.0/A3.dll
+/home/monman/online_judge/CodeForces/1002/A3/bin/Debug/netcoreapp2.0/A3.pdb
+/home/monman/online_judge/CodeForces/1002/A3/obj/Debug/netcoreapp2.0/A3.AssemblyInfoInputs.cache
+/home/monman/online_judge/CodeForces/1002/A3/obj/Debug/netcoreapp2.0/A3.AssemblyInfo.cs
+/home/monman/online_judge/CodeForces/1002/A3/obj/Debug/netcoreapp2.0/A3.dll
+/home/monman/online_judge/CodeForces/1002/A3/obj/Debug/netcoreapp2.0/A3.pdb

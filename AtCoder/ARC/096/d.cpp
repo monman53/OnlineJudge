@@ -26,19 +26,32 @@ int main() {
     cin.tie(0);ios::sync_with_stdio(false);
     int n;cin >> n;
     LL c;cin >> c;
-    vector<LL> x(n), v(n), dp(n+1, 0);
+    vector<LL> x(n), v(n), f(n+1, 0), g(n+1, 0);
     inc(i, 0, n) cin >> x[i] >> v[i];
     LL now = 0;
     inc(i, 0, n){
         now += v[i];
-        dp[i] = max(dp[i], now-x[i]);
+        f[i+1] = max(f[i], now-x[i]);
     }
-    LL ans = dp[n-1];
     now = 0;
     dec(i, 0, n){
         now += v[i];
-        ans = max(ans, now-(c-x[i])+dp[i]);
+        g[i] = max(g[i+1], now-(c-x[i]));
     }
+
+    LL ans = max({0LL, f[n], g[0]});
+    now = 0;
+    dec(i, 1, n){
+        now += v[i];
+        ans = max(ans, now-2LL*(c-x[i])+f[i]);
+    }
+
+    now = 0;
+    inc(i, 0, n-1){
+        now += v[i];
+        ans = max(ans, now-2LL*x[i]+g[i+1]);
+    }
+
     cout << ans << endl;
     return 0;
 }

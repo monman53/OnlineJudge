@@ -1,36 +1,36 @@
 // math {{{
-#define SIZE 200010
+#define SIZE 200010LL
 
 // べき乗
 // verified AOJ NTL_1_B
-LL pow(LL a, LL b) {
-    if(b == 0) return 1;
-    LL aa = pow(a, b/2);
-    return aa*aa%MOD*(b%2 == 1 ? a : 1)%MOD;
+LL mpow(LL a, LL b) {
+    if(b == 0LL) return 1LL;
+    LL aa = mpow(a, b/2LL);
+    return aa*aa%MOD*(b%2LL == 1LL ? a : 1LL)%MOD;
 }
 
 // 階乗と階乗の逆元
 // ARC077D
-LL fact[SIZE] = {1, 1};
-LL finv[SIZE] = {1, 1};
+LL fact[SIZE] = {1LL, 1LL};
+LL finv[SIZE] = {1LL, 1LL};
 
 void initFact() {
     // fact
-    for(LL i=2;i<SIZE;i++){
-        fact[i] = fact[i-1]*i%MOD;
+    for(LL i=2LL;i<SIZE;i++){
+        fact[i] = fact[i-1LL]*i%MOD;
     }
 
     // finv
-    finv[SIZE-1] = pow(fact[SIZE-1], MOD-2);
-    for(LL i=SIZE-1;i>=3;i--){
-        finv[i-1] = finv[i]*i%MOD;
+    finv[SIZE-1] = mpow(fact[SIZE-1LL], MOD-2LL);
+    for(LL i=SIZE-1LL;i>=3LL;i--){
+        finv[i-1LL] = finv[i]*i%MOD;
     }
 }
 
 // 組み合わせの数
 // ARC077D
-LL comb(int n, int r) {
-    if(r > n) return 0;
+LL comb(LL n, LL r) {
+    if(r > n) return 0LL;
     return fact[n]*(finv[r]*finv[n-r]%MOD)%MOD;
 }
 

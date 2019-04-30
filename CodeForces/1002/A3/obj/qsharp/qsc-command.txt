@@ -1,0 +1,15 @@
+:: files ::
+Operation.1.qs
+Operation.2.qs
+Operation.qs
+:: qsim ::
+:: references ::
+/home/monman/.nuget/packages/microsoft.quantum.canon/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Canon.dll
+/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.MetaData.dll
+/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Primitives.dll
+/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.Common.dll
+/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.Core.dll
+/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.QCTraceSimulatorRuntime.dll
+/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.Simulators.dll
+:: command ::
+dotnet "/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/build/../tools/qsc/qsc.dll" --input "Operation.1.qs" "Operation.2.qs" "Operation.qs" --references "/home/monman/.nuget/packages/microsoft.quantum.canon/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Canon.dll" "/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.MetaData.dll" "/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Primitives.dll" "/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.Common.dll" "/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.Core.dll" "/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.QCTraceSimulatorRuntime.dll" "/home/monman/.nuget/packages/microsoft.quantum.development.kit/0.2.1806.3001-preview/lib/netstandard2.0/Microsoft.Quantum.Simulation.Simulators.dll" --outputpath obj/qsharp/src/
